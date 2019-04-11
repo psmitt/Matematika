@@ -1,0 +1,60 @@
+- Hogyan jelöljük ... ? => többféle lehetséges, akár historikusan is
+- Hogyan definiáljuk ... ? => többféle lehetséges
+- Mit jelent a ... tétel, fogalom, jelölés ? => Magyarázat, szemléltetés, illusztráció
+- Hogyan bizonyítható a ... tétel/állítás ?
+- Hogyan alkalmazható/használható a ... tétel ? => keresés feladatok megoldásaiban, tételek bizonyításaiban
+- Hogyan számítható ki ... ? => a függvény értéke, a térbeli idom mértéke, algoritmus
+- Hogyan oldható meg ... ? => feladat, egyenlet, egyenlőtlenség, probléma, -rendszer, algoritmus használata
+
+Konkrét példák:
+
+- Mennyi...
+- Mekkora...
+- Milyen valószínű...
+stb.
+
+===================================
+
+- alapfogalom: Mit jelent?
+- axióma, posztulátum (létaxióma), saroktétel: Mit jelent?
+
+- definíció (származtatott fogalom): Mit jelent?
+- jelölés (https://en.wikipedia.org/wiki/List_of_mathematical_symbols): Mit jelent?
+
+- tétel, lemma (segédtétel), korrolárium (következmény, folyomány, pl. speciális eset): Mit jelent?
+- egzisztenciatétel, unicitástétel: Mit jelent?
+- bizonyítás
+- sejtés, hipotézis, feltevés: Mit jelent?
+- szükséges és elégséges feltétel
+- előfeltétel
+- konstrukció
+
+- általánosítás, megfordítás
+
+- példa
+- feladat
+- megoldás
+- módszer
+- szabály
+- elv
+- algoritmus
+- formula, jólformáltság
+- paradoxon
+- transzformáció
+
+- fraktál: Hogyan generálható? Hogyan ábrázolható?
+- téridom: Hogyan szerkeszthető meg? Hogyan ábrázolható? Hogyan számíthatók ki a mértékei?
+- függvény: Hogyan számítható ki? Hogyan ábrázolható?
+- konstans: Hogyan számítható ki? = Definíció
+
+
+===================================
+
+Bizonyítási módszerek:
+----------------------
+- skatulyaelv és általánosításai (https://hu.wikipedia.org/wiki/Skatulyaelv)
+- teljes indukció és transzfinit indukció
+  (https://hu.wikipedia.org/wiki/Teljes_indukció)
+  (https://hu.wikipedia.org/wiki/Transzfinit_indukció)
+- végtelen leszállás (https://hu.wikipedia.org/wiki/Végtelen_leszállás)
+

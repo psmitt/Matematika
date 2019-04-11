@@ -1,0 +1,44 @@
+nav>header {
+  padding: 0;
+}
+
+#NavSearch {
+  background-image: url('magnifier_glass.svg');
+  background-size: auto var(--golden-ratio);
+  background-position: var(--default-padding) var(--golden-ratio);
+  background-repeat: no-repeat;
+  border-radius: calc(2 * var(--default-padding));
+  padding-left: calc(3.5 * var(--default-padding));
+  padding-right: var(--default-padding);
+  height: calc(100% - var(--default-padding) / 2);
+  width: calc(100% - 4 * var(--default-padding));
+}
+
+#NavMenu {
+  position: absolute;
+  right: 0;
+}
+
+#NavMenu>div {
+  position: relative;
+  background-color: green;
+  cursor: pointer;
+  padding-left: var(--default-padding);
+  padding-right: var(--default-padding);
+  user-select: none;
+  z-index: 1;
+}
+
+#NavMenu div:hover {
+  background-color: MistyRose;
+}
+
+nav details div {
+  background-image: url('bullet.svg');
+  background-position: 1px 0.5em;
+  background-repeat: no-repeat;
+  margin-left: calc(1.75 * var(--default-padding));
+  padding-left: calc(2 * var(--default-padding));
+  padding-right: var(--default-padding);
+  cursor: pointer;
+}

@@ -1,0 +1,132 @@
+CREATE DATABASE math
+CHARACTER SET   utf8
+COLLATE         utf8_unicode_ci;
+
+CREATE USER 'math_admin'@'%' IDENTIFIED BY '0123456789';
+GRANT ALL ON math.* TO 'math_admin'@'%';
+CREATE USER 'math_editor'@'%' IDENTIFIED BY '012345678';
+GRANT SELECT, INSERT, UPDATE, DELETE ON math.* TO 'math_editor'@'%';
+CREATE USER 'math_reader'@'%' IDENTIFIED BY '01234567';
+GRANT SELECT ON math.* TO 'math_reader'@'%';
+FLUSH PRIVILEGES;
+
+USE math;
+
+CREATE TABLE entities (
+  entities_id       SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  entities_name     VARCHAR(255) NOT NULL
+);
+
+INSERT INTO entities(entities_name) VALUES
+  ('Algoritmusok'),
+  ('Determinánsok'),
+  ('Egyenletek'),
+  ('Egyenlőtlenségek'),
+  ('Felületek'),
+  ('Fraktálok'),
+  ('Függvények'),
+  ('Funkcionálok'),
+  ('Görbék'),
+  ('Gráfok'),
+  ('Halmazok'),
+  ('Kijelentések'),
+  ('Mátrixok'),
+  ('Permutációk'),
+  ('Relációk'),
+  ('Síkidomok'),
+  ('Sorozatok'),
+  ('Struktúrák'),
+  ('Számok'),
+  ('Tenzorok'),
+  ('Testek'),
+  ('Transzformációk'),
+  ('Vektorok');
+
+CREATE TABLE chapter (
+  chapter_id        SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  chapter_main      SMALLINT UNSIGNED DEFAULT NULL,
+  chapter_number    TINYINT UNSIGNED NOT NULL,
+  chapter_title     VARCHAR(255) DEFAULT NULL, -- required on form
+  chapter_content   TEXT DEFAULT NULL
+);
+
+INSERT INTO chapter(chapter_id, chapter_title, chapter_main, chapter_number) VALUES
+  (1, 'LOGIKA', NULL, 1),
+  (2, 'HALMAZELMÉLET', 'A halmazelméleti kijelentések halmazokról szólnak.\nA halmaz a halmazelmélet <em>legáltalánosabb</em> fogalma: nincs közeli nemfogalma (<i>genus proximum</i>), ezért nem definiálható.\nArra a kérdésre, hogy <q>Mi a halmaz?</q>, a válasz a halmazelmélet összes kijelentése, együtt.\n<p>\nA halmazokról szóló egyetlen alapvető kijelentésforma (<i>predicatum</i>) az az állítás, hogy egy halmaz <em>eleme</em> egy másik halmaznak.', 2),
+  (3, 'ALGEBRA', NULL, 3),
+  (4, 'SZÁMELMÉLET', NULL, 4),
+  (5, 'GEOMETRIA', NULL, 5),
+  (6, 'ANALÍZIS', NULL, 6),
+  (7, 'TOPOLÓGIA', NULL, 7),
+
+  (8, 'KIJELENTÉSLOGIKA', 1, 1),
+  (9, 'PREDIKÁTUMLOGIKA', 1, 2),
+  (10, 'LOGIKAI ALGEBRÁK', 1, 3),
+
+  (11, 'RELÁCIÓELMÉLET', 2, 1),
+  
+  (12, 'ABSZTRAKT ALGEBRA', 3, 1),
+  (13, 'UNIVERZÁLIS ALGEBRA', 3, 2),
+  
+  (14, 'EUKLIDESZI GEOMETRIA', 5, 1),
+  (15, 'ABSZOLÚT GEOMETRIA', 5, 2),
+
+  (16, 'VALÓS ANALÍZIS', 6, 1),
+  (17, 'KOMPLEX ANALÍZIS', 6, 2),
+
+  (18, 'KATEGÓRIAELMÉLET', 1, 4),
+  (19, 'MODELLELMÉLET', 1, 5),
+
+  (20, 'HATÁRÉRTÉKSZÁMÍTÁS', 16, 1),
+  (21, 'SOROZATOK', 20, 1),
+  (22, 'VÉGTELEN SOROK', 20, 2),
+  (23, 'DIFFERENCIÁLSZÁMÍTÁS', 16, 2),
+  (24, 'INTEGRÁLSZÁMÍTÁS', 16, 3),
+  (25, 'DIFFERENCIÁLEGYENLETEK', 16, 4),
+
+  (26, 'VEKTORANALÍZIS', 6, 3),
+  (27, 'NUMERIKUS ANALÍZIS', 6, 4);
+
+CREATE TABLE article (
+  article_id        INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  article_chapter   SMALLINT UNSIGNED NOT NULL,
+  article_number    SMALLINT UNSIGNED NOT NULL,
+  article_type      ENUM('Axióma', 'Definíció', 'Feladat',
+                         'Jelölés', 'Sejtés', 'Tétel') NOT NULL,
+  article_title     VARCHAR(255) DEFAULT NULL,
+  article_entities  SMALLINT UNSIGNED DEFAULT NULL,
+  characteristics   ENUM('Tulajdonság', 'Reláció', 'Művelet',
+                         'Leképezés', 'Eljárás', 'Nevezetesség') DEFAULT NULL,
+  article_keywords  VARCHAR(255) DEFAULT NULL,
+  article_statement TEXT DEFAULT NULL,
+
+  FOREIGN KEY (article_chapter)
+      REFERENCES chapter(chapter_id)
+      ON UPDATE CASCADE ON DELETE RESTRICT,
+
+  FOREIGN KEY (article_entities)
+      REFERENCES entities(entities_id)
+      ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+INSERT INTO `article` (`article_id`, `article_chapter`, `article_number`, `article_type`, `article_title`, `article_entities`, `characteristics`, `article_keywords`, `article_statement`) VALUES
+(1, 2, 1, 'Jelölés', 'halmaz eleme, nem eleme', 11, 'Reláció', NULL, 'Jelölje x e H azt, hogy x eleme a H halmaznak.\r\nJelölje x n H azt, hogy x nem eleme a H halmaznak.\r\nx n H def= nem(x e H)'),
+(2, 2, 2, 'Definíció', 'üres halmaz', 11, 'Tulajdonság', NULL, 'Nevezzük <dfn>üres halmaz</dfn>nak azokat a halmazokat, amelyeknek nincs eleme.'),
+(3, 2, 3, 'Axióma', 'üres halmaz posztulátuma', NULL, NULL, NULL, 'Létezik üres halmaz.\r\nVan H, hogy bármely x-re x nem elem H'),
+(4, 2, 4, 'Axióma', 'meghatározottsági axióma', 11, 'Reláció', 'egyenlőség, azonosság', 'Azok az <dfn>egyenlő halmazok</dfn>, amelyeknek elemei megegyeznek.\r\nx = y def= '),
+(5, 2, 5, 'Tétel', 'üres halmaz unicitása', NULL, NULL, NULL, 'Csak egyetlen üres halmaz létezik.\r\nasdfjvba'),
+(6, 2, 6, 'Jelölés', 'üres halmaz jele', 11, 'Nevezetesség', NULL, 'Az üres halmaz jele \\(\\emptyset\\)');
+
+
+CREATE TABLE section (
+  section_id        INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  section_article   INT UNSIGNED NOT NULL,
+  section_number    TINYINT UNSIGNED NOT NULL,
+  section_type      ENUM('Bizonyítás', 'Képlet', 'Megoldás') NOT NULL,
+  section_summary   TEXT DEFAULT NULL,
+  section_details   TEXT NOT NULL,
+
+  FOREIGN KEY (section_article)
+      REFERENCES article(article_id)
+      ON UPDATE CASCADE ON DELETE RESTRICT
+);

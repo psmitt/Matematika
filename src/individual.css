@@ -1,0 +1,30 @@
+#EditorPanel {
+  width: calc(100% - 2em - 2 * var(--default-padding));
+  style="display: inline-flex;
+  justify-content: space-between;
+}
+
+#chapterView h1 {
+  margin: 10px;
+}
+
+#chapterView article {
+  margin: var(--default-padding);
+}
+
+#chapterView>details.chapter>summary::-webkit-details-marker{
+  margin-left: calc(var(--default-padding) / -2.5);
+  margin-right: var(--default-padding);
+}
+
+#chapterView details.chapter article {
+  margin-left: calc(6.3 * var(--default-padding));
+}
+
+#chapterView details.article summary {
+  padding-left: var(--default-padding);
+}
+
+#chapterView details.article summary::-webkit-details-marker {
+  display: none
+}

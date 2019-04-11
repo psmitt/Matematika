@@ -1,0 +1,32 @@
+{
+  "name": "Matematika",
+  "productName": "Matematika",
+  "version": "0.0.0",
+  "description": "Magyar nyelvű matematikai tudásbázis",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "rimraf CMS-* && electron-packager . --platform=win32 --arch=x64 --icon=eiPi",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psmitt/Matematika.git"
+  },
+  "author": "Peter Zs. Schmidt",
+  "bugs": {
+    "url": "https://github.com/psmitt/Matematika/issues"
+  },
+  "homepage": "https://github.com/psmitt/Matematika#readme",
+  "devDependencies": {
+    "electron": "^4.1.4",
+    "electron-packager": "^13.1.1",
+    "electron-prompt": "^1.3.0",
+    "electron-reload": "^1.4.0",
+    "mysql": "^2.16.0",
+    "rimraf": "^2.6.3"
+  },
+  "dependencies": {
+    "electron-prompt": "^1.3.0",
+    "mysql": "^2.16.0"
+  }
+}

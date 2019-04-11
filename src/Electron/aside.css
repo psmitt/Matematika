@@ -1,0 +1,35 @@
+aside>header>div.left {
+  height: 100%;
+  line-height: 1.8em;
+  margin-right: calc(0.5 * var(--default-padding));
+}
+
+aside table {
+  width: calc(100% - 2 * var(--default-padding));
+  margin: var(--default-padding);
+  display: none;
+}
+
+aside th {
+  text-align: left;
+}
+
+aside td {
+  padding-bottom: var(--default-padding);
+}
+
+input:invalid {
+  border-color: red;
+}
+
+textarea {
+  font-family: monospace;
+  font-weight: bold;
+  height: 50vh;
+  resize: vertical;
+}
+
+button {
+  font-weight: bold;
+  white-space: nowrap;
+}

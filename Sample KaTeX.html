@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>KaTeX</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css"
+        integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ"
+        crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"
+          integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij"
+          crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js"
+          integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+          crossorigin="anonymous"
+          onload="renderMathInElement(document.body)"></script>
+  <!-- Offline: link rel="stylesheet" href="KaTeX/katex.min.css" -->
+  <!-- Offline: script defer src="KaTeX/katex.min.js"></script -->
+  <!-- Offline: script defer src="KaTeX/contrib/auto-render.min.js"
+          onload="renderMathInElement(document.body)"></script -->
+  <script>
+    document.body.addEventListener('click', () => {
+      let dyn = document.createElement('p')
+      dyn.textContent = `When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
+      \\[x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.\\]`
+      document.body.appendChild(dyn)
+      renderMathInElement(dyn)
+    })
+  </script>
+</head>
+<body style="font-size:xx-large">
+  <h1>KaTeX</h1>
+  <p>
+    <a href="https://katex.org/docs/browser.html">Getting Started</a>
+  </p>
+  <h1>TeX &amp; LaTeX</h1>
+  <p>
+    When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+    \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+  </p>
+</body>
+</html>

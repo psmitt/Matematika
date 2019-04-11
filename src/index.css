@@ -1,0 +1,61 @@
+.katex {
+  font-size: 1em;
+}
+
+@font-face {
+  font-family: "PT Serif";
+  src: url("pt-serif/PTF55F.ttf") format("TrueType");
+}
+
+body, input, select, textarea, button {
+  font-family: 'PT Serif', serif;
+  font-size: large;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+details details {
+  padding-left: calc(2 * var(--default-padding));
+}
+
+summary {
+  padding-left: calc(1.5 * var(--default-padding));
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+summary:focus {
+  background-color: white;
+  outline: none;
+}
+
+input, textarea, select {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: solid thin lightgray;
+  font-size: large;
+}
+
+input::placeholder {
+  color: lightgray;
+}
+
+input:hover, textarea:hover, select:hover, button:hover {
+  border-color: skyblue;
+}
+
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: none;
+  border-color: deepskyblue;
+}
+
+#MainTitle {
+  text-decoration: none;
+  color: royalblue;
+  cursor: pointer;
+}

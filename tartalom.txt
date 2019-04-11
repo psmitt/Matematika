@@ -1,0 +1,265 @@
+A mkatematikai logika célja olyan formális nyelv bevezetése, amely egyértelműsége révén lehetővé teszi ellentmondásmentes elméletek axiomatikus felépítését.
+
+
+<section class=axiom,definition,theorem,notation,conjecture,problem>
+  <h6>title</h6>
+  <p class=statement,question></p>
+  <details class=proof,solution>
+    <summary></summary>
+    ...
+  </details>
+</section>
+
+AX axióma     AⒶ  A⃢  A⃟  A⃝ 
+DEF definíció  D   D⃢  D⃟  D⃝  ≝⃝
+T tétel      T   T⃢  T⃟  T⃝
+jelölés    N   N⃢  N⃟  N⃝
+sejtés     C   
+feladat    P   ⁈⃝
+bizonyítás
+megoldás
+
+
+
+GENETIKA - A MATEMATIKA TÖRTÉNETE
+  korszakok és társadalmak
+  emberek
+  problémák
+  módszerek
+  tételek
+  sejtések
+METODIKA - A MATEMATIKA MÓDSZERTANA
+  matematikafilozófia és metamatematika
+  konkrét problémák megoldása
+  általánosítás
+  absztrakció
+  formalizálás (egyértelműsítés)
+  aximoatizálás
+  strukturálás
+SZISZTEMATIKA - A MATEMATIKA RENDSZERTANA
+  Elemek
+  Tulajdonságok => leíró struktúra
+   => topologikus struktúra (pl. osztályfelbontások = partíciók, stb.)
+  Relációk => relációs struktúra, elemek és elem-osztályok között is
+  Műveletek => algebrai struktúra, elemek és elem-osztályok között is
+  Eljárások => elemek, elem-osztályok azonosítása, számbavétele, rendezése stb.
+  Kitüntetett elemek és elem-osztályok
+  ---
+
+TISZTA MATEMATIKA ami valamikről szól
+=======================================
+
+A MATEMATIKA ALAPJAI
+  LOGIKA - kijelentések
+    KIJELENTÉSLOGIKA
+    PREDIKÁTUMLOGIKA
+    KATEGÓRIAELMÉLET
+    MODELLELMÉLET
+  HALMAZELMÉLET - halmazok
+  RELÁCIÓELMÉLET
+  FORMÁLIS NYELVEK
+  
+ALGEBRA ÉS SZÁMELMÉLET
+GEOMETRIA ÉS TOPOLÓGIA
+ANALÍZIS - határérték, függvények
+  VALÓS ANALÍZIS
+    HATÁRÉRTÉKSZÁMÍTÁS
+      SOROZATOK
+      VÉGTELEN SOROK
+    DIFFERENCIÁLSZÁMÍTÁS
+    INTEGRÁLSZÁMÍTÁS
+    DIFFERENCIÁLEGYENLETEK
+  KOMPLEX ANALÍZIS
+  VEKTORANALÍZIS
+  NUMERIKUS ANALÍZIS
+
+ALKALMAZOTT MATEMATIKA: nem objektumokról szól, hanem problémák megoldásáról
+============================================================================
+
+KOMBINATORIKA ÉS GRÁFELMÉLET
+OPERÁCIÓKUTATÁS ÉS OPTIMALIZÁLÁS ELMÉLET
+AUTOMATÁK ÉS FORMÁLIS NYELVEK
+SZÁMÍTÁSTUDOMÁNY ÉS ALGORITMUSOK BONYOLULTSÁGELMÉLETE
+VALÓSZÍNŰSÉGSZÁMÍTÁS ÉS STATISZTIKA
+ELMÉLETI FIZIKA
+
+ALGEBRA
+  SZÁMELMÉLET
+    ANALITIKUS SZÁMELMÉLET
+  CSOPORTELMÉLET
+    POLINOMOK
+  LINEÁRIS ALGEBRA: vektorok, vektorterek, lineáris leképezések, mátrixok, determinánsok, lineáris egyenletrendszerek, modulusok, mátrixalgebra
+  STRUKTÚRÁK ELMÉLETE
+  ABSZTRAKT ALGEBRA
+  UNIVERZÁLIS ALGEBRA
+GEOMETRIA
+  EUKLIDESZI GEOMETRIA
+    TRIGONOMETRIA
+    KOORDINÁTAGEOMETRIA
+    DIFFERENCIÁLGEOMETRIA
+  AFFIN GEOMETRIA
+  PROJEKTÍV GEOMETRIA
+  NEMEUKLIDESZI GEOMETRIA
+  FRAKTÁLGEOMETRIA
+TOPOLÓGIA: alakzatoknak folytonos deformációk közben is megmaradó (invariáns) tulajdonságai
+  GRÁFELMÉLET
+  GEOMETRIAI TOPOLÓGIA
+  ALGEBRAI TOPOLÓGIA
+    KOMBINATORIKUS TOPOLÓGIA
+  DIFFERENCIÁLTOPOLÓGIA
+ANALÍZIS
+  VALÓS ANALÍZIS
+    DIFFERENCIÁLSZÁMÍTÁS
+    INTEGRÁLSZÁMÍTÁS
+    DIFFERENCIÁLEGYENLETEK
+  NUMERIKUS ANALÍZIS
+  KOMPLEX ANALÍZIS
+  VEKTORANALÍZIS
+  FUNKCIONÁLANALÍZIS
+  MÉRTÉKELMÉLET
+  DINAMIKAI RENDSZEREK ÉS KÁOSZELMÉLET
+KOMBINATORIKA
+  GRÁFELMÉLET
+VALÓSZÍNŰSÉGSZÁMÍTÁS
+  STATISZTIKA
+SZÁMÍTÁSTUDOMÁNY
+  NUMERIKUS ELJÁRÁSOK
+  KRIPTOGRÁFIA
+  KÓDELMÉLET
+  ALGORITMUSOK
+  FORMÁLIS NYELVEK
+  INFORMÁCIÓELMÉLET
+OPERÁCIÓKUTATÁS
+  JÁTÉKELMÉLET
+  OPTIMUMSZÁMÍTÁS
+ALKALMAZOTT MATEMATIKA
+  ELMÉLETI FIZIKA
+  MATEMATIKAI BIOLÓGIA
+  GAZDASÁGI MATEMATIKA
+
+
+
+
+
+-----
+
+Definíciók és jelölések vsz. külön nem kellenek, hanem oda visznek az alábbi linkek.
+
+Jelölések:
+  halmaz
+  üres halmaz
+  halmaz eleme
+  
+
+Elemek:
+  halmaz
+
+Tulajdonságok:
+  üres
+  véges
+  végtelen
+
+Más objektumok definíciói:
+  szűrő
+
+Relációk:
+  elem
+  rész, részhalmaz
+  
+Műveletek:
+  unió, egyesítés
+  metszet
+  hatványhalmaz
+
+Leképezések:
+  számosság
+  
+Eljárások:
+
+---
+
+Axiómák:
+
+Tételek: + bizonyítások
+
+Feladatok: + megoldások
+
+Sejtések:
+
+
+=====================
+
+Logikai Grammatika
+
+Kezdetben vala az ige.
+Predikátum, valahány argumentummal.
+Ahhoz, hogy mondat legyen belőle, ki kell tölteni (le kell kötni) az argumentumokat.
+A legegyszerűbb lekötés a megnevezés, vagyis az egyértelmű jelölet
+P(x), ahol x = Péter
+Lehet a predikátumból nevet is létrehozni, pontosabban osztályt: az az x, amelyre P(x)
+
+Nevek, Névlisták = nevekből képzett nevek (Péter, Gábor és Ákos)
+
+P(a, b) = P(x, y) & x = a & y = b
+
+x|x=a <=> a
+
+
+Tehát nevekkel is le lehet kötni a predikátumok argumentumait.
+Meg le lehet kötni kvantorokkal, névfunktorral.
+
+Tehát a predikátumok az elsők.
+
+Kifejezések (predikátumok, nyitott mondatok)
+  - mondatokat képeznek a nevekből, névlistákból
+  - névmásokból nyitott mondatokat képeznek
+Funktorok: nyitott mondatokból képeznek neveket és mondatokat
+  - névképzők
+    nevekből nevek = névlisták,
+    névmásokból nevek
+    kifejezésekből nevek
+  - kifejezésképzők
+    
+
+Subiectum
+
+x = y <=> ∀P( P(x) <=> P(y) ) ugyanazt jelöli
+P = R <=> ∀x( P(x) <=> R(x) ) ugyanazt jelenti
+
+
+
+
+
+    <section class=definition>
+  <h6>üres halmaz</h6>
+   Egy halmaz <dfn>üres</dfn>, ha nincs eleme.
+</section>
+<section class=axiom>
+  <h6>üres halmaz posztulátuma</h6>
+  <p>
+   Létezik üres halmaz.
+  </p>
+</section>
+<section class=theorem>
+  <h6>üres halmaz unicitása aárviíztuűroő tuükoöfuúroógeép</h6>
+  <p>
+   Csak egyetlen üres halmaz létezik.
+  </p>
+  <details class=proof>
+    <summary>A meghatározottsági axióma alapján</summary>
+    <p>
+      Az üres halmaz posztulátuma alapján létezik legalább egy üres halmaz.
+      A\(\mathrm{A}\) és B\(\mathrm{B}\) legyenek üres halmazok.
+      <i>A</i>\(\mathit{A}\) és <i>B</i>\(\mathit{B}\)
+      A meghatározottsági axióma alapján <b>A</b>\(\mathbf{A}\) és <b>B</b>\(\mathbf{B}\) azonosak.
+      Tehát nem lehetséges két különböző üres halmaz.
+    </p>
+  </details>
+</section>
+<section class=notation>
+  <h6>üres halmaz</h6>
+  <p>Az üres halmaz jele \(\emptyset\)</p>
+</section>
+
+
+    
