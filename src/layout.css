@@ -2,7 +2,6 @@
   --default-padding: 0.5em;
   --golden-ratio: 61.8%;
   --header-height: 2em;
-  --scrollbar-width: 20px;
 }
 
 html, body, nav, main, aside {
@@ -26,9 +25,10 @@ nav, main, aside {
   flex-direction: column;
 }
 
-nav   { z-index: 0; width: 720px; }
-main  { z-index: 2; }
-aside { z-index: 4; }
+nav          { z-index: 0; }
+main         { z-index: 2; }
+main>header  { z-index: 3; }
+aside        { z-index: 4; }
 
 /* STARTUP SCREEN
 
@@ -54,29 +54,43 @@ header>div {
   text-overflow: ellipsis;
 }
 
-header>div.left,
-header>div.right {
-  user-select: none;
-}
-
 header>div.right {
   position: absolute;
   right: 0.5em;
   cursor: pointer;
+  user-select: none;
+}
+
+#NavMenu>div, #MainMenu>div {
+  position: relative;
+  background-color: green;
+  cursor: pointer;
+  padding-left: var(--default-padding);
+  padding-right: var(--default-padding);
+  user-select: none;
+}
+
+#NavMenu>div:hover, #MainMenu>div:hover {
+  background-color: MistyRose;
 }
 
 footer {
   box-sizing: border-box;
   height: 100%;
-  width: calc(100% + var(--scrollbar-width));
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 
 /* TEST */
-nav>footer { background-color: gainsboro; }
-main>header { background-color: lightgray; }
-main>footer { background-color: azure; }
-aside { background-color: lightgreen; }
+
+nav>footer   { background-color: gainsboro; }
+main>header  { background-color: lightgray; }
+main>footer  { background-color: #FFFAF5; }
+
+aside        { background-color: lightgreen; }
 aside>header { background-color: #553311; color: white; }
 aside>footer { background-color: #CCBBAA; }

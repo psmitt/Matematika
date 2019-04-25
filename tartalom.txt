@@ -1,24 +1,30 @@
-A mkatematikai logika célja olyan formális nyelv bevezetése, amely egyértelműsége révén lehetővé teszi ellentmondásmentes elméletek axiomatikus felépítését.
+Nézetek:
+- Fejezetek
+- Vázlat: egy fejezet kinyitható összes cikke + a végén az alfejezetek
+  cím, állítás, bizonyítások, folyományok
+- Tartalom: egy fejezet tartalmából a megjelölt típusú cikkek + a végén az alfejezetek
+  cíkktípus jelölése és tartalom, típusok kiválasztása checkbox-listából
+- Magyarázó nézet: a jobboldali panelon, kérdésekkel tagolt tartalmi nézet
+
+Olvasás során tartalom kijelölése, keresés a definíciók között, magyarázó nézetben megjelenítés, majd vissza a tartalomhoz.
 
 
-<section class=axiom,definition,theorem,notation,conjecture,problem>
-  <h6>title</h6>
-  <p class=statement,question></p>
-  <details class=proof,solution>
-    <summary></summary>
-    ...
-  </details>
-</section>
 
-AX axióma     AⒶ  A⃢  A⃟  A⃝ 
-DEF definíció  D   D⃢  D⃟  D⃝  ≝⃝
-T tétel      T   T⃢  T⃟  T⃝
-jelölés    N   N⃢  N⃟  N⃝
-sejtés     C   
-feladat    P   ⁈⃝
-bizonyítás
-megoldás
 
+
+Könyvjelzőzés: bármely cikkhez rendelhető könyvjelző, ami az index-hez a cikk azonosítóját rendeli.
+Ilyenkor a teljes oldal úgy nyílik meg, hogy a jobboldalon rögtön a cikknél megnyitott fejezet jelenik meg.
+
+Ha a jobboldalon kijelölünk valamit, akkor a könyvecske nagyítóüveggé változik, és ha rákattintunk, akkor a bal oldali keresőben azt jeleníti meg.
+De ha kontrollal kattintunk rá, akkor nem zárja be a jobboldali tartalmat.
+
+Ha kontrollal kattintunk a menupontra, akkor új ablakban nyitja a cikket
+URL?q=search_string&a=article_i=> ha definition, akkor a taglalás nyílik meg, ha nem, akkor maga a fejezet.
+
+Keresés:
+- definíciókban
+- cikkekben
+- tartalomban
 
 
 GENETIKA - A MATEMATIKA TÖRTÉNETE
@@ -34,7 +40,7 @@ METODIKA - A MATEMATIKA MÓDSZERTANA
   általánosítás
   absztrakció
   formalizálás (egyértelműsítés)
-  aximoatizálás
+  axiomatizálás
   strukturálás
 SZISZTEMATIKA - A MATEMATIKA RENDSZERTANA
   Elemek
@@ -227,39 +233,11 @@ x = y <=> ∀P( P(x) <=> P(y) ) ugyanazt jelöli
 P = R <=> ∀x( P(x) <=> R(x) ) ugyanazt jelenti
 
 
+Az elvont lét önmagában semmi.
+Közvetlenül átmegy tehát önmaga ellentétébe, a nemlétbe.
+A lét eme közvetlen mozgása, semmivé válása, megsemmisülése: az elmúlás.
+Az, ami mindenek felett, szakadatlanul elmúlik: az idő.
+A lét közvetlen mozgása tehát maga az idő.
+A lét általános törvénye: minden múlandó.
 
-
-
-    <section class=definition>
-  <h6>üres halmaz</h6>
-   Egy halmaz <dfn>üres</dfn>, ha nincs eleme.
-</section>
-<section class=axiom>
-  <h6>üres halmaz posztulátuma</h6>
-  <p>
-   Létezik üres halmaz.
-  </p>
-</section>
-<section class=theorem>
-  <h6>üres halmaz unicitása aárviíztuűroő tuükoöfuúroógeép</h6>
-  <p>
-   Csak egyetlen üres halmaz létezik.
-  </p>
-  <details class=proof>
-    <summary>A meghatározottsági axióma alapján</summary>
-    <p>
-      Az üres halmaz posztulátuma alapján létezik legalább egy üres halmaz.
-      A\(\mathrm{A}\) és B\(\mathrm{B}\) legyenek üres halmazok.
-      <i>A</i>\(\mathit{A}\) és <i>B</i>\(\mathit{B}\)
-      A meghatározottsági axióma alapján <b>A</b>\(\mathbf{A}\) és <b>B</b>\(\mathbf{B}\) azonosak.
-      Tehát nem lehetséges két különböző üres halmaz.
-    </p>
-  </details>
-</section>
-<section class=notation>
-  <h6>üres halmaz</h6>
-  <p>Az üres halmaz jele \(\emptyset\)</p>
-</section>
-
-
-    
+Ami van, az lett azzá, ami.

@@ -1,3 +1,143 @@
+function move(item, to) {
+  console.log(to, item)
+}
+
+function edit(item) {
+  switch (item.className) {
+    case 'Fejezet':
+      asideTitle.textContent = 'FEJEZET SZERKESZTÉSE'
+      editChapter(item.dataset.id)
+      break;
+    default:
+      alert(item.className)
+      break;
+  }
+  asideStyle.display = 'block';
+}
+
+function move1(chapter, to) { // chapter => summary
+  chapter.blur()
+  let root = chapter.parentNode
+  let main = root.parentNode
+  let prev = root.previousElementSibling
+  let next = root.nextElementSibling
+  switch (to) {
+    case 'up':
+      if (prev && prev.matches('details')) {
+        main.insertBefore(root, prev)
+      } else if (main !== chapterView) {
+        let premain = main.previousElementSibling
+        if (premain && premain.matches('details')) {
+          premain.open = true
+          premain.appendChild(root)
+        } else {
+          main.parentNode.insertBefore(root, main)
+        }
+      }
+      break
+    case 'down':
+      if (next) {
+        main.insertBefore(next, root)
+      } else {
+        while (!main.nextElementSibling && main !== chapterView)
+          main = main.parentNode
+        if (main !== chapterView) {
+          main.nextElementSibling.open = true
+          main.nextElementSibling.insertBefore(root,
+            main.nextElementSibling.querySelector('details'))
+        }
+      }
+      break
+    case 'left':
+      if (main !== chapterView) {
+        if (!root.querySelector('details')) { // no subchapters
+          while (next) {
+            root.append(next)
+            next = root.nextElementSibling
+          }
+        }
+        main.parentNode.insertBefore(root, main.nextElementSibling)
+        root.open = true
+      }
+      break
+    case 'right':
+      if (prev.matches('details')) {
+        prev.open = true
+        prev.append(root)
+        if (root.open) { // promote subchapters
+          while (root.querySelector('details')) {
+            prev.append(root.querySelector('details'))
+          }
+        }
+        root.open = true
+      }
+      break
+  }
+  // Siblings SQL
+  let index = 1
+  let values = []
+  let details = root.parentNode.querySelector('details')
+  while (details) {
+    values.push(`(${details.dataset.id},${root.parentNode.dataset.id ||'NULL'},${index++})`)
+    details = details.nextElementSibling
+  }
+  let querySiblings =
+    `INSERT INTO chapter (chapter_id, chapter_main, chapter_number)
+     VALUES ${values.join(',')}
+     ON DUPLICATE KEY UPDATE
+     chapter_main = VALUES(chapter_main),
+     chapter_number = VALUES(chapter_number)`
+  // Children SQL
+  let queryChildren = null
+  if (details = root.querySelector('details')) {
+    values = []
+    while (details) {
+      values.push(`${details.dataset.id}`)
+      details = details.nextElementSibling
+    }
+    queryChildren =
+      `UPDATE chapter SET chapter_main = ${root.dataset.id}
+       WHERE chapter_id IN (${values.join(',')})`
+  }
+  // Execute the double query
+  SQL(querySiblings, () => {
+    if (queryChildren)
+      SQL(queryChildren, () => chapter.focus())
+    else
+      chapter.focus()
+  })
+}
+
+mainView.addEventListener('keyup', event => {
+  if (event.target.matches('summary') && event.ctrlKey) {
+    let root = event.target.parentNode
+    switch (event.code) {
+      case 'Enter': // close subchapters
+        root.open = true
+        root.querySelectorAll('details').forEach(details => details.open = false)
+        break;
+      case 'Space': // open subchapters
+        root.open = false
+        root.querySelectorAll('details').forEach(details => details.open = true)
+        break;
+      case 'ArrowUp': // move chapter forward
+        move(event.target, 'up')
+        break;
+      case 'ArrowDown': // move chapter backward
+        move(event.target, 'down')
+        break;
+      case 'ArrowLeft': // promote chapter
+        move(event.target, 'left')
+        break;
+      case 'ArrowRight': // demote chapter
+        move(event.target, 'right')
+        break;
+    }
+  }
+})
+
+/* ASIDE */
+
 var asideStyle = document.querySelector('aside').style
 
 const asideIcon = document.getElementById('AsideIcon')
@@ -47,7 +187,7 @@ function saveChapter() {
           SET chapter_title = '${fix(chTitl.value)}',
               chapter_content = ${content}
         WHERE chapter_id = ${recordID}`, result => {
-    let details = document.querySelector(`[data-id="${recordID}"]`)
+    let details = document.querySelector(`[data-id="${recordID}"]`).parentNode
     details.querySelector('summary').innerHTML = chTitl.value
     details.querySelector('article').innerHTML = chCont.value
     renderMathInElement(details)
@@ -73,7 +213,7 @@ function newChapter() {
        INSERT INTO chapter (chapter_main, chapter_number, chapter_title, chapter_content)
        VALUES (@main, @number - 1, '${fix(chTitl.value)}', ${content})`, result => {
     let details = createDetails(result[3][2], chTitl.value, chCont.value)
-    let next = document.querySelector(`[data-id="${recordID}"]`)
+    let next = document.querySelector(`[data-id="${recordID}"]`).parentNode
     next.parentNode.insertBefore(details, next)
     renderMathInElement(details)
     recordID = null

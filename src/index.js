@@ -1,55 +1,31 @@
 'use strict'
 
 const electron = !/^https?:\/\//.test(location.href)
+var editableItem = null
 
 const navMenu = document.getElementById('NavMenu')
 const chapterPanel = document.getElementById('ChapterPanel')
 const entityPanel = document.getElementById('EntityPanel')
 
+const mainStyle = document.querySelector('main').style
 const mainTitle = document.getElementById('MainTitle')
-const chapterView = document.getElementById('ChapterView')
-const articleView = document.getElementById('ArticleView')
-
-var mainStyle = document.querySelector('main').style
-
-function importModule(filename) {
-  const fs = require('fs')
-  const path = require('path')
-
-  let link = document.createElement('link')
-  link.href = `Electron/${filename}.css`
-  link.rel = 'stylesheet';
-  document.head.append(link)
-
-  let fragment = new DOMParser().parseFromString(fs.readFileSync(
-    path.join('src', 'Electron', `${filename}.html`), 'utf8'), 'text/html')
-  document.body.insertBefore(fragment.body.firstElementChild,
-    document.body.querySelector('script'))
-
-  let script = document.createElement('script')
-  script.src = `Electron/${filename}.js`
-  document.body.append(script)
-}
+const mainView = document.getElementById('MainView')
 
 function createDetails(title, content, id, type) {
   let details = document.createElement('details')
   let summary = document.createElement('summary')
   let span = document.createElement('span')
-
+  span.textContent = title
   if (id)
-    details.dataset.id = id
-
+    summary.dataset.id = id
   if (type)
-    span.textContent = `${type}: ${title}`
-  else
-    span.textContent = title
-
+    summary.className = type
   summary.append(span)
   details.append(summary)
 
   if (content) {
     let article = document.createElement('article')
-    article.textContent = content
+    article.innerHTML = content
     details.append(article)
   }
   return details
@@ -156,18 +132,38 @@ new Promise((sqlReady, sqlFailed) => {
     sqlReady()
   }
 }).then(() => {
-  if (electron) { // load editor and aside
-    importModule('aside')
-    importModule('editor')
+
+  if (electron) {
+    document.styleSheets[4].insertRule(`#MainView summary:focus {
+      text-shadow: blue 0 0 1px;
+    }`)
+    mainView.addEventListener('focusin', event => editableItem = event.target)
+
+    let script = document.createElement('script')
+    script.src = `editor.js`
+    document.body.append(script)
+
+    let editors = document.getElementById('EditorPanel').children
+    editors[0].onclick = () => move(editableItem, 'up')
+    editors[1].onclick = () => move(editableItem, 'left')
+    editors[2].onclick = () => edit(editableItem)
+    editors[3].onclick = () => move(editableItem, 'right')
+    editors[4].onclick = () => move(editableItem, 'down')
+  }
+  if (!electron) {
+    document.getElementById('EditorPanel').remove()
+    document.getElementById('AsidePanel').querySelectorAll('table').forEach(table => table.remove())
   }
 
-  buildTree(`SELECT entities_name, characteristics, article_id, article_title
-       FROM entities JOIN article ON (entities_id = article_entities)
-       ORDER BY entities_name, characteristics, article_title`, entityPanel)
+  buildTree(`SELECT entities_name, CONCAT_WS(' ', characteristics,
+                 IF(characteristics = 'Nevezetes', LOWER(entities_name), NULL)),
+                    article_id, article_title
+               FROM entities JOIN article ON (entities_id = article_entities)
+           ORDER BY entities_name, characteristics, article_title`, entityPanel)
 
   buildTree(`SELECT chapter_title, article_type, article_id, article_title, article_keywords
-      FROM chapter JOIN article ON (chapter_id = article_chapter)
-      ORDER BY article_type, article_number`, chapterPanel)
+               FROM chapter JOIN article ON (chapter_id = article_chapter)
+           ORDER BY article_type, article_title`, chapterPanel)
 
 }, error => {
   document.body.textContent = error

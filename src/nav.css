@@ -19,20 +19,6 @@ nav>header {
   right: 0;
 }
 
-#NavMenu>div {
-  position: relative;
-  background-color: green;
-  cursor: pointer;
-  padding-left: var(--default-padding);
-  padding-right: var(--default-padding);
-  user-select: none;
-  z-index: 1;
-}
-
-#NavMenu div:hover {
-  background-color: MistyRose;
-}
-
 nav details div {
   background-image: url('bullet.svg');
   background-position: 1px 0.5em;

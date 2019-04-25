@@ -1,0 +1,91 @@
+#MainMenu {
+  display: inline-block;
+}
+
+#MainMenu summary::-webkit-details-marker {
+  display: none;
+}
+
+#MainMenu summary {
+  padding: 0;
+  background-color: transparent;
+}
+
+#MainMenu>div {
+  margin-left: calc(-1 * var(--default-padding));
+}
+
+
+#EditorPanel {
+  display: inline-flex;
+  justify-content: space-between;
+  width: calc(100% - 6em);
+  max-width: 10em;
+  position: absolute;
+  right: 3em;
+}
+
+#EditorPanel div {
+  cursor: pointer;
+  text-shadow: blue 0 0 1px;
+}
+
+/* OUTLINE VIEW */
+
+#MainView {
+  padding: var(--default-padding);
+}
+
+#MainView summary {
+  padding-left: 0;
+  margin-left: calc(-1 * var(--default-padding));
+}
+#MainView summary::-webkit-details-marker {
+  display: none;
+}
+#MainView summary::before {
+   display: inline-block;
+   text-align: center;
+   width: 2em;
+}
+
+#MainView .Axióma::before         { content: '⊨'; }
+#MainView .Definíció::before      { content: '≝'; }
+#MainView .Jelölés::before        { content: '✎'; }
+#MainView .Egzisztencia::before   { content: '∃'; }
+#MainView .Unicitás::before       { content: '∃!'; }
+#MainView .Szükségesség-Elégségesség::before { content: '⇒'; }
+#MainView .Ekvivalencia::before   { content: '⇔'; }
+#MainView .Azonosság::before      { content: '≡'; }
+#MainView .Egyenlőség::before     { content: '='; }
+#MainView .Egyenlőtlenség::before { content: '≤'; }
+#MainView .Sejtés::before         { content: '⍰'; }
+#MainView .Feladat::before        { content: '☝'; }
+#MainView .Bizonyítás::before     { content: '∎'; }
+#MainView .Korrolárium::before    { content: '⮱'; }
+#MainView .Megoldás::before       { content: '💡'; }
+
+#MainView details article {
+  margin-left: calc(2em - var(--default-padding));
+  margin-top: var(--default-padding);
+  margin-bottom: calc(2 * var(--default-padding));
+}
+
+/* CHAPTER VIEW */
+
+#MainView details.Fejezet {
+  margin: var(--default-padding);
+  margin-left: calc(0.4 * var(--default-padding));
+}
+
+#MainView>details.Fejezet {
+  margin-left: calc(1.7 * var(--default-padding));
+}
+
+#MainView summary.Fejezet::-webkit-details-marker {
+  display: initial;
+}
+
+#MainView details.Fejezet article {
+  margin-left: calc(3.5 * var(--default-padding));
+}

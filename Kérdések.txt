@@ -1,60 +1,103 @@
-- Hogyan jelöljük ... ? => többféle lehetséges, akár historikusan is
-- Hogyan definiáljuk ... ? => többféle lehetséges
+KERESŐ STRATÉGIA
+1. találjunk egy legalább kétszavas kifejezést
+2. jelenítsük meg az összes címet, amiben benne van, szűkítsük a keresést, amíg meg nem lesz egy pontos definíció vagy tétel vagy valami, és akkor
+3. a vele kapcsolatos összes tudnivalót jelenítsük meg
+
+BÖNGÉSZŐ STRATÉGIA
+1. Jelenítsük meg az összes fejezetet
+2. Jelenítsük meg annak a tartalmát, amire kíváncsiak vagyunk
+3. Megkönyvjelzőzhessük, ahol tartunk.
+
+
+1. Keresés a definíciók = fogalmak között => RÁKATT => 2. Részletezés megjelenítése a kérdésekkel tagoltan
+2. Keresés a fejezetek tartalmában (kulcsszavakkal együtt) => RÁKATT a fejezet megjelenítése az adott helyen
+
+
++ háromszög magasságvonala => DEFINÍCIÓ, ELJÁRÁS (szerkesztése)
++ henger térfogata => DEFINÍCIÓ(?), KÉPLETEK(!)
++ két szám LNKO-ja => DEFINÍCIÓ, ELJÁRÁS (Euklideszi algoritmus), JELÖLÉS
++ Pitagorasz tétele => TÉTEL, KÉPLET
++ függvény deriváltja => DEFINÍCIÓ, KÉPLETEK(!), TÉTELEK
++ Skatulya-elv => TÉTEL,FELADATOK
++ binomiális tétel => TÉTEL, KÉPLET
++ Zorn axióma => AXIÓMA
++ V. posztulátum => AXIÓMA
++ pakolási probléma => FELADAT, MEGOLDÁS: ELJÁRÁS
++ ZFC aximómák
++ másodfokú egyenlet megoldóképlete
+
+
+
+- Hogyan jelöljük ... ? => többféle lehetséges, akár historikusan is, JELÖLÉS
+- Mit jelent? Hogyan definiáljuk ... ? => többféle lehetséges, DEFINÍCIÓ
+- Hogyan számítható ki ... ? => a függvény értéke, a térbeli idom mértéke, algoritmus, KÉPLET, ELJÁRÁS
+- Hogyan hozható létre (generálható, előállítható, szerkeszthető, ábrázolható) ... ? => ELJÁRÁS
+- Hogyan oldható meg ... ? => feladat, egyenlet, egyenlőtlenség, probléma, -rendszer, algoritmus használata => ELJÁRÁS, MÓDSZER
+- Tipikus példák feladatok a ...-vel kapcsolatban. => FELADAT
+---
+- Mit tudunk róla? => AXIÓMÁK, TÉTELEK
 - Mit jelent a ... tétel, fogalom, jelölés ? => Magyarázat, szemléltetés, illusztráció
-- Hogyan bizonyítható a ... tétel/állítás ?
-- Hogyan alkalmazható/használható a ... tétel ? => keresés feladatok megoldásaiban, tételek bizonyításaiban
-- Hogyan számítható ki ... ? => a függvény értéke, a térbeli idom mértéke, algoritmus
-- Hogyan oldható meg ... ? => feladat, egyenlet, egyenlőtlenség, probléma, -rendszer, algoritmus használata
-
-Konkrét példák:
-
-- Mennyi...
-- Mekkora...
-- Milyen valószínű...
-stb.
-
-===================================
-
-- alapfogalom: Mit jelent?
-- axióma, posztulátum (létaxióma), saroktétel: Mit jelent?
-
-- definíció (származtatott fogalom): Mit jelent?
-- jelölés (https://en.wikipedia.org/wiki/List_of_mathematical_symbols): Mit jelent?
-
-- tétel, lemma (segédtétel), korrolárium (következmény, folyomány, pl. speciális eset): Mit jelent?
-- egzisztenciatétel, unicitástétel: Mit jelent?
-- bizonyítás
-- sejtés, hipotézis, feltevés: Mit jelent?
-- szükséges és elégséges feltétel
-- előfeltétel
-- konstrukció
-
-- általánosítás, megfordítás
-
-- példa
-- feladat
-- megoldás
-- módszer
-- szabály
-- elv
-- algoritmus
-- formula, jólformáltság
-- paradoxon
-- transzformáció
-
-- fraktál: Hogyan generálható? Hogyan ábrázolható?
-- téridom: Hogyan szerkeszthető meg? Hogyan ábrázolható? Hogyan számíthatók ki a mértékei?
-- függvény: Hogyan számítható ki? Hogyan ábrázolható?
-- konstans: Hogyan számítható ki? = Definíció
+- Hogyan bizonyítható a ... tétel/állítás ? => BIZONYÍTÁS
+- Mire jó? Hogyan alkalmazható/használható ... (akár egy tétel is) ? => keresés feladatok megoldásaiban, MÁS tételek bizonyításaiban, BIZONYÍTÁS, MEGOLDÁS
+- Mi a szükséges / elégséges feltétele ...? => TÉTEL
 
 
-===================================
+Tételek elnevezései:
+- ... lemma (segédtétel/segédtétele)
+- ... általánosítása
+- ... megfordítása
+- ... paradoxon/paradoxona
+- ... elv/elve
 
-Bizonyítási módszerek:
-----------------------
+Bizonyítások:
+- indirekt
+- konstruktív
 - skatulyaelv és általánosításai (https://hu.wikipedia.org/wiki/Skatulyaelv)
 - teljes indukció és transzfinit indukció
   (https://hu.wikipedia.org/wiki/Teljes_indukció)
   (https://hu.wikipedia.org/wiki/Transzfinit_indukció)
 - végtelen leszállás (https://hu.wikipedia.org/wiki/Végtelen_leszállás)
 
+Definíciók:
+- alapfogalom
+- származtatott fogalom
+- jelölés (https://en.wikipedia.org/wiki/List_of_mathematical_symbols)
+- transzformáció
+
+Eljárások:
+- módszer
+- szabály
+- elv
+- algoritmus
+
+
+Entitások (típusok szerint)
+  Fajtái (az adott típusok belül Milyen?)
+  Jellemzői (Mije van? Mivel jellemezhető? pl. háromszög magasságvonala, függvény deriváltja v. inflexiós pontja, stb.)
+  Relációk (az adott típusok belül)
+  Műveletek (az adott típusok belül)
+  Leképezések (más típusú entitásra; sok esetben a jellemzők értékét adják meg, pl. terület, stb.)
+  Nevezetes entitások (egyediek; az adott típusok belül Melyik?)
+  Képletek
+  Eljárások (előállítás, keresés, megszámlálás, szűrés, rendezés)
+
+=====================================
+
+
+A matematika története (genetica)
+A matematika módszertana (methodica)
+A matematika rendszertana (systematica)
+  Tiszta matematika
+    A matematika alapjai
+      Logika
+      Halmazelmélet
+      Relációelmélet
+    Algebra (számtan)
+      Számelmélet
+    Geometria (mértan)
+      Topológia
+    Analízis (függvénytan)
+  Alkalmazott matematika
+    Kombinatorika
+    Gráfelmélet
+    Valószínűségszámítás és Statisztika (alkalmazott mértékelmélet)
