@@ -1,8 +1,15 @@
 function move(item, to) {
-  console.log(to, item)
+  switch (item.className) {
+    case 'Fejezet':
+      moveChapter(item, to)
+      break;
+    default:
+      console.log(to, item.className)
+      break;
+  }
 }
 
-function edit(item) {
+function edit(item) { // item => summary
   switch (item.className) {
     case 'Fejezet':
       asideTitle.textContent = 'FEJEZET SZERKESZTÉSE'
@@ -15,7 +22,7 @@ function edit(item) {
   asideStyle.display = 'block';
 }
 
-function move1(chapter, to) { // chapter => summary
+function moveChapter(chapter, to) { // chapter => summary
   chapter.blur()
   let root = chapter.parentNode
   let main = root.parentNode
@@ -25,7 +32,7 @@ function move1(chapter, to) { // chapter => summary
     case 'up':
       if (prev && prev.matches('details')) {
         main.insertBefore(root, prev)
-      } else if (main !== chapterView) {
+      } else if (main !== mainView) {
         let premain = main.previousElementSibling
         if (premain && premain.matches('details')) {
           premain.open = true
@@ -39,9 +46,9 @@ function move1(chapter, to) { // chapter => summary
       if (next) {
         main.insertBefore(next, root)
       } else {
-        while (!main.nextElementSibling && main !== chapterView)
+        while (!main.nextElementSibling && main !== mainView)
           main = main.parentNode
-        if (main !== chapterView) {
+        if (main !== mainView) {
           main.nextElementSibling.open = true
           main.nextElementSibling.insertBefore(root,
             main.nextElementSibling.querySelector('details'))
@@ -49,7 +56,7 @@ function move1(chapter, to) { // chapter => summary
       }
       break
     case 'left':
-      if (main !== chapterView) {
+      if (main !== mainView) {
         if (!root.querySelector('details')) { // no subchapters
           while (next) {
             root.append(next)
@@ -77,8 +84,9 @@ function move1(chapter, to) { // chapter => summary
   let index = 1
   let values = []
   let details = root.parentNode.querySelector('details')
+  const getID = details => details.firstElementChild.dataset.id
   while (details) {
-    values.push(`(${details.dataset.id},${root.parentNode.dataset.id ||'NULL'},${index++})`)
+    values.push(`(${getID(details)},${getID(root.parentNode) ||'NULL'},${index++})`)
     details = details.nextElementSibling
   }
   let querySiblings =
@@ -92,11 +100,11 @@ function move1(chapter, to) { // chapter => summary
   if (details = root.querySelector('details')) {
     values = []
     while (details) {
-      values.push(`${details.dataset.id}`)
+      values.push(`${getID(details)}`)
       details = details.nextElementSibling
     }
     queryChildren =
-      `UPDATE chapter SET chapter_main = ${root.dataset.id}
+      `UPDATE chapter SET chapter_main = ${getID(root)}
        WHERE chapter_id IN (${values.join(',')})`
   }
   // Execute the double query
@@ -212,7 +220,8 @@ function newChapter() {
          AND chapter_number >= @number;
        INSERT INTO chapter (chapter_main, chapter_number, chapter_title, chapter_content)
        VALUES (@main, @number - 1, '${fix(chTitl.value)}', ${content})`, result => {
-    let details = createDetails(result[3][2], chTitl.value, chCont.value)
+    let details = createDetails(chTitl.value, chCont.value, result[3][2], 'Fejezet')
+    details.className = 'Fejezet'
     let next = document.querySelector(`[data-id="${recordID}"]`).parentNode
     next.parentNode.insertBefore(details, next)
     renderMathInElement(details)

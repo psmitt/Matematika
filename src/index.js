@@ -149,8 +149,7 @@ new Promise((sqlReady, sqlFailed) => {
     editors[2].onclick = () => edit(editableItem)
     editors[3].onclick = () => move(editableItem, 'right')
     editors[4].onclick = () => move(editableItem, 'down')
-  }
-  if (!electron) {
+  } else {
     document.getElementById('EditorPanel').remove()
     document.getElementById('AsidePanel').querySelectorAll('table').forEach(table => table.remove())
   }

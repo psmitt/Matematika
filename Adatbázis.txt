@@ -49,42 +49,42 @@ CREATE TABLE chapter (
   chapter_content   TEXT DEFAULT NULL
 );
 
-INSERT INTO chapter(chapter_id, chapter_title, chapter_main, chapter_number) VALUES
-  (1, 'LOGIKA', 'A matematikai logika célja olyan formális nyelv bevezetése, amely egyértelműsége révén lehetővé teszi ellentmondásmentes elméletek axiomatikus felépítését.', 1),
-  (2, 'HALMAZELMÉLET', 'A halmazelméleti kijelentések halmazokról szólnak.\nA halmaz a halmazelmélet <em>legáltalánosabb</em> fogalma: nincs közeli nemfogalma (<i>genus proximum</i>), ezért nem definiálható.\nArra a kérdésre, hogy <q>Mi a halmaz?</q>, a válasz a halmazelmélet összes kijelentése, együtt.\n<p>\nA halmazokról szóló egyetlen alapvető kijelentésforma (<i>predicatum</i>) az az állítás, hogy egy halmaz <em>eleme</em> egy másik halmaznak.', 2),
-  (3, 'ALGEBRA', NULL, 3),
-  (4, 'SZÁMELMÉLET', NULL, 4),
-  (5, 'GEOMETRIA', NULL, 5),
-  (6, 'ANALÍZIS', NULL, 6),
-  (7, 'TOPOLÓGIA', NULL, 7),
+INSERT INTO chapter(chapter_id, chapter_title, chapter_main, chapter_number, chapter_content) VALUES
+  (1, 'LOGIKA', NULL, 1, 'A matematikai logika célja olyan formális nyelv bevezetése, amely egyértelműsége révén lehetővé teszi ellentmondásmentes elméletek axiomatikus felépítését.'),
+  (2, 'HALMAZELMÉLET', NULL, 2, 'A halmazelméleti kijelentések halmazokról szólnak.\nA halmaz a halmazelmélet <em>legáltalánosabb</em> fogalma: nincs közeli nemfogalma (<i>genus proximum</i>), ezért nem definiálható.\nArra a kérdésre, hogy <q>Mi a halmaz?</q>, a válasz a halmazelmélet összes kijelentése, együtt.\n<p>\nA halmazokról szóló egyetlen alapvető kijelentésforma (<i>predicatum</i>) az az állítás, hogy egy halmaz <em>eleme</em> egy másik halmaznak.'),
+  (3, 'ALGEBRA', NULL, 3, NULL),
+  (4, 'SZÁMELMÉLET', NULL, 4, NULL),
+  (5, 'GEOMETRIA', NULL, 5, NULL),
+  (6, 'ANALÍZIS', NULL, 6, NULL),
+  (7, 'TOPOLÓGIA', NULL, 7, NULL),
 
-  (8, 'KIJELENTÉSLOGIKA', 1, 1),
-  (9, 'PREDIKÁTUMLOGIKA', 1, 2),
-  (10, 'LOGIKAI ALGEBRÁK', 1, 3),
+  (8, 'KIJELENTÉSLOGIKA', 1, 1, NULL),
+  (9, 'PREDIKÁTUMLOGIKA', 1, 2, NULL),
+  (10, 'LOGIKAI ALGEBRÁK', 1, 3, NULL),
 
-  (11, 'RELÁCIÓELMÉLET', 2, 1),
+  (11, 'RELÁCIÓELMÉLET', 2, 1, NULL),
   
-  (12, 'ABSZTRAKT ALGEBRA', 3, 1),
-  (13, 'UNIVERZÁLIS ALGEBRA', 3, 2),
+  (12, 'ABSZTRAKT ALGEBRA', 3, 1, NULL),
+  (13, 'UNIVERZÁLIS ALGEBRA', 3, 2, NULL),
   
-  (14, 'EUKLIDESZI GEOMETRIA', 5, 1),
-  (15, 'ABSZOLÚT GEOMETRIA', 5, 2),
+  (14, 'EUKLIDESZI GEOMETRIA', 5, 1, NULL),
+  (15, 'ABSZOLÚT GEOMETRIA', 5, 2, NULL),
 
-  (16, 'VALÓS ANALÍZIS', 6, 1),
-  (17, 'KOMPLEX ANALÍZIS', 6, 2),
+  (16, 'VALÓS ANALÍZIS', 6, 1, NULL),
+  (17, 'KOMPLEX ANALÍZIS', 6, 2, NULL),
 
-  (18, 'KATEGÓRIAELMÉLET', 1, 4),
-  (19, 'MODELLELMÉLET', 1, 5),
+  (18, 'KATEGÓRIAELMÉLET', 1, 4, NULL),
+  (19, 'MODELLELMÉLET', 1, 5, NULL),
 
-  (20, 'HATÁRÉRTÉKSZÁMÍTÁS', 16, 1),
-  (21, 'SOROZATOK', 20, 1),
-  (22, 'VÉGTELEN SOROK', 20, 2),
-  (23, 'DIFFERENCIÁLSZÁMÍTÁS', 16, 2),
-  (24, 'INTEGRÁLSZÁMÍTÁS', 16, 3),
-  (25, 'DIFFERENCIÁLEGYENLETEK', 16, 4),
+  (20, 'HATÁRÉRTÉKSZÁMÍTÁS', 16, 1, NULL),
+  (21, 'SOROZATOK', 20, 1, NULL),
+  (22, 'VÉGTELEN SOROK', 20, 2, NULL),
+  (23, 'DIFFERENCIÁLSZÁMÍTÁS', 16, 2, NULL),
+  (24, 'INTEGRÁLSZÁMÍTÁS', 16, 3, NULL),
+  (25, 'DIFFERENCIÁLEGYENLETEK', 16, 4, NULL),
 
-  (26, 'VEKTORANALÍZIS', 6, 3),
-  (27, 'NUMERIKUS ANALÍZIS', 6, 4);
+  (26, 'VEKTORANALÍZIS', 6, 3, NULL),
+  (27, 'NUMERIKUS ANALÍZIS', 6, 4, NULL);
 
 CREATE TABLE article (
   article_id        INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
