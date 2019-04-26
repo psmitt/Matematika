@@ -133,7 +133,7 @@ CREATE TABLE section (
   section_article   INT UNSIGNED NOT NULL,
   section_number    TINYINT UNSIGNED NOT NULL,
   section_type      ENUM('Bizonyítás', -- használható benne lemma (segédtétel) külön formázással és részbizonyítással
-                         'Korrolárium', -- korrolárium, következmény, pl. speciális eset
+                         'Folyomány', -- korrolárium, következmény, pl. speciális eset
                          'Megoldás') NOT NULL,
   section_summary   TEXT DEFAULT NULL,
   section_details   TEXT NOT NULL,

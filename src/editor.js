@@ -1,5 +1,10 @@
+function closeAside() {
+  recordID = null
+  asideStyle.display = 'none'
+}
+
 function move(item, to) {
-  switch (item.className) {
+  if (item) switch (item.className) {
     case 'Fejezet':
       moveChapter(item, to)
       break;
@@ -10,13 +15,19 @@ function move(item, to) {
 }
 
 function edit(item) { // item => summary
-  switch (item.className) {
+  if (item) switch (item.className) {
     case 'Fejezet':
       asideTitle.textContent = 'FEJEZET SZERKESZTÉSE'
       editChapter(item.dataset.id)
       break;
-    default:
+    case 'Bizonyítás':
+    case 'Folyomány':
+    case 'Megoldás':
       alert(item.className)
+      break;
+    default: // article
+      asideTitle.textContent = 'CIKK SZERKESZTÉSE'
+      editArticle(item.dataset.id)
       break;
   }
   asideStyle.display = 'block';
@@ -161,8 +172,10 @@ const chCont = document.getElementById('chapter_content')
 
 const arTitl = document.getElementById('article_title')
 const arChap = document.getElementById('article_chapter')
+const arChapList = document.getElementById('chapters')
 const arType = document.getElementById('article_type')
 const arEnts = document.getElementById('article_entities')
+const arEntsList = document.getElementById('entities')
 const arChrs = document.getElementById('characteristics')
 const arKeys = document.getElementById('article_keywords')
 const arStat = document.getElementById('article_statement')
@@ -195,20 +208,17 @@ function saveChapter() {
           SET chapter_title = '${fix(chTitl.value)}',
               chapter_content = ${content}
         WHERE chapter_id = ${recordID}`, result => {
-    let details = document.querySelector(`[data-id="${recordID}"]`).parentNode
-    details.querySelector('summary').innerHTML = chTitl.value
-    details.querySelector('article').innerHTML = chCont.value
-    renderMathInElement(details)
-    recordID = null
-    asideStyle.display = 'none'
+    let summary = mainView.querySelector(`[data-id="${recordID}"]`)
+    summary.innerHTML = chTitl.value
+    summary.nextElementSibling.innerHTML = chCont.value
+    renderMathInElement(summary.parentNode)
+    closeAside()
   })
 }
 
 function deleteChapter() {
   console.log(`DELETE FROM chapter WHERE chapter_id = ${recordID}`);
-
-  recordID = null
-  asideStyle.display = 'none'
+  closeAside()
 }
 
 function newChapter() {
@@ -225,12 +235,36 @@ function newChapter() {
     let next = document.querySelector(`[data-id="${recordID}"]`).parentNode
     next.parentNode.insertBefore(details, next)
     renderMathInElement(details)
-    recordID = null
-    asideStyle.display = 'none'
+    closeAside()
+    loadChapters()
   })
 }
 
 /* EDIT ARTICLES */
+
+function loadDatalist(query, datalist) {
+  SQL(query, result => {
+    datalist.innerHTML = ''
+    for (let value of result) {
+      let option = document.createElement('option')
+      option.dataset.value = value[0]
+      option.value = value[1]
+      datalist.append(option)
+    }
+  })
+}
+
+function loadChapters() {
+  loadDatalist(`SELECT chapter_id, chapter_title FROM chapter
+                ORDER BY chapter_title`, arChapList)
+}
+loadChapters()
+
+function loadEntities() {
+  loadDatalist(`SELECT entities_id, entities_name FROM entities
+                ORDER BY entities_name`, arEntsList)
+}
+loadEntities()
 
 function validateDatalist(input) {
   let option = document.getElementById(input.list.id)
@@ -238,61 +272,82 @@ function validateDatalist(input) {
   input.dataset.value = option ? option.dataset.value : input.value = ''
 }
 
+AsidePanel.addEventListener('focusin', event => {
+  let input = event.target
+  if (input.list) {
+    input.placeholder = input.value
+    input.value = ''
+    input.addEventListener('focusout', () => {
+      if (!input.value)
+        input.value = input.placeholder
+      input.placeholder = ''
+      validateDatalist(input)
+    }, {
+      once: true
+    })
+  }
+})
+
 arChap.onchange = event => validateDatalist(arChap)
 arEnts.onchange = event => validateDatalist(arEnts)
+arChrs.onchange = () => arEnts.required = Boolean(arChrs.value)
 
 function editArticle(id) {
   recordID = id
   document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
-  SQL(`SELECT article_title, article_chapter, article_type, article_entities
+  SQL(`SELECT article_title, article_chapter, article_type, article_entities,
        characteristics, article_keywords, article_statement FROM article
        WHERE article_id = ${id}`, result => {
     arTitl.value = result[0][0]
-    arChap.value = result[0][1]
+    arChap.value = arChapList.querySelector(`option[data-value="${result[0][1]}"]`).value
+    validateDatalist(arChap)
     arType.value = result[0][2]
-    arEnts.value = result[0][3]
+    if (result[0][3]) {
+      arEnts.value = arEntsList.querySelector(`option[data-value="${result[0][3]}"]`).value
+      validateDatalist(arEnts)
+    }
     arChrs.value = result[0][4]
     arKeys.value = result[0][5]
     arStat.value = result[0][6]
-    chapterTable.style.display = 'table'
+    articleTable.style.display = 'table'
     asideStyle.display = 'block'
   })
 }
 
 function saveArticle() {
   let title = arTitl.value ? `'${arTitl.value}'` : 'NULL'
-  let entities = arEnts.value ? `'${arEnts.value}'` : 'NULL'
   let characteristics = arChrs.value ? `'${arChrs.value}'` : 'NULL'
   let keywords = arKeys.value ? `'${arKeys.value}'` : 'NULL'
   let statement = arStat.value ? `'${arStat.value}'` : 'NULL'
-  console.log(`UPDATE article SET
-               article_title = '${title}',
-               article_chapter = ${arChap.value || 'NULL'},
-               article_type = '${arType.value}',
-               article_entities = ${arEnts.value || 'NULL'},
-               characteristics = '${characteristics}',
-               article_keywords = '${keywords}',
-               article_statement = '${statement}'
-               WHERE article_id = ${recordID}`);
-
-  recordID = null
-  asideStyle.display = 'none'
+  SQL(`UPDATE article SET
+       article_title = ${title},
+       article_chapter = ${arChap.dataset.value || 'NULL'},
+       article_type = '${arType.value}',
+       article_entities = ${arEnts.dataset.value || 'NULL'},
+       characteristics = ${characteristics},
+       article_keywords = ${keywords},
+       article_statement = ${statement}
+       WHERE article_id = ${recordID}`, result => {
+    let summary = mainView.querySelector(`[data-id="${recordID}"]`)
+    summary.innerHTML = arTitl.value
+    summary.className = arType.value
+    summary.nextElementSibling.innerHTML = arStat.value
+    renderMathInElement(summary.parentNode)
+    closeAside()
+  });
 }
 
 function deleteArticle() {
   console.log(`DELETE FROM article WHERE article_id = ${recordID}`);
 
-  recordID = null
-  asideStyle.display = 'none'
+  closeAside()
 }
 
 function newArticle() {
 
-  recordID = null
-  asideStyle.display = 'none'
+  closeAside()
 }
 
-arChrs.onchange = () => arEnts.required = Boolean(arChrs.value)
 
 /* EDIT SECTIONS */
 

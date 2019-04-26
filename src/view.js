@@ -1,3 +1,8 @@
+function closeMain() {
+  editableItem = null
+  mainStyle.display = 'none'
+}
+
 function viewChapters() {
   editableItem = null
   mainView.innerHTML = ''

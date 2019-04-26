@@ -40,10 +40,6 @@ input, textarea, select {
   font-size: large;
 }
 
-input::placeholder {
-  color: lightgray;
-}
-
 input:hover, textarea:hover, select:hover, button:hover {
   border-color: skyblue;
 }
