@@ -1,17 +1,12 @@
+const asideIcon = document.getElementById('AsideIcon')
+const asideTitle = document.getElementById('AsideTitle')
+const asidePanel = document.getElementById('AsidePanel')
+
+var asideStyle = document.querySelector('aside').style
+
 function closeAside() {
   recordID = null
   asideStyle.display = 'none'
-}
-
-function move(item, to) {
-  if (item) switch (item.className) {
-    case 'Fejezet':
-      moveChapter(item, to)
-      break;
-    default:
-      console.log(to, item.className)
-      break;
-  }
 }
 
 function edit(item) { // item => summary
@@ -31,6 +26,110 @@ function edit(item) { // item => summary
       break;
   }
   asideStyle.display = 'block';
+}
+
+function move(item, to) {
+  if (item) switch (item.className) {
+    case 'Fejezet':
+      moveChapter(item, to)
+      break;
+    case 'Bizonyítás':
+    case 'Folyomány':
+    case 'Megoldás':
+      console.log(to, item.className)
+      break;
+    default: // cikk
+      moveArticle(item, to)
+  }
+}
+
+mainView.addEventListener('keyup', event => {
+  if (event.target.matches('summary') && event.ctrlKey) {
+    let root = event.target.parentNode
+    switch (event.code) {
+      case 'Enter': // close subchapters
+        root.open = true
+        root.querySelectorAll('details').forEach(details => details.open = false)
+        break;
+      case 'Space': // open subchapters
+        root.open = false
+        root.querySelectorAll('details').forEach(details => details.open = true)
+        break;
+      case 'ArrowUp': // move chapter forward
+        move(event.target, 'up')
+        break;
+      case 'ArrowDown': // move chapter backward
+        move(event.target, 'down')
+        break;
+      case 'ArrowLeft': // promote chapter
+        move(event.target, 'left')
+        break;
+      case 'ArrowRight': // demote chapter
+        move(event.target, 'right')
+        break;
+    }
+  }
+})
+
+var recordID = null
+
+const fix = text => text.replace(/('|\\)/g, "\\$&")
+
+/* EDIT CHAPTERS */
+
+const chapterTable = document.getElementById('ChapterTable')
+const chTitl = document.getElementById('chapter_title')
+const chCont = document.getElementById('chapter_content')
+
+function editChapter(id) {
+  recordID = id
+  document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
+  SQL(`SELECT chapter_title, chapter_content FROM chapter
+       WHERE chapter_id = ${id}`, result => {
+    chTitl.value = result[0][0]
+    chCont.value = result[0][1]
+    chapterTable.style.display = 'table'
+    asideStyle.display = 'block'
+  })
+}
+
+function saveChapter() {
+  let content = chCont.value ? `'${fix(chCont.value)}'` : 'NULL'
+  SQL(`UPDATE chapter
+          SET chapter_title = '${fix(chTitl.value)}',
+              chapter_content = ${content}
+        WHERE chapter_id = ${recordID}`, result => {
+    let summary = mainView.querySelector(`[data-id="${recordID}"]`)
+    summary.innerHTML = chTitl.value
+    summary.nextElementSibling.innerHTML = chCont.value
+    renderMathInElement(summary.parentNode)
+    summary.focus()
+    closeAside()
+  })
+}
+
+function deleteChapter() {
+  console.log(`DELETE FROM chapter WHERE chapter_id = ${recordID}`);
+  closeAside()
+}
+
+function newChapter() {
+  let content = chCont.value ? `'${fix(chCont.value)}'` : 'NULL'
+  SQL(`SET @main = (SELECT chapter_main FROM chapter WHERE chapter_id = ${recordID});
+       SET @number = (SELECT chapter_number FROM chapter WHERE chapter_id = ${recordID});
+       UPDATE chapter SET chapter_number = chapter_number + 1
+       WHERE chapter_main = @main
+         AND chapter_number >= @number;
+       INSERT INTO chapter (chapter_main, chapter_number, chapter_title, chapter_content)
+       VALUES (@main, @number - 1, '${fix(chTitl.value)}', ${content})`, result => {
+    let details = createDetails(chTitl.value, chCont.value, result[3][2], 'Fejezet')
+    details.className = 'Fejezet'
+    let next = mainView.querySelector(`[data-id="${recordID}"]`).parentNode
+    next.parentNode.insertBefore(details, next)
+    renderMathInElement(details)
+    details.firstElementChild.focus()
+    closeAside()
+  })
 }
 
 function moveChapter(chapter, to) { // chapter => summary
@@ -127,49 +226,9 @@ function moveChapter(chapter, to) { // chapter => summary
   })
 }
 
-mainView.addEventListener('keyup', event => {
-  if (event.target.matches('summary') && event.ctrlKey) {
-    let root = event.target.parentNode
-    switch (event.code) {
-      case 'Enter': // close subchapters
-        root.open = true
-        root.querySelectorAll('details').forEach(details => details.open = false)
-        break;
-      case 'Space': // open subchapters
-        root.open = false
-        root.querySelectorAll('details').forEach(details => details.open = true)
-        break;
-      case 'ArrowUp': // move chapter forward
-        move(event.target, 'up')
-        break;
-      case 'ArrowDown': // move chapter backward
-        move(event.target, 'down')
-        break;
-      case 'ArrowLeft': // promote chapter
-        move(event.target, 'left')
-        break;
-      case 'ArrowRight': // demote chapter
-        move(event.target, 'right')
-        break;
-    }
-  }
-})
+/* EDIT ARTICLES */
 
-/* ASIDE */
-
-var asideStyle = document.querySelector('aside').style
-
-const asideIcon = document.getElementById('AsideIcon')
-const asideTitle = document.getElementById('AsideTitle')
-const asidePanel = document.getElementById('AsidePanel')
-
-const chapterTable = document.getElementById('ChapterTable')
 const articleTable = document.getElementById('ArticleTable')
-const sectionTable = document.getElementById('SectionTable')
-
-const chTitl = document.getElementById('chapter_title')
-const chCont = document.getElementById('chapter_content')
-
 const arTitl = document.getElementById('article_title')
 const arChap = document.getElementById('article_chapter')
 const arChapList = document.getElementById('chapters')
@@ -180,67 +239,7 @@ const arChrs = document.getElementById('characteristics')
 const arKeys = document.getElementById('article_keywords')
 const arStat = document.getElementById('article_statement')
 
-const seType = document.getElementById('section_type')
-const seSumm = document.getElementById('section_summary')
-const seDets = document.getElementById('section_details')
-
-var recordID = null
-
-const fix = text => text.replace(/('|\\)/g, "\\$&")
-
-/* EDIT CHAPTERS */
-
-function editChapter(id) {
-  recordID = id
-  document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
-  SQL(`SELECT chapter_title, chapter_content FROM chapter
-       WHERE chapter_id = ${id}`, result => {
-    chTitl.value = result[0][0]
-    chCont.value = result[0][1]
-    chapterTable.style.display = 'table'
-    asideStyle.display = 'block'
-  })
-}
-
-function saveChapter() {
-  let content = chCont.value ? `'${fix(chCont.value)}'` : 'NULL'
-  SQL(`UPDATE chapter
-          SET chapter_title = '${fix(chTitl.value)}',
-              chapter_content = ${content}
-        WHERE chapter_id = ${recordID}`, result => {
-    let summary = mainView.querySelector(`[data-id="${recordID}"]`)
-    summary.innerHTML = chTitl.value
-    summary.nextElementSibling.innerHTML = chCont.value
-    renderMathInElement(summary.parentNode)
-    closeAside()
-  })
-}
-
-function deleteChapter() {
-  console.log(`DELETE FROM chapter WHERE chapter_id = ${recordID}`);
-  closeAside()
-}
-
-function newChapter() {
-  let content = chCont.value ? `'${fix(chCont.value)}'` : 'NULL'
-  SQL(`SET @main = (SELECT chapter_main FROM chapter WHERE chapter_id = ${recordID});
-       SET @number = (SELECT chapter_number FROM chapter WHERE chapter_id = ${recordID});
-       UPDATE chapter SET chapter_number = chapter_number + 1
-       WHERE chapter_main = @main
-         AND chapter_number >= @number;
-       INSERT INTO chapter (chapter_main, chapter_number, chapter_title, chapter_content)
-       VALUES (@main, @number - 1, '${fix(chTitl.value)}', ${content})`, result => {
-    let details = createDetails(chTitl.value, chCont.value, result[3][2], 'Fejezet')
-    details.className = 'Fejezet'
-    let next = document.querySelector(`[data-id="${recordID}"]`).parentNode
-    next.parentNode.insertBefore(details, next)
-    renderMathInElement(details)
-    closeAside()
-    loadChapters()
-  })
-}
-
-/* EDIT ARTICLES */
+/* DATALISTS */
 
 function loadDatalist(query, datalist) {
   SQL(query, result => {
@@ -253,12 +252,6 @@ function loadDatalist(query, datalist) {
     }
   })
 }
-
-function loadChapters() {
-  loadDatalist(`SELECT chapter_id, chapter_title FROM chapter
-                ORDER BY chapter_title`, arChapList)
-}
-loadChapters()
 
 function loadEntities() {
   loadDatalist(`SELECT entities_id, entities_name FROM entities
@@ -295,12 +288,12 @@ arChrs.onchange = () => arEnts.required = Boolean(arChrs.value)
 function editArticle(id) {
   recordID = id
   document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
-  SQL(`SELECT article_title, article_chapter, article_type, article_entities,
-       characteristics, article_keywords, article_statement FROM article
+  SQL(`SELECT article_title, chapter_title, article_type, article_entities,
+       characteristics, article_keywords, article_statement
+       FROM article JOIN chapter ON (chapter_id = article_chapter)
        WHERE article_id = ${id}`, result => {
     arTitl.value = result[0][0]
-    arChap.value = arChapList.querySelector(`option[data-value="${result[0][1]}"]`).value
-    validateDatalist(arChap)
+    arChap.value = result[0][1]
     arType.value = result[0][2]
     if (result[0][3]) {
       arEnts.value = arEntsList.querySelector(`option[data-value="${result[0][3]}"]`).value
@@ -315,13 +308,12 @@ function editArticle(id) {
 }
 
 function saveArticle() {
-  let title = arTitl.value ? `'${arTitl.value}'` : 'NULL'
+  let title = arTitl.value ? `'${fix(arTitl.value)}'` : 'NULL'
   let characteristics = arChrs.value ? `'${arChrs.value}'` : 'NULL'
-  let keywords = arKeys.value ? `'${arKeys.value}'` : 'NULL'
-  let statement = arStat.value ? `'${arStat.value}'` : 'NULL'
+  let keywords = arKeys.value ? `'${fix(arKeys.value)}'` : 'NULL'
+  let statement = arStat.value ? `'${fix(arStat.value)}'` : 'NULL'
   SQL(`UPDATE article SET
        article_title = ${title},
-       article_chapter = ${arChap.dataset.value || 'NULL'},
        article_type = '${arType.value}',
        article_entities = ${arEnts.dataset.value || 'NULL'},
        characteristics = ${characteristics},
@@ -333,23 +325,74 @@ function saveArticle() {
     summary.className = arType.value
     summary.nextElementSibling.innerHTML = arStat.value
     renderMathInElement(summary.parentNode)
+    summary.focus()
     closeAside()
   });
 }
 
 function deleteArticle() {
-  console.log(`DELETE FROM article WHERE article_id = ${recordID}`);
-
-  closeAside()
+  SQL(`DELETE FROM article WHERE article_id = ${recordID}`, result => {
+    if (result.affectedRows)
+      mainView.querySelector(`[data-id="${recordID}"]`).parentNode.remove()
+    closeAside()
+  })
 }
 
 function newArticle() {
-
-  closeAside()
+  let title = arTitl.value ? `'${fix(arTitl.value)}'` : 'NULL'
+  let characteristics = arChrs.value ? `'${arChrs.value}'` : 'NULL'
+  let keywords = arKeys.value ? `'${fix(arKeys.value)}'` : 'NULL'
+  let statement = arStat.value ? `'${fix(arStat.value)}'` : 'NULL'
+  SQL(`SET @chapter = (SELECT article_chapter FROM article WHERE article_id = ${recordID});
+       SET @number = (SELECT article_number FROM article WHERE article_id = ${recordID});
+       UPDATE article SET article_number = article_number + 1
+       WHERE article_chapter = @chapter
+         AND article_number >= @number;
+       INSERT INTO article (article_chapter, article_number, article_title, article_type,
+                  article_entities, characteristics, article_keywords, article_statement)
+       VALUES (@chapter, @number - 1, ${title}, '${arType.value}', ${arEnts.dataset.value || 'NULL'},
+               ${characteristics}, ${keywords}, ${statement})`, result => {
+    let details = createDetails(arTitl.value, arStat.value, result[3][2], arType.value)
+    let next = mainView.querySelector(`[data-id="${recordID}"]`).parentNode
+    next.parentNode.insertBefore(details, next)
+    renderMathInElement(details)
+    details.firstElementChild.focus()
+    closeAside()
+    loadChapters()
+  })
 }
 
+function moveArticle(article, to) { // article => summary
+  article.blur()
+  let details = article.parentNode
+  let chapter = details.parentNode
+
+  function swap(prev, next) { // details
+    let ids = `(${prev.firstElementChild.dataset.id},
+                ${next.firstElementChild.dataset.id})`
+    SQL(`UPDATE article a INNER JOIN article b
+         ON (a.article_id IN ${ids} AND b.article_id IN ${ids}
+             AND a.article_id != b.article_id)
+         SET a.article_number = b.article_number,
+             b.article_number = a.article_number`,
+      ready => chapter.insertBefore(next, prev))
+    article.focus()
+  }
+  let prev = details.previousElementSibling
+  let next = details.nextElementSibling
+  if (to == 'up' && prev && prev.matches('details')) {
+    swap(prev, details)
+  } else if (to == 'down' && next && next.matches('details')) {
+    swap(details, next)
+  }
+}
 
 /* EDIT SECTIONS */
+
+const sectionTable = document.getElementById('SectionTable')
+const seType = document.getElementById('section_type')
+const seSumm = document.getElementById('section_summary')
+const seDets = document.getElementById('section_details')
 
 function editSection(id) {
   recordID = id
