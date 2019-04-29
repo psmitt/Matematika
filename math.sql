@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost
--- Létrehozás ideje: 2019. Ápr 27. 15:37
+-- Létrehozás ideje: 2019. Ápr 28. 06:59
 -- Kiszolgáló verziója: 8.0.11
 -- PHP verzió: 7.2.12
 
@@ -22,50 +22,34 @@ SET time_zone = "+00:00";
 -- Adatbázis: `math`
 --
 
--- --------------------------------------------------------
-
 --
--- Tábla szerkezet ehhez a táblához `article`
+-- A tábla adatainak kiíratása `entities`
 --
 
-CREATE TABLE `article` (
-  `article_id` int(10) UNSIGNED NOT NULL,
-  `article_chapter` smallint(5) UNSIGNED NOT NULL,
-  `article_number` smallint(5) UNSIGNED NOT NULL,
-  `article_type` enum('Axióma','Definíció','Jelölés','Egzisztencia','Unicitás','Szükségesség-Elégségesség','Ekvivalencia','Azonosság','Egyenlőség','Egyenlőtlenség','Sejtés','Feladat') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `article_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `article_entities` smallint(5) UNSIGNED DEFAULT NULL,
-  `characteristics` enum('Fajtái','Jellemzői','Relációi','Műveletei','Leképezései','Nevezetes','Képletek','Eljárások') CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `article_keywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `article_statement` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- A tábla adatainak kiíratása `article`
---
-
-INSERT INTO `article` (`article_id`, `article_chapter`, `article_number`, `article_type`, `article_title`, `article_entities`, `characteristics`, `article_keywords`, `article_statement`) VALUES
-(1, 2, 1, 'Axióma', 'a halmazelmélet alapelve', 11, NULL, 'halmazok univerzalitása', 'Minden halmaz.'),
-(2, 2, 2, 'Jelölés', 'halmaz eleme, nem eleme', 11, 'Relációi', NULL, 'Jelölje \\(x \\in y\\) azt, hogy \\(x\\) halmaz <dfn>eleme</dfn> az \\(y\\) halmaznak.\n<br>\nJelölje \\(x \\notin y\\) azt, hogy \\(x\\) halmaz <dfn>nem eleme</dfn> az \\(y\\) halmaznak.\n\n\\[x \\notin y\\ ≝\\ \\neg(x \\in y)\\]'),
-(3, 2, 3, 'Axióma', 'meghatározottsági axióma, extenzionalitási axióma', 11, 'Relációi', 'halmazok egyenlősége, halmazok azonossága', '<dfn>Egyenlő halmazok</dfn> azok, amelyeknek elemei megegyeznek.\n\n\\[x = y\\ \\ ≝\\ \\ \\forall z (z \\in x ⇔ z \\in y)\\]\n'),
-(4, 2, 4, 'Definíció', 'üres halmaz', 11, 'Fajtái', NULL, '<dfn>Üres halmazok</dfn> azok, amelyeknek nincs eleme.'),
-(5, 2, 5, 'Axióma', 'üres halmaz posztulátuma', NULL, NULL, NULL, 'Létezik üres halmaz.\n\\[\\exists x \\forall y(y \\notin x)\\]'),
-(6, 2, 6, 'Unicitás', 'üres halmaz unicitása', NULL, NULL, NULL, 'Csak egyetlen üres halmaz létezik.\n\\[\\exists! x \\forall y(y \\notin x)\\]'),
-(7, 2, 7, 'Jelölés', 'üres halmaz jele', 11, 'Nevezetes', NULL, 'Jelölje \\(\\emptyset\\) az üres halmazt.');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `chapter`
---
-
-CREATE TABLE `chapter` (
-  `chapter_id` smallint(5) UNSIGNED NOT NULL,
-  `chapter_main` smallint(5) UNSIGNED DEFAULT NULL,
-  `chapter_number` tinyint(3) UNSIGNED NOT NULL,
-  `chapter_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `chapter_content` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `entities` (`entities_id`, `entities_name`) VALUES
+(1, 'Algoritmusok'),
+(2, 'Determinánsok'),
+(3, 'Egyenletek'),
+(4, 'Egyenlőtlenségek'),
+(5, 'Felületek'),
+(6, 'Fraktálok'),
+(7, 'Függvények'),
+(8, 'Funkcionálok'),
+(9, 'Görbék'),
+(10, 'Gráfok'),
+(11, 'Halmazok'),
+(12, 'Kijelentések'),
+(13, 'Mátrixok'),
+(14, 'Permutációk'),
+(15, 'Relációk'),
+(16, 'Síkidomok'),
+(17, 'Sorozatok'),
+(18, 'Struktúrák'),
+(19, 'Számok'),
+(20, 'Tenzorok'),
+(21, 'Testek'),
+(22, 'Transzformációk'),
+(23, 'Vektorok');
 
 --
 -- A tábla adatainak kiíratása `chapter`
@@ -100,136 +84,20 @@ INSERT INTO `chapter` (`chapter_id`, `chapter_main`, `chapter_number`, `chapter_
 (26, 6, 3, 'VEKTORANALÍZIS', NULL),
 (27, 6, 4, 'NUMERIKUS ANALÍZIS', NULL);
 
--- --------------------------------------------------------
-
 --
--- Tábla szerkezet ehhez a táblához `entities`
+-- A tábla adatainak kiíratása `article`
 --
 
-CREATE TABLE `entities` (
-  `entities_id` smallint(5) UNSIGNED NOT NULL,
-  `entities_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `article` (`article_id`, `article_chapter`, `article_number`, `article_type`, `article_title`, `article_entities`, `characteristics`, `article_keywords`, `article_statement`) VALUES
+(1, 2, 1, 'Axióma', 'a halmazelmélet alapelve', 11, NULL, 'halmazok univerzalitása', 'Minden halmaz.'),
+(2, 2, 1, 'Jelölés', 'halmaz eleme, nem eleme', 11, 'Relációi', NULL, 'Jelölje \\(x \\in A\\) azt, hogy \\(x\\) <dfn>eleme</dfn> az \\(A\\) halmaznak.\n<br>\nJelölje \\(x \\notin A\\) azt, hogy \\(x\\) <dfn>nem eleme</dfn> az \\(A\\) halmaznak.\n\n\\[x \\notin A \\ \\ ≝ \\ \\ \\neg(x \\in A)\\]'),
+(3, 2, 3, 'Axióma', 'meghatározottsági axióma, extenzionalitási axióma', 11, 'Relációi', 'halmazok egyenlősége, halmazok azonossága', '<dfn>Egyenlő halmazok</dfn> azok, amelyeknek elemei megegyeznek.\n\n\\[A = B\\ \\ ≝ \\ \\ \\forall x (x \\in A ⇔ x \\in B)\\]\n'),
+(4, 2, 4, 'Definíció', 'üres halmaz', 11, 'Fajtái', NULL, '<dfn>Üres halmazok</dfn> azok, amelyeknek nincs eleme.'),
+(5, 2, 5, 'Axióma', 'üres halmaz posztulátuma', 11, NULL, NULL, 'Létezik üres halmaz.\n\\[\\exists A \\forall x(x \\notin A)\\]'),
+(6, 2, 6, 'Unicitás', 'üres halmaz unicitása', 11, NULL, NULL, 'Csak egyetlen üres halmaz létezik.\n\\[\\exists! A \\forall x(x \\notin A)\\]'),
+(7, 2, 7, 'Jelölés', 'üres halmaz jele', 11, 'Nevezetes', NULL, 'Jelölje \\(\\emptyset\\) az üres halmazt.'),
+(8, 2, 8, 'Jelölés', 'részhalmaz, halmaz része', 11, 'Relációi', NULL, 'Jelölje \\(A \\subseteq B\\) azt, hogy \\(A\\) halmaz <dfn>része</dfn> a \\(B\\) halmaznak.\n\n\\[A \\subseteq B \\ \\ ≝ \\ \\ \\forall x (x \\in A ⇒ x \\in B)\\]');
 
---
--- A tábla adatainak kiíratása `entities`
---
-
-INSERT INTO `entities` (`entities_id`, `entities_name`) VALUES
-(1, 'Algoritmusok'),
-(2, 'Determinánsok'),
-(3, 'Egyenletek'),
-(4, 'Egyenlőtlenségek'),
-(5, 'Felületek'),
-(6, 'Fraktálok'),
-(7, 'Függvények'),
-(8, 'Funkcionálok'),
-(9, 'Görbék'),
-(10, 'Gráfok'),
-(11, 'Halmazok'),
-(12, 'Kijelentések'),
-(13, 'Mátrixok'),
-(14, 'Permutációk'),
-(15, 'Relációk'),
-(16, 'Síkidomok'),
-(17, 'Sorozatok'),
-(18, 'Struktúrák'),
-(19, 'Számok'),
-(20, 'Tenzorok'),
-(21, 'Testek'),
-(22, 'Transzformációk'),
-(23, 'Vektorok');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `section`
---
-
-CREATE TABLE `section` (
-  `section_id` int(10) UNSIGNED NOT NULL,
-  `section_article` int(10) UNSIGNED NOT NULL,
-  `section_number` tinyint(3) UNSIGNED NOT NULL,
-  `section_type` enum('Bizonyítás','Folyomány','Megoldás') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `section_summary` text COLLATE utf8_unicode_ci,
-  `section_details` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Indexek a kiírt táblákhoz
---
-
---
--- A tábla indexei `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`article_id`),
-  ADD KEY `article_chapter` (`article_chapter`),
-  ADD KEY `article_entities` (`article_entities`);
-
---
--- A tábla indexei `chapter`
---
-ALTER TABLE `chapter`
-  ADD PRIMARY KEY (`chapter_id`);
-
---
--- A tábla indexei `entities`
---
-ALTER TABLE `entities`
-  ADD PRIMARY KEY (`entities_id`);
-
---
--- A tábla indexei `section`
---
-ALTER TABLE `section`
-  ADD PRIMARY KEY (`section_id`),
-  ADD KEY `section_article` (`section_article`);
-
---
--- A kiírt táblák AUTO_INCREMENT értéke
---
-
---
--- AUTO_INCREMENT a táblához `article`
---
-ALTER TABLE `article`
-  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT a táblához `chapter`
---
-ALTER TABLE `chapter`
-  MODIFY `chapter_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT a táblához `entities`
---
-ALTER TABLE `entities`
-  MODIFY `entities_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT a táblához `section`
---
-ALTER TABLE `section`
-  MODIFY `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- Megkötések a kiírt táblákhoz
---
-
---
--- Megkötések a táblához `article`
---
-ALTER TABLE `article`
-  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`article_chapter`) REFERENCES `chapter` (`chapter_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `article_ibfk_2` FOREIGN KEY (`article_entities`) REFERENCES `entities` (`entities_id`) ON UPDATE CASCADE;
-
---
--- Megkötések a táblához `section`
---
-ALTER TABLE `section`
-  ADD CONSTRAINT `section_ibfk_1` FOREIGN KEY (`section_article`) REFERENCES `article` (`article_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

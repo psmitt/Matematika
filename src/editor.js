@@ -4,25 +4,32 @@ const asidePanel = document.getElementById('AsidePanel')
 
 var asideStyle = document.querySelector('aside').style
 
+var recordID = null
+var recordNode = null // HTML details element
+
 function closeAside() {
   recordID = null
+  recordNode = null
   asideStyle.display = 'none'
 }
 
 function edit(item) { // item => summary
+  recordID = item.dataset.id
+  recordNode = item.parentNode
   if (item) switch (item.className) {
     case 'Fejezet':
       asideTitle.textContent = 'FEJEZET SZERKESZTÉSE'
-      editChapter(item.dataset.id)
+      editChapter()
       break;
     case 'Bizonyítás':
     case 'Folyomány':
     case 'Megoldás':
-      alert(item.className)
+      asideTitle.textContent = 'SZAKASZ SZERKESZTÉSE'
+      editSection()
       break;
     default: // article
       asideTitle.textContent = 'CIKK SZERKESZTÉSE'
-      editArticle(item.dataset.id)
+      editArticle()
       break;
   }
   asideStyle.display = 'block';
@@ -71,8 +78,6 @@ mainView.addEventListener('keyup', event => {
   }
 })
 
-var recordID = null
-
 const fix = text => text.replace(/('|\\)/g, "\\$&")
 
 /* EDIT CHAPTERS */
@@ -81,11 +86,10 @@ const chapterTable = document.getElementById('ChapterTable')
 const chTitl = document.getElementById('chapter_title')
 const chCont = document.getElementById('chapter_content')
 
-function editChapter(id) {
-  recordID = id
+function editChapter() {
   document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
   SQL(`SELECT chapter_title, chapter_content FROM chapter
-       WHERE chapter_id = ${id}`, result => {
+       WHERE chapter_id = ${recordID}`, result => {
     chTitl.value = result[0][0]
     chCont.value = result[0][1]
     chapterTable.style.display = 'table'
@@ -99,10 +103,10 @@ function saveChapter() {
           SET chapter_title = '${fix(chTitl.value)}',
               chapter_content = ${content}
         WHERE chapter_id = ${recordID}`, result => {
-    let summary = mainView.querySelector(`[data-id="${recordID}"]`)
+    let summary = recordNode.firstElementChild
     summary.innerHTML = chTitl.value
     summary.nextElementSibling.innerHTML = chCont.value
-    renderMathInElement(summary.parentNode)
+    renderMathInElement(recordNode)
     summary.focus()
     closeAside()
   })
@@ -122,12 +126,11 @@ function newChapter() {
          AND chapter_number >= @number;
        INSERT INTO chapter (chapter_main, chapter_number, chapter_title, chapter_content)
        VALUES (@main, @number - 1, '${fix(chTitl.value)}', ${content})`, result => {
-    let details = createDetails(chTitl.value, chCont.value, result[3][2], 'Fejezet')
-    details.className = 'Fejezet'
-    let next = mainView.querySelector(`[data-id="${recordID}"]`).parentNode
-    next.parentNode.insertBefore(details, next)
-    renderMathInElement(details)
-    details.firstElementChild.focus()
+    let newNode = createDetails(chTitl.value, chCont.value, result[3][2], 'Fejezet')
+    newNode.className = 'Fejezet'
+    recordNode.parentNode.insertBefore(newNode, recordNode)
+    renderMathInElement(newNode)
+    newNode.firstElementChild.focus()
     closeAside()
   })
 }
@@ -241,63 +244,51 @@ const arStat = document.getElementById('article_statement')
 
 /* DATALISTS */
 
-function loadDatalist(query, datalist) {
-  SQL(query, result => {
-    datalist.innerHTML = ''
+function loadEntities() {
+  SQL(`SELECT entities_id, entities_name FROM entities
+     ORDER BY entities_name`, result => {
+    arEntsList.innerHTML = ''
     for (let value of result) {
       let option = document.createElement('option')
       option.dataset.value = value[0]
       option.value = value[1]
-      datalist.append(option)
+      arEntsList.append(option)
     }
   })
 }
-
-function loadEntities() {
-  loadDatalist(`SELECT entities_id, entities_name FROM entities
-                ORDER BY entities_name`, arEntsList)
-}
 loadEntities()
 
-function validateDatalist(input) {
-  let option = document.getElementById(input.list.id)
-    .querySelector(`option[value="${input.value.replace(/("|\\)/g, '\\$&')}"]`)
-  input.dataset.value = option ? option.dataset.value : input.value = ''
+arEnts.onchange = () => {
+  let option = arEntsList.querySelector(`option[value="${arEnts.value.replace(/("|\\)/g, '\\$&')}"]`)
+  arEnts.dataset.value = option ? option.dataset.value : arEnts.value = ''
 }
 
-AsidePanel.addEventListener('focusin', event => {
-  let input = event.target
-  if (input.list) {
-    input.placeholder = input.value
-    input.value = ''
-    input.addEventListener('focusout', () => {
-      if (!input.value)
-        input.value = input.placeholder
-      input.placeholder = ''
-      validateDatalist(input)
-    }, {
-      once: true
-    })
-  }
+arEnts.addEventListener('focusin', event => {
+  arEnts.placeholder = arEnts.value
+  arEnts.value = ''
+  arEnts.addEventListener('focusout', () => {
+    if (!arEnts.value)
+      arEnts.value = arEnts.placeholder
+    arEnts.placeholder = ''
+  }, {
+    once: true
+  })
 })
 
-arChap.onchange = event => validateDatalist(arChap)
-arEnts.onchange = event => validateDatalist(arEnts)
 arChrs.onchange = () => arEnts.required = Boolean(arChrs.value)
 
-function editArticle(id) {
-  recordID = id
+function editArticle() {
   document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
   SQL(`SELECT article_title, chapter_title, article_type, article_entities,
        characteristics, article_keywords, article_statement
        FROM article JOIN chapter ON (chapter_id = article_chapter)
-       WHERE article_id = ${id}`, result => {
+       WHERE article_id = ${recordID}`, result => {
     arTitl.value = result[0][0]
     arChap.value = result[0][1]
     arType.value = result[0][2]
     if (result[0][3]) {
       arEnts.value = arEntsList.querySelector(`option[data-value="${result[0][3]}"]`).value
-      validateDatalist(arEnts)
+      arEnts.onchange()
     }
     arChrs.value = result[0][4]
     arKeys.value = result[0][5]
@@ -320,11 +311,11 @@ function saveArticle() {
        article_keywords = ${keywords},
        article_statement = ${statement}
        WHERE article_id = ${recordID}`, result => {
-    let summary = mainView.querySelector(`[data-id="${recordID}"]`)
+    let summary = recordNode.firstElementChild
     summary.innerHTML = arTitl.value
     summary.className = arType.value
     summary.nextElementSibling.innerHTML = arStat.value
-    renderMathInElement(summary.parentNode)
+    renderMathInElement(recordNode)
     summary.focus()
     closeAside()
   });
@@ -352,13 +343,11 @@ function newArticle() {
                   article_entities, characteristics, article_keywords, article_statement)
        VALUES (@chapter, @number - 1, ${title}, '${arType.value}', ${arEnts.dataset.value || 'NULL'},
                ${characteristics}, ${keywords}, ${statement})`, result => {
-    let details = createDetails(arTitl.value, arStat.value, result[3][2], arType.value)
-    let next = mainView.querySelector(`[data-id="${recordID}"]`).parentNode
-    next.parentNode.insertBefore(details, next)
-    renderMathInElement(details)
-    details.firstElementChild.focus()
+    let newNode = createDetails(arTitl.value, arStat.value, result[3][2], arType.value)
+    recordNode.parentNode.insertBefore(newNode, recordNode)
+    renderMathInElement(newNode)
+    newNode.firstElementChild.focus()
     closeAside()
-    loadChapters()
   })
 }
 
@@ -394,39 +383,41 @@ const seType = document.getElementById('section_type')
 const seSumm = document.getElementById('section_summary')
 const seDets = document.getElementById('section_details')
 
-function editSection(id) {
-  recordID = id
+function editSection() {
   document.querySelectorAll('aside table').forEach(table => table.style.display = 'none')
   SQL(`SELECT section_type, section_summary, section_details FROM section
-       WHERE article_id = ${id}`, result => {
+       WHERE section_id = ${recordID}`, result => {
     seType.value = result[0][0]
     seSumm.value = result[0][1]
     seDets.value = result[0][2]
-    chapterTable.style.display = 'table'
+    sectionTable.style.display = 'table'
     asideStyle.display = 'block'
   })
 }
 
 function saveSection() {
-  let summary = seSumm.value ? `'${seSumm.value}'` : 'NULL'
-  console.log(`UPDATE section SET
+  let details = seDets.value ? `'${fix(seDets.value)}'` : 'NULL'
+  SQL(`UPDATE section SET
                section_type = '${seType.value}',
-               section_summary = '${summary}',
-               section_details = '${seDets.value}'
-               WHERE section_id = ${recordID}`);
-
-  recordID = null
-  asideStyle.display = 'none'
+               section_summary = '${fix(seSumm.value)}',
+               section_details = ${details}
+               WHERE section_id = ${recordID}`, result => {
+    let summary = recordNode.firstElementChild
+    summary.className = seType.value
+    summary.innerHTML = seSumm.value
+    summary.nextElementSibling.innerHTML = seDets.value
+    renderMathInElement(recordNode)
+    summary.focus()
+    closeAside()
+  })
 }
 
 function deleteSection() {
   console.log(`DELETE FROM section WHERE section_id = ${recordID}`);
-  recordID = null
-  asideStyle.display = 'none'
+  closeAside()
 }
 
 function newSection() {
 
-  recordID = null
-  asideStyle.display = 'none'
+  closeAside()
 }

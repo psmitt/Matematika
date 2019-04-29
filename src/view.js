@@ -42,12 +42,12 @@ function viewOutlines(chapter, article, scroll) {
       let details = null
       for (let article of result) {
         if (currentArticle !== article[2]) {
-          let details = createDetails(article[0], article[1], article[2], article[3])
+          details = createDetails(article[0], article[1], article[2], article[3])
           mainView.append(details)
           currentArticle = article[2]
         }
         if (article[6]) { // currentSection
-          details.append(createDetails(article[4], articl[5], article[6], article[7]))
+          details.append(createDetails(article[4], article[5], article[6], article[7]))
         }
       }
       SQL(`SELECT chapter_title, chapter_content, chapter_id FROM chapter

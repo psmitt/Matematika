@@ -65,8 +65,8 @@ CREATE TABLE section (
   section_type      ENUM('Bizonyítás', -- használható benne lemma (segédtétel) külön formázással és részbizonyítással
                          'Folyomány', -- korrolárium, következmény, pl. speciális eset
                          'Megoldás') NOT NULL,
-  section_summary   TEXT DEFAULT NULL,
-  section_details   TEXT NOT NULL,
+  section_summary   TEXT NOT NULL,
+  section_details   TEXT DEFAULT NULL,
 
   FOREIGN KEY (section_article)
       REFERENCES article(article_id)

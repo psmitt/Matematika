@@ -37,8 +37,9 @@
 }
 
 #MainView summary {
-  padding-left: 0;
-  margin-left: calc(-1 * var(--default-padding));
+  padding: 0;
+  margin-left: calc(3 * var(--default-padding));
+  text-indent: calc(-2 * var(--default-padding));
 }
 #MainView summary::-webkit-details-marker {
   display: none;
@@ -46,7 +47,7 @@
 #MainView summary::before {
    display: inline-block;
    text-align: center;
-   width: 2em;
+   width: calc(2 * var(--default-padding));
 }
 
 #MainView .Axióma::before         { content: '⊨'; }
@@ -61,14 +62,25 @@
 #MainView .Egyenlőtlenség::before { content: '≤'; }
 #MainView .Sejtés::before         { content: '⍰'; }
 #MainView .Feladat::before        { content: '☝'; }
+
 #MainView .Bizonyítás::before     { content: '∎'; }
-#MainView .Korrolárium::before    { content: '⮱'; }
+#MainView .Folyomány::before      { content: '⮱'; }
 #MainView .Megoldás::before       { content: '💡'; }
+#MainView .Bizonyítás,
+#MainView .Folyomány,
+#MainView .Megoldás {
+  margin-left: calc(4 * var(--default-padding));
+  margin-bottom: calc(2 * var(--default-padding));
+}
 
 #MainView details article {
-  margin-left: calc(2em - var(--default-padding));
+  margin-left: calc(3 * var(--default-padding));
   margin-top: var(--default-padding);
   margin-bottom: calc(2 * var(--default-padding));
+}
+
+#MainView details details article {
+  margin-left: calc(4 * var(--default-padding));
 }
 
 /* CHAPTER VIEW */

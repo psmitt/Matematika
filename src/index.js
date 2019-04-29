@@ -23,11 +23,10 @@ function createDetails(title, content, id, type) {
   summary.append(span)
   details.append(summary)
 
-  if (content) {
-    let article = document.createElement('article')
-    article.innerHTML = content
-    details.append(article)
-  }
+  let article = document.createElement('article')
+  article.innerHTML = content
+  details.append(article)
+
   return details
 }
 

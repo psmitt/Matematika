@@ -22,9 +22,6 @@ details details {
 summary {
   padding-left: calc(1.5 * var(--default-padding));
   font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   cursor: pointer;
 }
 
