@@ -4,6 +4,7 @@ COLLATE         utf8_unicode_ci;
 
 CREATE USER 'math_admin'@'%' IDENTIFIED BY '0123456789';
 GRANT ALL ON math.* TO 'math_admin'@'%';
+GRANT RELOAD, SUPER ON *.* TO 'math_admin'@'%';
 CREATE USER 'math_editor'@'%' IDENTIFIED BY '012345678';
 GRANT SELECT, INSERT, UPDATE, DELETE ON math.* TO 'math_editor'@'%';
 CREATE USER 'math_reader'@'%' IDENTIFIED BY '01234567';
