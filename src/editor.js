@@ -11,26 +11,30 @@ function closeAside() {
   recordID = null
   recordNode = null
   asideStyle.display = 'none'
+  asideTitle.textContent = ''
+  asidePanel.querySelectorAll('table').forEach(table => table.style.display = 'none')
 }
 
 function edit(item) { // item => summary
-  recordID = item.dataset.id
-  recordNode = item.parentNode
-  if (item) switch (item.className) {
-    case 'Fejezet':
-      asideTitle.textContent = 'FEJEZET SZERKESZTÉSE'
-      editChapter()
-      break;
-    case 'Bizonyítás':
-    case 'Folyomány':
-    case 'Megoldás':
-      asideTitle.textContent = 'SZAKASZ SZERKESZTÉSE'
-      editSection()
-      break;
-    default: // article
-      asideTitle.textContent = 'CIKK SZERKESZTÉSE'
-      editArticle()
-      break;
+  if (item) {
+    recordID = item.dataset.id
+    recordNode = item.parentNode
+    switch (item.className) {
+      case 'Fejezet':
+        asideTitle.textContent = 'FEJEZET SZERKESZTÉSE'
+        editChapter()
+        break;
+      case 'Bizonyítás':
+      case 'Folyomány':
+      case 'Megoldás':
+        asideTitle.textContent = 'SZAKASZ SZERKESZTÉSE'
+        editSection()
+        break;
+      default: // article
+        asideTitle.textContent = 'CIKK SZERKESZTÉSE'
+        editArticle()
+        break;
+    }
   }
   asideStyle.display = 'block';
 }

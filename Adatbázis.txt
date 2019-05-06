@@ -23,7 +23,7 @@ CREATE TABLE chapter (
 
 CREATE TABLE entities (
   entities_id       SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  entities_name     VARCHAR(255) NOT NULL
+  entities_name     VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE article (

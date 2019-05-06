@@ -28,7 +28,7 @@ function viewOutlines(chapter, article, scroll) {
   SQL(`SELECT chapter_title, chapter_content FROM chapter
         WHERE chapter_id = ${chapter}`, result => {
     let h2 = document.createElement('h2')
-    h2.textContent = result[0][0]
+    h2.innerHTML = result[0][0]
     let article = document.createElement('article')
     article.innerHTML = result[0][1]
     mainView.append(h2)
@@ -55,7 +55,7 @@ function viewOutlines(chapter, article, scroll) {
          ORDER BY chapter_number`, result => {
         for (let chapter of result) {
           let h3 = document.createElement('h3')
-          h3.textContent = chapter[0]
+          h3.innerHTML = chapter[0]
           let article = document.createElement('article')
           article.innerHTML = chapter[1]
           mainView.append(h3)

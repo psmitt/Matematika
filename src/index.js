@@ -15,7 +15,7 @@ function createDetails(title, content, id, type) {
   let details = document.createElement('details')
   let summary = document.createElement('summary')
   let span = document.createElement('span')
-  span.textContent = title
+  span.innerHTML = title
   if (id)
     summary.dataset.id = id
   if (type)
@@ -132,11 +132,25 @@ new Promise((sqlReady, sqlFailed) => {
   }
 }).then(() => {
 
+  mainView.addEventListener('focusin', event => editableItem = event.target)
+
+  let mainMenu = document.getElementById('MainMenu')
+  let menus = mainMenu.children
+  menus[1].onclick = () => {
+    viewChapters()
+    mainMenu.open = false
+  }
+  menus[2].onclick = () => {
+    if (editableItem)
+      viewOutlines(editableItem.dataset.id)
+    mainMenu.open = false
+  }
+
+
   if (electron) {
     document.styleSheets[4].insertRule(`#MainView summary:focus {
       text-shadow: blue 0 0 1px;
     }`)
-    mainView.addEventListener('focusin', event => editableItem = event.target)
 
     let script = document.createElement('script')
     script.src = `editor.js`
@@ -163,7 +177,7 @@ new Promise((sqlReady, sqlFailed) => {
 
   buildTree(`SELECT chapter_title, article_type, article_id, article_title, article_keywords
                FROM chapter JOIN article ON (chapter_id = article_chapter)
-           ORDER BY article_type, article_title`, chapterPanel)
+           ORDER BY article_chapter, article_type, article_title`, chapterPanel)
 
 }, error => {
   document.body.textContent = error
