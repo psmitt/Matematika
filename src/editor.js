@@ -345,7 +345,7 @@ function newArticle() {
          AND article_number >= @number;
        INSERT INTO article (article_chapter, article_number, article_title, article_type,
                   article_entities, characteristics, article_keywords, article_statement)
-       VALUES (@chapter, @number - 1, ${title}, '${arType.value}', ${arEnts.dataset.value || 'NULL'},
+       VALUES (@chapter, @number, ${title}, '${arType.value}', ${arEnts.dataset.value || 'NULL'},
                ${characteristics}, ${keywords}, ${statement})`, result => {
     let newNode = createDetails(arTitl.value, arStat.value, result[3][2], arType.value)
     recordNode.parentNode.insertBefore(newNode, recordNode)

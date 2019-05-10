@@ -117,6 +117,7 @@ new Promise((sqlReady, sqlFailed) => {
               try {
                 resolve(callback(json))
               } catch {
+                console.log(httpRequest.responseText);
                 alert(json.message)
               }
             } else

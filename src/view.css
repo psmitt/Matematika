@@ -25,7 +25,8 @@
   right: 3em;
 }
 
-#EditorPanel div {
+#EditorPanel div,
+#MainView h3:hover {
   cursor: pointer;
   text-shadow: blue 0 0 1px;
 }

@@ -53,14 +53,16 @@ function viewOutlines(chapter, article, scroll) {
       SQL(`SELECT chapter_title, chapter_content, chapter_id FROM chapter
             WHERE chapter_main = ${chapter}
          ORDER BY chapter_number`, result => {
-        for (let chapter of result) {
-          let h3 = document.createElement('h3')
-          h3.innerHTML = chapter[0]
-          let article = document.createElement('article')
-          article.innerHTML = chapter[1]
-          mainView.append(h3)
-          mainView.append(article)
-        }
+        if (Array.isArray(result))
+          for (let chapter of result) {
+            let h3 = document.createElement('h3')
+            h3.innerHTML = chapter[0]
+            h3.onclick = () => viewOutlines(chapter[2])
+            let article = document.createElement('article')
+            article.innerHTML = chapter[1]
+            mainView.append(h3)
+            mainView.append(article)
+          }
         renderMathInElement(mainView)
         mainStyle.display = 'block'
       })
