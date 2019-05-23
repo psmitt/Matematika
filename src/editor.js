@@ -47,10 +47,10 @@ function move(item, to) {
     case 'Bizonyítás':
     case 'Folyomány':
     case 'Megoldás':
-      console.log(to, item.className)
+      moveItem('section', item, to)
       break;
     default: // cikk
-      moveArticle(item, to)
+      moveItem('article', item, to)
   }
 }
 
@@ -355,21 +355,21 @@ function newArticle() {
   })
 }
 
-function moveArticle(article, to) { // article => summary
-  article.blur()
-  let details = article.parentNode
-  let chapter = details.parentNode
+function moveItem(item, summary, to) { // item => 'article' or 'section'
+  summary.blur()
+  let details = summary.parentNode
+  let parent = details.parentNode
 
   function swap(prev, next) { // details
     let ids = `(${prev.firstElementChild.dataset.id},
                 ${next.firstElementChild.dataset.id})`
-    SQL(`UPDATE article a INNER JOIN article b
-         ON (a.article_id IN ${ids} AND b.article_id IN ${ids}
-             AND a.article_id != b.article_id)
-         SET a.article_number = b.article_number,
-             b.article_number = a.article_number`,
-      ready => chapter.insertBefore(next, prev))
-    article.focus()
+    SQL(`UPDATE ${item} a INNER JOIN ${item} b
+         ON (a.${item}_id IN ${ids} AND b.${item}_id IN ${ids}
+             AND a.${item}_id != b.${item}_id)
+         SET a.${item}_number = b.${item}_number,
+             b.${item}_number = a.${item}_number`,
+      ready => parent.insertBefore(next, prev))
+    summary.focus()
   }
   let prev = details.previousElementSibling
   let next = details.nextElementSibling
@@ -377,6 +377,17 @@ function moveArticle(article, to) { // article => summary
     swap(prev, details)
   } else if (to == 'down' && next && next.matches('details')) {
     swap(details, next)
+  } else if (to == 'right' && item == 'article') { // add new section
+    SQL(`SET @max = (SELECT COALESCE(MAX(section_number), 0) + 1 FROM section
+                     WHERE section_article = ${summary.dataset.id});
+         INSERT INTO section (section_article, section_number, section_summary)
+         VALUES (${summary.dataset.id}, @max, 'új szakasz')`, result => {
+      recordID = result[1][2]
+      details.append(createDetails('új szakasz', '', recordID, 'Bizonyítás'))
+      recordNode = details.lastElementChild
+      recordNode.firstElementChild.focus()
+      editSection()
+    })
   }
 }
 
@@ -418,10 +429,5 @@ function saveSection() {
 
 function deleteSection() {
   console.log(`DELETE FROM section WHERE section_id = ${recordID}`);
-  closeAside()
-}
-
-function newSection() {
-
   closeAside()
 }
