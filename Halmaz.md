@@ -49,7 +49,7 @@ Ez __a tiszta halmazelmélet elve__: ___minden halmaz___.
 
 A tiszta halmazelmélet elve _egyneműsíti_ a halmazokat és az elemeket, ezáltal megszünteti a lényegi különbséget a halmazok és elemeik között. Egyszerre szünteti meg az elemek dologiságát és a halmaz definiálható fogalmát. A halmaz fogalma _alapfogalommá_, az elem fogalma pedig a halmazok közötti _relációvá_ változik. A halmazképzés négy eredeti megkülönböztetése részint összemosódik, részint problematikussá válik. Az elemek megkülönböztetése egymástól a halmazok egymástól való megkülönböztetésévé lesz, amelyeket viszont éppen az elemeik alapján kellene megkülönböztetnünk. Az ördögi kört az üres halmaz unicitása töri meg, amelynek köszönhetően az üres halmaz univerzális alapelemmé léphet elő.
 
-A tiszta halmazelméletben változatlanul megőrizhetjük tehát:
+A tiszta halmazelméletben változatlanul megőrizhetjük:
 - a halmazelmélet alapelvét;
 - az elemek egyediségének elvét;
 - a halmazok elemeik általi meghatározottságának elvét (extenzionalitási axióma);
