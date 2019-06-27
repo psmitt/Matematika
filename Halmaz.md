@@ -34,14 +34,15 @@ Ha két halmaznak nincs közös eleme, akkor _idegenek_.
 Két halmaz közös elemei képezik a két halmaz _közös részét_ vagy _metszetét_.
 
 Elméleti szempontból döntő jelentőségű, hogyan fogjuk fel idegen halmazok metszetét.
-Egy lehetséges megközelítés az, hogy mivel idegen halmazoknak nincs közös eleme, ezért közös része sincsen, tehát idegen halmazoknak a metszete _nem létezik_.  
+Egy lehetséges megközelítés az, hogy mivel idegen halmazoknak nincs közös eleme, ezért közös része sincsen, tehát idegen halmazoknak a metszete _nem létezik_.
 Az a felismerés azonban, hogy a metszetképzés _halmazokkal végezhető művelet_, amely halmazokat eredményez, ahhoz a törekvéshez vezet, hogy a metszetképzés műveletét a halmazokon _zárttá_ tegyük, és abban az esetben is halmazként értelmezzük az eredményt, amennyiben a halmazoknak nincsen közös eleme. Ez utóbbi megközelítés szerint idegen halmazoknak közös eleme ugyan nincsen, de közös része van, noha az _üres_. Létezik tehát halmaz elemek nélkül: az üres halmaz.  
 Ezt a megállapodást rögzíti az __üres halmaz posztulátuma__:
 ∃A ∀x ( x∉A )
 
 Az üres halmaz fogalma olyan (mennyiségi) elvonatkoztatás a halmazokat meghatározó elemektől, amely logikailag összeegyeztethető a halmazképzés négy megkülönböztetésével azzal a következtetéssel, hogy - az extenzionalitási axióma alapján - csak egyetlen üres halmaz létezik.
 
-Az elemektől való elvonatkoztatás tovább folytatható.  
+Az elemektől való elvonatkoztatás tovább folytatható!
+
 Miután a fenti szemlélet megalapozta a halmazok _dologiságát_, a halmazelmélet teljes formalizálása végett elvonatkoztathatunk _az elemek_ dologiságától.
 Ennek első lépése, hogy a halmazok dologiságát halmazelméleti szempontból teljessé tesszük azzal a megállapítással, hogy mivel a halmazok egymástól egyértelműen megkülönböztethetők, ezért maguk is lehetnek elemek: elemei _más_ halmazoknak.  
 Az üres halmaz léte garantálja, hogy legalább egy halmaz tőle különnemű elemek nélkül is létezik; az üres halmazt elemként felfogva pedig további halmazokat képezhetünk további különnemű elemek nélkül. Teljesen eltekinthetünk tehát a halmazoktól különböző dolgoktól, és ezzel az elemektől való (minőségi) elvonatkoztatással megalapozhatjuk a tiszta halmazelméletet, amelyben minden dolog halmaz és más halmazoknak az eleme is egyben.  
