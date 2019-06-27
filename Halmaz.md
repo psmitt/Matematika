@@ -2,6 +2,8 @@
 
 Halmazok vagy halmazképzés útján, vagy más halmazokkal végzett műveletek révén keletkeznek.
 
+## A halmazképzéstől a tiszta halmazelméletig
+
 A halmazképzés négy megkülönböztetésből áll:
 
 1. Néhány dolgot megkülönböztetünk minden mástól.
@@ -74,3 +76,5 @@ Egyáltalán és mindenekelőtt: miféle műveletekkel állíthatunk elő adott 
 - közös rész, metszet
 - egyesítés, unió
 - hatványhalmaz
+
+## Az univerzum megmentése
