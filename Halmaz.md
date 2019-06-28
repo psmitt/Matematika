@@ -1,8 +1,8 @@
-# A halmaz fogalma
+# A halmazelmélet megalapozása
 
 Halmazok vagy halmazképzés útján, vagy más halmazokkal végzett műveletek révén keletkeznek.
 
-## A halmazképzéstől a tiszta halmazelméletig
+## A halmazképzéstől a halmaz fogalmáig
 
 A halmazképzés négy megkülönböztetésből áll:
 
@@ -11,12 +11,12 @@ A halmazképzés négy megkülönböztetésből áll:
    Ennek a megkülönböztetésnek nem a módja a lényeges, hanem az eredménye: ugyanazokat a dolgokat többféleképpen is megkülönböztethetjük a többitől.
    A másoktól egyértelműen megkülönböztetett dolgokat a halmaz _elemeinek_ nevezzük.
 
-   __A halmazelmélet alapelve__ szerint ___minden elem___, azaz bármely egyértelműen azonosítható dolog elemként halmazba foglalható:
+   __A halmazelmélet alapelve__ szerint ___minden elem___. Pontosabban bármely egyértelműen azonosítható dolog elemként halmazba foglalható:
    ∀x ∃A ( x∈A )
 
 2. Egy halmaz elemeit nemcsak minden mástól, hanem egymástól is megkülönböztetjük.
 
-   Ez a második megkülönböztetés azt jelenti, hogy a halmaz elemei nem azonosak egymással, és minden egyes elem csak önmagával azonos:
+   Ez a megkülönböztetés azt jelenti, hogy a halmaz elemei nem azonosak egymással, és minden egyes elem csak önmagával azonos:
    mindegyik a halmaznak ___egyedi___ (egyszeres) eleme, nem tartozhat "többszörösen" ugyanahhoz a halmazhoz.
 
 3. A halmaz elemeit megkülönböztetjük magától a halmaztól is.
@@ -41,40 +41,74 @@ Az a felismerés azonban, hogy a metszetképzés _halmazokkal végezhető művel
 Ezt a megállapodást rögzíti az __üres halmaz posztulátuma__:
 ∃A ∀x ( x∉A )
 
-Az üres halmaz fogalma olyan (mennyiségi) elvonatkoztatás a halmazokat meghatározó elemektől, amely logikailag összeegyeztethető a halmazképzés négy megkülönböztetésével azzal a következtetéssel, hogy - az extenzionalitási axióma alapján - csak egyetlen üres halmaz létezik.
+Az üres halmaz fogalma olyan (mennyiségi) elvonatkoztatás a halmazokat meghatározó elemektől, amely logikailag összeegyeztethető a halmazképzés négy megkülönböztetésével azzal a következtetéssel, hogy – az extenzionalitási axióma alapján – _csak egyetlen üres halmaz létezik_.
 
-Az elemektől való elvonatkoztatás tovább folytatható!
+Az elemek megkülönböztetésén és azonosságán alapuló általános halmazfogalom tehát a következő elvekre épül:
+- a halmazelmélet alapelve;
+- az elemek egyediségének elve;
+- a halmazok elemeik általi meghatározottságának elve (extenzionalitási axióma);
+- valamint az üres halmaz egzisztenciája és unicitása.
 
-Miután a fenti szemlélet megalapozta a halmazok _dologiságát_, a halmazelmélet teljes formalizálása végett elvonatkoztathatunk _az elemek_ dologiságától.
-Ennek első lépése, hogy a halmazok dologiságát halmazelméleti szempontból teljessé tesszük azzal a megállapítással, hogy mivel a halmazok egymástól egyértelműen megkülönböztethetők, ezért maguk is lehetnek elemek: elemei _más_ halmazoknak.  
-Az üres halmaz léte garantálja, hogy legalább egy halmaz tőle különnemű elemek nélkül is létezik; az üres halmazt elemként felfogva pedig további halmazokat képezhetünk további különnemű elemek nélkül. Teljesen eltekinthetünk tehát a halmazoktól különböző dolgoktól, és ezzel az elemektől való (minőségi) elvonatkoztatással megalapozhatjuk a tiszta halmazelméletet, amelyben minden dolog halmaz és más halmazoknak az eleme is egyben.  
+## A tiszta halmazelmélet eszméje és alapproblémái
+
+Miután a fenti szemlélet megalapozta a halmazok _mint dolgok_ fogalmát, a halmazelmélet teljes formalizálása végett elvonatkoztathatunk _az elem fogalom dologi tartalmától_.
+Ennek első lépése, hogy a halmazok dologiságát halmazelméleti szempontból teljessé tesszük azzal a megállapítással, hogy mivel a halmazok egymástól egyértelműen megkülönböztethetők, ezért maguk is lehetnek elemek: elemei _más_ halmazoknak.
+
+Az üres halmaz léte garantálja, hogy legalább egy halmaz tőle különnemű elemek nélkül is létezik, az üres halmazt elemként felfogva pedig további halmazokat képezhetünk további különnemű elemek nélkül. Teljesen eltekinthetünk tehát az elemektől _mint halmazoktól különböző dolgoktól_, és ezzel a (minőségi) elvonatkoztatással megalapozhatjuk a tiszta halmazelméletet, amelyben minden dolog halmaz és más halmazoknak az eleme is egyben.  
 Ez __a tiszta halmazelmélet elve__: ___minden halmaz___.
 
-A tiszta halmazelmélet elve _egyneműsíti_ a halmazokat és az elemeket, ezáltal megszünteti a lényegi különbséget a halmazok és elemeik között. Egyszerre szünteti meg az elemek dologiságát és a halmaz definiálható fogalmát. A halmaz fogalma _alapfogalommá_, az elem fogalma pedig a halmazok közötti _relációvá_ változik. A halmazképzés négy eredeti megkülönböztetése részint összemosódik, részint problematikussá válik. Az elemek megkülönböztetése egymástól a halmazok egymástól való megkülönböztetésévé lesz, amelyeket viszont éppen az elemeik alapján kellene megkülönböztetnünk. Az ördögi kört az üres halmaz unicitása töri meg, amelynek köszönhetően az üres halmaz univerzális alapelemmé léphet elő.
+A tiszta halmazelmélet elve _egyneműsíti_ a halmazokat és az elemeket, ezáltal megszünteti a lényegi különbséget a halmazok és elemeik között. Egyszerre szünteti meg az elem fogalom dologiságát és a halmaz definiálható fogalmát. A halmaz fogalma _alapfogalommá_, az elem fogalma pedig a halmazok közötti _relációvá_ változik. A halmazképzés négy eredeti megkülönböztetése részint összemosódik, részint problematikussá válik. _Az elemek megkülönböztetése egymástól a halmazok egymástól való megkülönböztetésévé lesz, amelyeket viszont éppen az elemeik alapján kellene megkülönböztetnünk._ Ördögi kör!
 
-A tiszta halmazelméletben változatlanul megőrizhetjük:
-- a halmazelmélet alapelvét;
-- az elemek egyediségének elvét;
-- a halmazok elemeik általi meghatározottságának elvét (extenzionalitási axióma);
-- valamint az üres halmaz egzisztenciáját és unicitását.
-
-A 3. megkülönböztetéssel azonban komoly problémák adódnak!
+Ez tehát a tiszta halmazelmélet alapdilemmája:
 - Hogyan tehetünk különbséget a halmaz és vele egynemű elemei között?
 - Létezhet-e egy halmaz anélkül, hogy az elemeit _tőle függetlenül_ meghatároztuk volna, avagy meghatározhatjuk-e egy halmaz elemeit a halmaz _saját meghatározása által_?
+- Mi történik, ha a halmazképzési eljárás csődöt mond?
+- Kiutat jelenthetnek-e a halmazműveletek?
+
+Ahhoz, hogy egy halmazt más halmazokkal végzett műveletek útján előállítsunk, a műveletek tagjainak már rendelkezésre kell állniuk. Ámde hogyan állítsuk elő azokat a halmazokat, amelyeken majd a műveleteket elvégezhetjük?
+
+Mondhatjuk, hogy az üres halmaz mint kezdőelem már a rendelkezésünkre áll. Ámde az üres halmaz puszta absztrakció: csak azért vezettük be, hogy idegen halmazok metszetét is halmazként értelmezhessük. Ha nincsenek idegen halmazok, nincs szükség az üres halmaz bevezetésére sem. Minthogy azonban az elemek nélküli halmaz az egyetlen, amely megtörheti a megkülönböztetési probléma ördögi körét, így az üres halmaz már nemcsak mint formális műveleti eredmény, hanem mint _végső alapelem_ nyer létjogosultságot.
+
+Úgy tűnik tehát, hogy a halmazfogalom alapvető elvei a tiszta halmazelméletben is megőrizhetők. Kérdés azonban, hogy létezik-e a tiszta halmazelméletben a halmazképzésnek más módja is, mint halmazoknak más halmazokon végzett műveletek révén történő előállítása.  
+Egyáltalán és mindenekelőtt: miféle műveletekkel állíthatunk elő adott halmazokból más halmazokat?
+
+## Halmazok halmozása: a kumulatív hierarchia
+
+Az alábbiakban olyan eljárásokat ismertetünk, amelyek lehetővé teszik, hogy az üres halmazból mint alapelemből tetszőleges méretű és szerkezetű halmazokat állítsunk elő.
+
+### Elemek felsorolása
+
+Az elemek egyenkénti megjelölése egy halmaz meghatározásának a legegyszerűbb módja. Ezzel a módszerrel az elemek között fennálló bármely összefüggéstől elvonatkoztathatunk. Bonyolultabb lenne más módon elállítani azt a halmazt, amelynek elemei az Esthajnalcsillag, az ibolyaillat és a differenciálhányados.
+
+A tiszta halmazelméletben csak más, már definiált halmazok felsorolásával állíthatunk elő újabb halmazokat. Ehhez a módszerhez kezdetben csak egyetlen halmaz áll a rendelkezésünkre: az üres halmaz. Az üres halmaz "felsorolásával" hozhatjuk létre azt a halmazt, melynek egyetlen eleme maga az üres halmaz. Ezt az eljárást rendre az eredményre megismételve tetszőlegesen sok egymástól különböző egyelemű halmazt hozhatunk létre. Ezekből aztán egyszerre többet is felsorolva tetszőlegesen sok véges elemszámú halmazt állíthatunk elő.
+
+A halmazelmélet alapelve nem garantálja többelemű halmazok létezését. Annyit garantál csupán, hogy az üres halmaz mellett legalább még egy halmaz létezik. Azt, hogy akár két elemet is fel tudjunk venni egy halmazba a __páraxióma__ biztosítja: ∀x,y ∃A ∀z ( z∈A ⇔ z=x ∨ z=y )
+
+A páraxióma nem zárja ki (de természetesen nem is követeli meg) a halmazba foglalható két elem azonosságát. Magába foglalja tehát, de egyben ki is terjeszti a halmazelmélet alapelvét. Általánosabb érvényű elvként lép be a halmazelmélet axiómáinak sorába: belőle a halmazelmélet alapelve levezethetővé válik.
+
+A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló végtelen számú posztulátummal kéne az elméletet bővíteni. Ehelyett inkább bevezetjük a már létező halmazok elemeinek egyesítését egyetlen közös halmazba.
+
+### Halmazok egyesítése
+
+### Hatványhalmaz
+
+## Az univerzum megmentése
+
+### Halmazok metszete és része
+
+Definíció szerint adott halmazok metszete a halmazok közös elemeinek a halmaza, vagyis a halmazok közös része.
+Láttuk, hogy az üres halmaz bevezetését (többek között) az is indokolja, hogy általa a metszetképzést a halmazokon értelmezett _zárt_ műveletté tehetjük, tehát halmazok közös részét akkor is halmaznak tekinthetjük, ha a halmazoknak közös eleme nincs.
+
+De vajon miért tekintjük halmaznak a metszetet általában? Minek az alapján gondoljuk azt, hogy halmazok közös része szintén halmaz? A gondolat a halmazképzés első megkülönböztetésére támaszkodik, amely szerint másoktól egyértelműen megkülönböztetett dolgokat egy halmaz elemeinek nevezhetünk. A megkülönböztetésnek azt a módját pedig, amely már meghatározott (jól definiált) halmazok _közös_ elemeit különíti el minden mástól, jogosan nevezhetjük egyértelműnek.
+
+Az axiomatikus halmazelmélet azonban ennél általánosabb elvet rögzít, amely szerint nem csak halmazok közös része, hanem egy adott halmaz _bármely_ része halmaz: tehát egy halmaz tetszőlegesen, de egyértelműen megkülönböztetett elemei szintén halmazt alkotnak.
+Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )
+
+Miért nem lehet ez általános halmazképző elv?
+
+
+
+
 - Melyek az _eleme_ reláció jellemzői?
 - Lehet-e egy halmaz önmagának az eleme?
 - Lehet-e két halmaz kölcsönösen eleme egymásnak?
-- Létezhet-e halmaz, amelynek eleme minden (más) halmaz?
-
-Mi történik, ha a halmazképzési eljárás csődöt mond? Kiutat jelenthetnek-e a halmazműveletek? Ahhoz, hogy egy halmazt más halmazokkal végzett műveletek útján előállítsunk, a műveletek tagjainak már rendelkezésre kell állniuk. Ámde hogyan állítsuk elő azokat a halmazokat, amelyeken majd a műveleteket elvégezhetjük?  
-A tiszta halmazelmélet egyik kulcskérdése, hogy létezik-e benne a halmazképzésnek más módja is, mint halmazoknak más halmazokon végzett műveletek révén történő előállítása.  
-Egyáltalán és mindenekelőtt: miféle műveletekkel állíthatunk elő adott halmazokból más halmazokat?
-
-## Halmazműveletek
-
-- elemek (=halmazok) felsorolása
-- közös rész, metszet
-- egyesítés, unió
-- hatványhalmaz
-
-## Az univerzum megmentése
