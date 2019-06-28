@@ -80,13 +80,13 @@ Az alábbiakban olyan eljárásokat ismertetünk, amelyek lehetővé teszik, hog
 
 Az elemek egyenkénti megjelölése egy halmaz meghatározásának a legegyszerűbb módja. Ezzel a módszerrel az elemek között fennálló bármely összefüggéstől elvonatkoztathatunk. Bonyolultabb lenne más módon elállítani azt a halmazt, amelynek elemei az Esthajnalcsillag, az ibolyaillat és a differenciálhányados.
 
-A tiszta halmazelméletben csak más, már definiált halmazok felsorolásával állíthatunk elő újabb halmazokat. Ehhez a módszerhez kezdetben csak egyetlen halmaz áll a rendelkezésünkre: az üres halmaz. Az üres halmaz "felsorolásával" hozhatjuk létre azt a halmazt, melynek egyetlen eleme maga az üres halmaz. Ezt az eljárást rendre az eredményre megismételve tetszőlegesen sok egymástól különböző egyelemű halmazt hozhatunk létre. Ezekből aztán egyszerre többet is felsorolva tetszőlegesen sok véges elemszámú halmazt állíthatunk elő.
+A tiszta halmazelméletben csak más, már definiált halmazok felsorolásával állíthatunk elő újabb halmazokat. Ehhez a módszerhez kezdetben csak egyetlen halmaz áll a rendelkezésünkre: az üres halmaz. Az üres halmaz "felsorolásával" hozhatjuk létre azt a halmazt, melynek egyetlen eleme maga az üres halmaz. Ezt az eljárást rendre az eredményen megismételve tetszőlegesen sok egymástól különböző egyelemű halmazt hozhatunk létre. Ezekből aztán egyszerre többet is felsorolva tetszőlegesen sok véges elemszámú halmazt állíthatunk elő.
 
 A halmazelmélet alapelve nem garantálja többelemű halmazok létezését. Annyit garantál csupán, hogy az üres halmaz mellett legalább még egy halmaz létezik. Azt, hogy akár két elemet is fel tudjunk venni egy halmazba a __páraxióma__ biztosítja: ∀x,y ∃A ∀z ( z∈A ⇔ z=x ∨ z=y )
 
 A páraxióma nem zárja ki (de természetesen nem is követeli meg) a halmazba foglalható két elem azonosságát. Magába foglalja tehát, de egyben ki is terjeszti a halmazelmélet alapelvét. Általánosabb érvényű elvként lép be a halmazelmélet axiómáinak sorába: belőle a halmazelmélet alapelve levezethetővé válik.
 
-A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló végtelen számú posztulátummal kéne az elméletet bővíteni. Ehelyett inkább bevezetjük a már létező halmazok elemeinek egyesítését egyetlen közös halmazba.
+A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló szerkezetű végtelen számú posztulátummal kéne az elméletet bővíteni. Ehelyett inkább bevezetjük a már létező halmazok elemeinek egyesítését egyetlen közös halmazba.
 
 ### Halmazok egyesítése
 
