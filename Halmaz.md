@@ -111,7 +111,7 @@ Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek összess�
 
 
 - Megalkotjuk a halmazokat, vagy csak elkülönítünk bennük más halmazokat?
-- Létrejönnek a halmazok, vagy egyszer s mindekorra adottak?
+- Létrejönnek a halmazok, vagy egyszer s mindenkorra adottak?
 
 
 - Melyek az _eleme_ reláció jellemzői?
