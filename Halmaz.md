@@ -87,7 +87,7 @@ A halmazelmélet alapelve nem garantálja többelemű halmazok létezését. Ann
 
 A páraxióma nem zárja ki (de természetesen nem is követeli meg) a halmazba foglalható két elem azonosságát. Magába foglalja tehát, de egyben ki is terjeszti a halmazelmélet alapelvét. Általánosabb érvényű elvként lép be a halmazelmélet axiómáinak sorába: belőle a halmazelmélet alapelve levezethetővé válik.
 
-A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló szerkezetű végtelen számú posztulátummal lehetne például az elméletet bővíteni; ehelyett azonban elegendő mindössze bevezetni két halmaz elemeinek egybefoglalását, azaz két halmaz egyesítését.
+A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló szerkezetű végtelen számú posztulátummal lehetne például az elméletet bővíteni; ehelyett azonban az is elegendő ha bevezetjük két halmaz elemeinek egybefoglalását, azaz két halmaz egyesítését.
 
 ### Halmazrészek, részhalmazok
 
@@ -97,12 +97,13 @@ Láttuk, hogy az üres halmaz bevezetését (többek között) az is indokolja, 
 De vajon miért tekintjük halmaznak a metszetet általában? Minek az alapján gondoljuk azt, hogy halmazok közös része szintén halmaz? A gondolat a halmazképzés első megkülönböztetésére támaszkodik, amely szerint másoktól egyértelműen megkülönböztetett dolgokat egy halmaz elemeinek nevezhetünk. A megkülönböztetésnek azt a módját pedig, amely már meghatározott (jól definiált) halmazok _közös_ elemeit különíti el minden mástól, jogosan nevezhetjük egyértelműnek.
 
 Az axiomatikus halmazelmélet azonban ennél általánosabb elvet rögzít, amely szerint nem csak halmazok közös része, hanem egy adott halmaz _bármely_ része halmaz: tehát egy halmaz tetszőlegesen, de egyértelműen megkülönböztetett elemei szintén halmazt alkotnak.
-Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )
-Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmazaxióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
+Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz-axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )  
+Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmaz-axióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
 
+Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek összességét is célszerű halmaznak tekinteni. Bár az _elemhalmaz_ (értsd: elemek halmaza), _számhalmaz_  (értsd: számok halmaza), _ponthalmaz_ (értsd: pontok halmaza) szóösszetételek mintájára következetes volna egy halmaz részeinek összességét _részhalmaz_-nak (értsd: részek halmaza) nevezni, a fogalmat egyfelől magukra a halmazrészekre alkalmazzák, másfelől más nyelvekben is a _hatványhalmaz_ (_Potenzmenge_, _power set_) megnevezést használják egy halmaz részeinek halmazára.
+Létezését a __hatványhalmaz-axióma__ biztosítja:
+∀A ∃B ∀x ( x∈B ⇔ x⊆A )
 
-
-Miért nem lehet ez általános halmazképző elv?
 
 
 ### Halmazok egyesítése
@@ -117,3 +118,10 @@ Miért nem lehet ez általános halmazképző elv?
 - Melyek az _eleme_ reláció jellemzői?
 - Lehet-e egy halmaz önmagának az eleme?
 - Lehet-e két halmaz kölcsönösen eleme egymásnak?
+
+
+
+- Osztályok, mint szuperhalmazok ("más típusú" halmazok)
+- Osztályok, mint méretkorlátozott halmazokat
+- Osztályok, mint potenciális halmazok (halmazok a megkonstruált osztályok)
+- Osztályok, mint fogalmak terjedelmei
