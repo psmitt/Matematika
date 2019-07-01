@@ -56,6 +56,7 @@ Ennek első lépése, hogy a halmazok dologiságát halmazelméleti szempontból
 
 Az üres halmaz léte garantálja, hogy legalább egy halmaz tőle különnemű elemek nélkül is létezik, az üres halmazt elemként felfogva pedig további halmazokat képezhetünk további különnemű elemek nélkül. Teljesen eltekinthetünk tehát az elemektől _mint halmazoktól különböző dolgoktól_, és ezzel a (minőségi) elvonatkoztatással megalapozhatjuk a tiszta halmazelméletet, amelyben minden dolog halmaz és más halmazoknak az eleme is egyben.  
 Ez __a tiszta halmazelmélet elve__: ___minden halmaz___.
+Pontosabban: a halmazok elemei is halmazok. Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, a tiszta halmazelmélet elve mint __elemaxióma__ formalizálható: ∀x ∀A ( x∈A ⇒ x halmaz )
 
 A tiszta halmazelmélet elve _egyneműsíti_ a halmazokat és az elemeket, ezáltal megszünteti a lényegi különbséget a halmazok és elemeik között. Egyszerre szünteti meg az elem fogalom dologiságát és a halmaz definiálható fogalmát. A halmaz fogalma _alapfogalommá_, az elem fogalma pedig a halmazok közötti _relációvá_ változik. A halmazképzés négy eredeti megkülönböztetése részint összemosódik, részint problematikussá válik. _Az elemek megkülönböztetése egymástól a halmazok egymástól való megkülönböztetésévé lesz, amelyeket viszont éppen az elemeik alapján kellene megkülönböztetnünk._ Ördögi kör!
 
@@ -86,15 +87,9 @@ A halmazelmélet alapelve nem garantálja többelemű halmazok létezését. Ann
 
 A páraxióma nem zárja ki (de természetesen nem is követeli meg) a halmazba foglalható két elem azonosságát. Magába foglalja tehát, de egyben ki is terjeszti a halmazelmélet alapelvét. Általánosabb érvényű elvként lép be a halmazelmélet axiómáinak sorába: belőle a halmazelmélet alapelve levezethetővé válik.
 
-A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló szerkezetű végtelen számú posztulátummal kéne az elméletet bővíteni. Ehelyett inkább bevezetjük a már létező halmazok elemeinek egyesítését egyetlen közös halmazba.
+A páraxióma azonban önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló szerkezetű végtelen számú posztulátummal lehetne például az elméletet bővíteni; ehelyett azonban elegendő mindössze bevezetni két halmaz elemeinek egybefoglalását, azaz két halmaz egyesítését.
 
-### Halmazok egyesítése
-
-### Hatványhalmaz
-
-## Az univerzum megmentése
-
-### Halmazok metszete és része
+### Halmazrészek, részhalmazok
 
 Definíció szerint adott halmazok metszete a halmazok közös elemeinek a halmaza, vagyis a halmazok közös része.
 Láttuk, hogy az üres halmaz bevezetését (többek között) az is indokolja, hogy általa a metszetképzést a halmazokon értelmezett _zárt_ műveletté tehetjük, tehát halmazok közös részét akkor is halmaznak tekinthetjük, ha a halmazoknak közös eleme nincs.
@@ -103,8 +98,18 @@ De vajon miért tekintjük halmaznak a metszetet általában? Minek az alapján 
 
 Az axiomatikus halmazelmélet azonban ennél általánosabb elvet rögzít, amely szerint nem csak halmazok közös része, hanem egy adott halmaz _bármely_ része halmaz: tehát egy halmaz tetszőlegesen, de egyértelműen megkülönböztetett elemei szintén halmazt alkotnak.
 Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )
+Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmazaxióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
+
+
 
 Miért nem lehet ez általános halmazképző elv?
+
+
+### Halmazok egyesítése
+
+
+## Az univerzum megmentése
+
 
 
 
