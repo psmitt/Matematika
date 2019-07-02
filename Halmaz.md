@@ -126,7 +126,7 @@ Egy A halmaz hatványhalmazát általában így jelöljük: 𝒫(A)
 
 ### Végtelenek sokasága
 
-A tiszta halmazelméletben, az üres halmazra mint végső alapelemre építve, a halmazműveletek következetes alkalmazása révén előállítható bármely véges elemszámú halmaz. Egyedül a hatványhalmazképzéssel is tetszőlegesen nagy elemszámú halmazokat állíthatunk elő. Az eddig bevezetett axiómák közül azonban egyik sem garantálja, hogy _végtelen_ halmaz is létezik: olyan halmaz, amely _bármely_ véges számnál több elemet tartalmaz.
+A tiszta halmazelméletben, az üres halmazra mint végső alapelemre építve, a halmazműveletek következetes alkalmazása révén előállítható bármely véges elemszámú halmaz. Egyedül a hatványhalmaz művelettel is tetszőlegesen nagy elemszámú halmazokat állíthatunk elő. Az eddig bevezetett axiómák közül azonban egyik sem garantálja, hogy _végtelen_ halmaz is létezik: olyan halmaz, amely _bármely_ véges számnál több elemet tartalmaz.
 
 A matematikai gyakorlatban persze ismerünk végtelen halmazokat: a számok halmazát, a térbeli pontok halmazát, a leképezések halmazát stb. Ezeknek a tiszta halmazelméleti modellezéséhez azonban _halmazokból álló_ végtelen halmazokra van szükség.
 
@@ -136,14 +136,13 @@ Megszámlálhatóan végtelen halmazok létezésének posztulálásához a term�
 - a kezdőelem az üres halmaz;
 - a rákövetkező halmazok rendre az utolsóként előállított halmaz "felsorolásával" adódnak.
 
-Az egymásra következő halmazok elemszámát is különbözővé tehetjük egy módosítással, ez a rákövetkezés Neumann-féle elve:
+Egy módosítással az egymásra következő halmazok _elemszámát_ is különbözővé tehetjük, ez a rákövetkezés Neumann-féle elve:
 - a kezdőelem az üres halmaz;
 - a rákövetkező halmazok rendre az összes addig előállított halmaz felsorolásával adódnak.
 
-Természetesen más rákövetkezési elvek is szabadon konstruálhatók; a halmazelméletben mindenesetre Neumann javaslatát kanonizálták.
+Természetesen más rákövetkezési elvek is szabadon konstruálhatók; a halmazelméletben mindenesetre Neumann javaslatát kanonizálták. Jelölje egy x halmaz (valamilyen elv szerinti) rákövetkezőjét: x⁺
 
-Jelölje egy x halmaz (valamilyen elv szerinti) rákövetkezőjét: x⁺  
-A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz, aminek az üres halmaz és minden rákövetkezője is eleme_:
+A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz, aminek eleme az üres halmaz, és minden elemének a rákövetkezője is eleme a halmaznak_:
 ∃A ( ∅∈A ∧ ∀x ( x∈A ⇒ x⁺∈A ) )
 
 
