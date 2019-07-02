@@ -70,7 +70,7 @@ Mondhatjuk, hogy az üres halmaz mint kezdőelem már a rendelkezésünkre áll.
 
 Úgy tűnik tehát, hogy a halmazfogalom alapvető elvei a tiszta halmazelméletben is megőrizhetők. Kérdés azonban, hogy létezik-e a tiszta halmazelméletben a halmazképzésnek más módja is, mint halmazoknak más halmazokon végzett műveletek révén történő előállítása. Egyáltalán és mindenekelőtt: miféle műveletekkel állíthatunk elő adott halmazokból más halmazokat?
 
-## Halmazok halmozása: a kumulatív hierarchia
+## Halmazműveletek
 
 Az alábbiakban olyan eljárásokat ismertetünk, amelyek lehetővé teszik, hogy az üres halmazból mint alapelemből tetszőleges méretű és szerkezetű halmazokat állítsunk elő.
 
@@ -80,29 +80,45 @@ Az elemek egyenkénti megjelölése egy halmaz meghatározásának a legegyszer�
 
 A tiszta halmazelméletben csak más, már definiált halmazok felsorolásával állíthatunk elő újabb halmazokat. Ehhez a módszerhez kezdetben csak egyetlen halmaz áll a rendelkezésünkre: az üres halmaz. Az üres halmaz "felsorolásával" hozhatjuk létre azt a halmazt, melynek egyetlen eleme maga az üres halmaz. Ezt az eljárást rendre az eredményen megismételve tetszőlegesen sok egymástól különböző egyelemű halmazt hozhatunk létre. Ezekből aztán egyszerre többet is felsorolva tetszőlegesen sok véges elemszámú halmazt állíthatunk elő.
 
-A halmazelmélet alapelve nem garantálja többelemű halmazok létezését. Annyit garantál csupán, hogy az üres halmaz mellett legalább még egy halmaz létezik. Azt, hogy akár két elemet is fel tudjunk venni egy halmazba a __páraxióma__ biztosítja: ∀x,y ∃A ∀z ( z∈A ⇔ z=x ∨ z=y )
+A halmazelmélet alapelve nem garantálja többelemű halmazok létezését. Annyit garantál csupán, hogy az üres halmaz mellett legalább még egy halmaz létezik. Azt, hogy akár két elemet is fel tudjunk venni egy halmazba a __páraxióma__ biztosítja: ∀x ∀y ∃A ∀z ( z∈A ⇔ z=x ∨ z=y )
+
+A páraxióma által biztosított _rendezetlen pár_ szokásos jelölése:
+{ x, y }
 
 A páraxióma nem zárja ki (de természetesen nem is követeli meg) a halmazba foglalható két elem azonosságát. Magába foglalja tehát, de egyben ki is terjeszti a halmazelmélet alapelvét. Általánosabb érvényű elvként lép be a halmazelmélet axiómáinak sorába: belőle a halmazelmélet alapelve levezethetővé válik.
 
-A páraxióma önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, a páraxiómához hasonló szerkezetű végtelen számú posztulátummal kellene az elméletet bővíteni - ehelyett elég ha bevezetjük két halmaz elemeinek egybefoglalását, azaz két halmaz egyesítését.
+A páraxióma önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehetőségeit kimerítsük. Ahhoz, hogy tetszőleges véges elemszámú halmazokat állíthassunk elő felsorolással, elvileg a páraxiómához hasonló szerkezetű végtelen számú posztulátummal kellene az elméletet bővíteni - ehelyett azonban az is elég, ha bevezetjük két halmaz elemeinek egybefoglalását, azaz két halmaz egyesítését.
+
+### Elemek egyesítése
+
+Különböző halmazok elemeinek egyetlen halmazba foglalását a halmazok _egyesítésének_ vagy _uniójának_ nevezzük. Az egyesített halmazok mindegyike _része_ az egyesítési halmaznak, és az egyesítési halmaznak nincs olyan eleme, amelyik ne volna _közös_ valamelyik egyesített halmazzal.
+
+Az egyesítési halmaz létezését természetesen axiómával kell biztosítani. A formalizáláshoz azonban nem alkalmazhatjuk a halmazalgebrák műveleteinek bevezetésekor használt A∪B jelölést, mert nem csak véges számú, hanem tetszőlegesen sok halmaz uniójának a létezését szeretnénk garantálni. Az __egyesítési axióma__ ezért nem halmazokra, hanem ___elemekre___ van kimondva: _bármely halmaz elemei egyesíthetők_.
+∀A ∃B ∀x ( x∈B ⇔ ∀y ( y∈A ∧ x∈y ) )
+
+Egy A halmaz elemeinek egyesítési halmazát így jelöljük: ⋃A
+
+Ahhoz tehát, hogy halmazokat egyesíthessünk, mindenekelőtt egyetlen halmazba kell foglalnunk őket _mint elemeket_. Szerencsére a páraxióma lehetővé teszi, hogy két halmazt egyesítsünk:
+A∪B ≝ ⋃ { A, B }
+
+A páraxióma és két halmaz egyesítése révén immár megvalósítható tetszőleges véges elemszámú halmazok előállítása az elemek felsorolásával.
 
 ### Halmazrészek, részhalmazok
 
-Definíció szerint adott halmazok metszete a halmazok közös elemeinek a halmaza, vagyis a halmazok közös része.
+Definíció szerint adott halmazok metszete: a halmazok közös elemeinek a halmaza, vagyis a halmazok közös része.
 Láttuk, hogy az üres halmaz bevezetését (többek között) az is indokolja, hogy általa a metszetképzést a halmazokon értelmezett _zárt_ műveletté tehetjük, tehát halmazok közös részét akkor is halmaznak tekinthetjük, ha a halmazoknak közös eleme nincs.
 
 De vajon miért tekinthetjük halmaznak a metszetet egyáltalában? Minek az alapján gondoljuk azt, hogy halmazok közös része szintén halmaz? A gondolat a halmazképzés első megkülönböztetésére támaszkodik, amely szerint másoktól egyértelműen megkülönböztetett dolgokat egy halmaz elemeinek nevezhetünk. A megkülönböztetésnek azt a módját pedig, amely már meghatározott (jól definiált) halmazok _közös_ elemeit különíti el minden mástól, jogosan nevezhetjük egyértelműnek.
 
 Az axiomatikus halmazelmélet ennél általánosabb elvet rögzít, amely szerint nem csak halmazok közös része, hanem egy adott halmaz _bármely_ része halmaz: tehát egy halmaz tetszőlegesen, de egyértelműen megkülönböztetett elemei szintén halmazt alkotnak.
-Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz-axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )  
+Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz-axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )
+
+Az axiómaséma által garantált egyedi halmaz definitív leírásához használjuk a megszokott B = { x∈A | 𝜑(x) } jelölést.
+
 Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmaz-axióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
 
 Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek összességét is célszerű halmaznak tekinteni. Bár az _elemhalmaz_ (értsd: elemek halmaza), _számhalmaz_  (értsd: számok halmaza), _ponthalmaz_ (értsd: pontok halmaza) szóösszetételek mintájára következetes volna egy halmaz részeinek összességét _részhalmaz_-nak (értsd: részek halmaza) nevezni, azonban ez utóbbi fogalmat magukra a halmazrészekre alkalmazzuk. Egy halmaz részeinek halmazára a _hatványhalmaz_ megnevezést használjuk, és létezését a __hatványhalmaz-axióma__ biztosítja:
 ∀A ∃B ∀x ( x∈B ⇔ x⊆A )
-
-### Halmazok egyesítése
-
-
 
 ## Az univerzum megmentése
 
@@ -115,9 +131,12 @@ Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek összess�
 - Lehet-e egy halmaz önmagának az eleme?
 - Lehet-e két halmaz kölcsönösen eleme egymásnak?
 
-
+- Kumulatív hierarchia: halmazok halmozása
 
 - Osztályok, mint szuperhalmazok ("más típusú" halmazok)
 - Osztályok, mint méretkorlátozott halmazokat
 - Osztályok, mint potenciális halmazok (halmazok a megkonstruált osztályok)
 - Osztályok, mint fogalmak terjedelmei
+
+- halmazok mélyszerkezete
+- halmazok felszíni szerkezete: elemek közötti relációk
