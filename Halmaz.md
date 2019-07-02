@@ -28,7 +28,7 @@ A halmazelméleti egyenlőség mind a halmazok, mind az elemeik tekintetében _a
 Ha egy halmaz egyik eleme megegyezik egy másik halmaznak valamelyik elemével, akkor az a két halmaznak _közös_ eleme.
 Ha két halmaznak minden eleme közös, akkor az egy és ugyanaz a halmaz.  
 Ezt a szemléletet rögzíti a __meghatározottsági__ vagy __extenzionalitási axióma__:
-A = B ≝ ∀x ( x∈A ⇔ x∈B )
+∀A ∀B ( A = B ⟺ ∀x ( x∈A ⇔ x∈B ) )
 
 Két halmaz csak akkor különbözik, ha legalább az egyiknek van olyan eleme, amelyik nem közös a másikkal.
 Ha az egyik halmaznak a másikkal csak közös elemei vannak, akkor az egyik halmaz _része_ a másik halmaznak.
@@ -41,7 +41,7 @@ Az a felismerés azonban, hogy a metszetképzés _halmazokkal végezhető művel
 Ezt a megállapodást rögzíti az __üres halmaz posztulátuma__:
 ∃A ∀x ( x∉A )
 
-Az üres halmaz fogalma olyan (mennyiségi) elvonatkoztatás a halmazokat meghatározó elemektől, amely logikailag összeegyeztethető a halmazképzés négy megkülönböztetésével azzal a következtetéssel, hogy – az extenzionalitási axióma alapján – _csak egyetlen üres halmaz létezik_.
+Az üres halmaz fogalma olyan (mennyiségi) elvonatkoztatás a halmazokat meghatározó elemektől, amely logikailag összeegyeztethető a halmazképzés négy megkülönböztetésével azzal a következtetéssel, hogy – az extenzionalitási axióma alapján – _csak egyetlen üres halmaz létezik_. Az üres halmaz jele: ∅
 
 Az elemek megkülönböztetésén és azonosságán alapuló általános halmazfogalom tehát a következő elvekre épül:
 - a halmazelmélet alapelve;
@@ -117,10 +117,40 @@ Az axiómaséma által garantált egyedi halmaz definitív leírásához haszná
 
 Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmaz-axióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
 
-Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek összességét is célszerű halmaznak tekinteni. Bár az _elemhalmaz_ (értsd: elemek halmaza), _számhalmaz_  (értsd: számok halmaza), _ponthalmaz_ (értsd: pontok halmaza) szóösszetételek mintájára következetes volna egy halmaz részeinek összességét _részhalmaz_-nak (értsd: részek halmaza) nevezni, azonban ez utóbbi fogalmat magukra a halmazrészekre alkalmazzuk. Egy halmaz részeinek halmazára a _hatványhalmaz_ megnevezést használjuk, és létezését a __hatványhalmaz-axióma__ biztosítja:
+Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek _összességét_ is célszerű halmaznak tekinteni. Bár az _elemhalmaz_ (értsd: elemek halmaza), _számhalmaz_  (értsd: számok halmaza), _ponthalmaz_ (értsd: pontok halmaza) szóösszetételek mintájára következetes volna egy halmaz részeinek összességét _részhalmaz_-nak (értsd: részek halmaza) nevezni, azonban ez utóbbi fogalmat magukra a halmazrészekre alkalmazzuk. Egy halmaz részeinek halmazára a _hatványhalmaz_ megnevezést használjuk, és létezését a __hatványhalmaz-axióma__ biztosítja:
 ∀A ∃B ∀x ( x∈B ⇔ x⊆A )
 
+Egy A halmaz hatványhalmazát általában így jelöljük: 𝒫(A)
+
 ## Az univerzum megmentése
+
+### Végtelenek sokasága
+
+A tiszta halmazelméletben, az üres halmazra mint végső alapelemre építve, a halmazműveletek következetes alkalmazása révén előállítható bármely véges elemszámú halmaz. Egyedül a hatványhalmazképzéssel is tetszőlegesen nagy elemszámú halmazokat állíthatunk elő. Az eddig bevezetett axiómák közül azonban egyik sem garantálja, hogy _végtelen_ halmaz is létezik: olyan halmaz, amely _bármely_ véges számnál több elemet tartalmaz.
+
+A matematikai gyakorlatban persze ismerünk végtelen halmazokat: a számok halmazát, a térbeli pontok halmazát, a leképezések halmazát stb. Ezeknek a tiszta halmazelméleti modellezéséhez azonban _halmazokból álló_ végtelen halmazokra van szükség.
+
+Szemléletünk "legegyszerűbb" végtelenfogalma: a vég nélküli ismétlődés. Az örökös ismétlődés végtelenje a mindennapi gyakorlatból, tapasztalatból ismert periodikus események állandósítása: egyfajta elvonatkoztatás a változástól. Tipikus példája ennek az időmérés alapjául szolgáló napi és éves ciklus. A periódusok megkülönböztetésének és azonosításának praktikus módja a _számlálás_: a számok soha el nem fogyó sorának társítása az események szüntelenül ismétlődő sorához. Az egyértelmű azonosítást a számlálás következetessége biztosítja; nincs kihagyás: az egymás után következő periódusokhoz egymás után következő számokat társítunk. Amennyiben egy végtelen halmaz elemei a természetes számokhoz hasonló _hiánytalan_ sorba rendezhetők, akkor azt a halmazt _megszámlálhatóan végtelennek_ nevezzük.
+
+Megszámlálhatóan végtelen halmazok létezésének posztulálásához a természetes számokhoz hasonlóan rendre egymásra következő, de egymástól garantáltan különböző elemek vég nélküli sorát kell biztosítani. Egy ilyen konstrukcióval már találkoztunk az elemek felsorolásával előállítható egyelemű halmazok tárgyalásakor, ez a rákövetkezés Zermelo-féle elve:
+- a kezdőelem az üres halmaz;
+- a rákövetkező halmazok rendre az utolsóként előállított halmaz "felsorolásával" adódnak.
+
+Az egymásra következő halmazok elemszámát is különbözővé tehetjük egy módosítással, ez a rákövetkezés Neumann-féle elve:
+- a kezdőelem az üres halmaz;
+- a rákövetkező halmazok rendre az összes addig előállított halmaz felsorolásával adódnak.
+
+Természetesen más rákövetkezési elvek is szabadon konstruálhatók; a halmazelméletben mindenesetre Neumann javaslatát kanonizálták.
+
+Jelölje egy x halmaz (valamilyen elv szerinti) rákövetkezőjét: x⁺  
+A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz, aminek az üres halmaz és minden rákövetkezője is eleme_:
+∃A ( ∅∈A ∧ ∀x ( x∈A ⇒ x⁺∈A ) )
+
+
+
+
+## Az univerzum megmentése
+
 
 
 - Megalkotjuk a halmazokat, vagy csak elkülönítünk bennük más halmazokat?
