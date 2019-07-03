@@ -11,12 +11,12 @@ A halmazképzés négy megkülönböztetésből áll:
    Ennek a megkülönböztetésnek nem a módja a lényeges, hanem az eredménye: ugyanazokat a dolgokat többféleképpen is megkülönböztethetjük a többitől.
    A másoktól egyértelműen megkülönböztetett dolgokat a halmaz _elemeinek_ nevezzük.
 
-   __A halmazelmélet alapelve__ szerint ___minden elem___. Pontosabban bármely egyértelműen azonosítható dolog elemként halmazba foglalható:
+   __A halmazelmélet alapelve__ szerint ___minden elem___. Pontosabban, bármely egyértelműen azonosítható dolog elemként halmazba foglalható:
    ∀x ∃A ( x∈A )
 
 2. Egy halmaz elemeit nemcsak minden mástól, hanem egymástól is megkülönböztetjük.
 
-   Ez a megkülönböztetés azt jelenti, hogy a halmaz elemei nem azonosak egymással, és minden egyes elem csak önmagával azonos:
+   Ez a megkülönböztetés azt jelenti, hogy a halmaz elemei nem azonosak egymással, minden egyes elem csak önmagával azonos:
    mindegyik a halmaznak ___egyedi___ (egyszeres) eleme, nem tartozhat "többszörösen" ugyanahhoz a halmazhoz.
 
 3. A halmaz elemeit megkülönböztetjük magától a halmaztól is.
@@ -26,7 +26,7 @@ A halmazképzés négy megkülönböztetésből áll:
 
 A halmazelméleti egyenlőség mind a halmazok, mind az elemeik tekintetében _azonosságot_ jelent.
 Ha egy halmaz egyik eleme megegyezik egy másik halmaznak valamelyik elemével, akkor az a két halmaznak _közös_ eleme.
-Ha két halmaznak minden eleme közös, akkor az egy és ugyanaz a halmaz.  
+Ha két halmaznak minden eleme közös, akkor az _egy és ugyanaz_ a halmaz.  
 Ezt a szemléletet rögzíti a __meghatározottsági__ vagy __extenzionalitási axióma__:
 ∀A ∀B ( A = B ⟺ ∀x ( x∈A ⇔ x∈B ) )
 
@@ -49,7 +49,7 @@ Az elemek megkülönböztetésén és azonosságán alapuló általános halmazf
 - a halmazok elemeik általi meghatározottságának elve (extenzionalitási axióma);
 - valamint az üres halmaz egzisztenciája és unicitása.
 
-## A tiszta halmazelmélet eszméje és alapproblémái
+## A tiszta halmazelmélet eszméje és alapproblémája
 
 Miután a fenti szemlélet megalapozta a halmazok _mint dolgok_ fogalmát, a halmazelmélet teljes formalizálása végett elvonatkoztathatunk _az elem fogalom dologi tartalmától_.
 Ennek első lépése, hogy a halmazok dologiságát halmazelméleti szempontból teljessé tesszük azzal a megállapítással, hogy mivel a halmazok egymástól egyértelműen megkülönböztethetők, ezért maguk is lehetnek elemek: elemei _más_ halmazoknak.
@@ -94,7 +94,7 @@ A páraxióma önmagában nem elegendő ahhoz, hogy a felsorolás műveleti lehe
 Különböző halmazok elemeinek egyetlen halmazba foglalását a halmazok _egyesítésének_ vagy _uniójának_ nevezzük. Az egyesített halmazok mindegyike _része_ az egyesítési halmaznak, és az egyesítési halmaznak nincs olyan eleme, amelyik ne volna _közös_ valamelyik egyesített halmazzal.
 
 Az egyesítési halmaz létezését természetesen axiómával kell biztosítani. A formalizáláshoz azonban nem alkalmazhatjuk a halmazalgebrák műveleteinek bevezetésekor használt A∪B jelölést, mert nem csak véges számú, hanem tetszőlegesen sok halmaz uniójának a létezését szeretnénk garantálni. Az __egyesítési axióma__ ezért nem halmazokra, hanem ___elemekre___ van kimondva: _bármely halmaz elemei egyesíthetők_.
-∀A ∃B ∀x ( x∈B ⇔ ∀y ( y∈A ∧ x∈y ) )
+∀A ∃B ∀x ( x∈B ⇔ ∃y∈A ( x∈y ) )
 
 Egy A halmaz elemeinek egyesítési halmazát így jelöljük: ⋃A
 
@@ -111,9 +111,9 @@ Láttuk, hogy az üres halmaz bevezetését (többek között) az is indokolja, 
 De vajon miért tekinthetjük halmaznak a metszetet egyáltalában? Minek az alapján gondoljuk azt, hogy halmazok közös része szintén halmaz? A gondolat a halmazképzés első megkülönböztetésére támaszkodik, amely szerint másoktól egyértelműen megkülönböztetett dolgokat egy halmaz elemeinek nevezhetünk. A megkülönböztetésnek azt a módját pedig, amely már meghatározott (jól definiált) halmazok _közös_ elemeit különíti el minden mástól, jogosan nevezhetjük egyértelműnek.
 
 Az axiomatikus halmazelmélet ennél általánosabb elvet rögzít, amely szerint nem csak halmazok közös része, hanem egy adott halmaz _bármely_ része halmaz: tehát egy halmaz tetszőlegesen, de egyértelműen megkülönböztetett elemei szintén halmazt alkotnak.
-Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz-axiómaséma__: ∀A ∀𝜑 ∃B ∀x ( x∈B ⇔ x∈A ∧ 𝜑(x) )
+Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz-axiómaséma__: ∀A ∀𝜗 ∃B ∀x ( x∈B ⇔ ( x∈A ∧ 𝜗(x) ) )
 
-Az axiómaséma által garantált egyedi halmaz definitív leírásához használjuk a megszokott B = { x∈A | 𝜑(x) } jelölést.
+Az axiómaséma által garantált egyedi halmaz definitív leírásához használjuk a megszokott B = { x∈A | 𝜗(x) } jelölést. Ahhoz, hogy a definíció ne legyen rekurzív, nyilván nem engedhetjük meg, hogy a 𝜗 tulajdonság meghatározásában a B halmazra hivatkozzunk!
 
 Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmaz-axióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
 
@@ -122,13 +122,38 @@ Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek _összess
 
 Egy A halmaz hatványhalmazát általában így jelöljük: 𝒫(A)
 
-## Az univerzum megmentése
+### Halmazok leképezése
+
+Míg az előző halmazműveletek a már rendelkezésre álló halmazok _saját_ elemeiből vagy részeiből álló új halmazokat állítanak elő, egy halmaz _leképezése_ egy tőle teljesen független másik halmaz megjelenítését célozza. A kiinduló halmaz és az eredmény között mindössze a leképezési reláció teremt kapcsolatot - lehetséges ugyan, de nem követelmény a két halmaz elemei közötti más összefüggés.
+
+A halmazok leképezésének elve szerint egy halmaz elemeinek bármely egyértelmű leképezése szintén halmazt eredményez. A leképezés egyértelműsége révén az eredmény halmaz is egyértelműen meghatározott. Ezt az elvet rögzíti a __helyettesítési axiómaséma__:
+∀𝜚 ( ∀x ∃!y 𝜚(x,y) ⟹ ∀A ∃!B ∀y ( y∈B ⇔ ∃x∈A 𝜚(x,y) ) )
+
+Az axiómaséma által garantált egyedi halmaz definitív leírásához, a relációs összefüggés y = 𝜚(x) függvényszerű átírásával, használjuk a B = { 𝜚(x) | x∈A } jelölést.
+
+Amennyiben egy reláció nem egyértelmű (tehát nem leképezés), akkor egy halmaz elemeivel relációban álló minden más dolgot elemként tartalmazó halmaz létezése nem garantált. A __határoltsági axiómaséma__ szerint azonban olyan halmaz biztosan létezik, amely tartalmazza az eredeti halmaz relációban álló elemeinek legalább egy relációs párját:
+∀𝜚 ( ∀A ∃B ∀x∈A ( ∃y 𝜚(x,y) ⟹ ∃y∈B 𝜚(x,y) )
+
+Ha tehát az eredeti halmaz minden elemének van relációs párja, akkor az __összegyűjtési axiómaséma__ szerint létezik olyan másik halmaz, amelyben az eredeti halmaz mindegyik elemének van relációs párja:
+∀𝜚 ( ∀x ∃y 𝜚(x,y) ⟹ ∀A ∃B ∀x∈A ∃y∈B 𝜚(x,y) )
+
+A rossz rekurzió elkerülése végett, a részhalmaz-axiómasémához hasonló módon, a fenti esetekben sem engedhetjük meg, hogy a 𝜚 reláció meghatározásakor a B eredmény halmazra hivatkozzunk.
+
+Az üres halmaz posztulátumát felhasználva a helyettesítési axiómasémából levezethető az elkülönítési axiómaséma!
+Ha ugyanis a 𝜗 tulajdonság egy A halmaz egyik elemére sem igaz, akkor B = { x∈A | 𝜗(x) } = ∅, az üres halmaz. Máskülönben legyen y olyan eleme az A halmaznak, amelyre 𝜗(y) fennáll, és definiáljuk a 𝜚 relációt a következőképpen:
+- 𝜚(x) = x, ha 𝜗(x)
+- máskülönben 𝜚(x) = y
+
+A helyettesítési axiómasémát felhasználva: létezik a
+B = { 𝜚(x) | x∈A } = { x∈A | 𝜗(x) } halmaz, ami éppen az A halmaznak a 𝜗 tulajdonság által meghatározott része, amit az elkülönítési axiómaséma is garantál.
+
+## Halmazok halmozása
 
 ### Végtelenek sokasága
 
 A tiszta halmazelméletben, az üres halmazra mint végső alapelemre építve, a halmazműveletek következetes alkalmazása révén előállítható bármely véges elemszámú halmaz. Egyedül a hatványhalmaz művelettel is tetszőlegesen nagy elemszámú halmazokat állíthatunk elő. Az eddig bevezetett axiómák közül azonban egyik sem garantálja, hogy _végtelen_ halmaz is létezik: olyan halmaz, amely _bármely_ véges számnál több elemet tartalmaz.
 
-A matematikai gyakorlatban persze ismerünk végtelen halmazokat: a számok halmazát, a térbeli pontok halmazát, a leképezések halmazát stb. Ezeknek a tiszta halmazelméleti modellezéséhez azonban _halmazokból álló_ végtelen halmazokra van szükség.
+A matematikai gyakorlatban persze ismerünk végtelen halmazokat: a számok halmazát, a térbeli pontok halmazát, a valós függvények halmazát stb. Ezeknek a tiszta halmazelméleti modellezéséhez azonban _halmazokból álló_ végtelen halmazokra van szükség.
 
 Szemléletünk "legegyszerűbb" végtelenfogalma: a vég nélküli ismétlődés. Az örökös ismétlődés végtelenje a mindennapi gyakorlatból, tapasztalatból ismert periodikus események állandósítása: egyfajta elvonatkoztatás a változástól. Tipikus példája ennek az időmérés alapjául szolgáló napi és éves ciklus. A periódusok megkülönböztetésének és azonosításának praktikus módja a _számlálás_: a számok soha el nem fogyó sorának társítása az események szüntelenül ismétlődő sorához. Az egyértelmű azonosítást a számlálás következetessége biztosítja; nincs kihagyás: az egymás után következő periódusokhoz egymás után következő számokat társítunk. Amennyiben egy végtelen halmaz elemei a természetes számokhoz hasonló _hiánytalan_ sorba rendezhetők, akkor azt a halmazt _megszámlálhatóan végtelennek_ nevezzük.
 
@@ -143,10 +168,11 @@ Egy módosítással az egymásra következő halmazok _elemszámát_ is különb
 Természetesen más rákövetkezési elvek is szabadon konstruálhatók; a halmazelméletben mindenesetre Neumann javaslatát kanonizálták. Jelölje egy x halmaz (valamilyen elv szerinti) rákövetkezőjét: x⁺
 
 A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz, aminek eleme az üres halmaz, és minden elemének a rákövetkezője is eleme a halmaznak_:
-∃A ( ∅∈A ∧ ∀x ( x∈A ⇒ x⁺∈A ) )
+∃A ( ∅∈A ∧ ∀x∈A ( x⁺∈A ) )  
+A legszűkebb ilyen halmaz nyilván csak az üres halmaz rákövetkezőit tartalmazza: ezzel a halmazzal modellezzük a természetes számokat! A posztulátum által indukált halmazok metszete.
 
 
-
+## Paradoxon és antinómia
 
 ## Az univerzum megmentése
 
@@ -160,8 +186,6 @@ A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz,
 - Lehet-e egy halmaz önmagának az eleme?
 - Lehet-e két halmaz kölcsönösen eleme egymásnak?
 
-- Kumulatív hierarchia: halmazok halmozása
-
 - Osztályok, mint szuperhalmazok ("más típusú" halmazok)
 - Osztályok, mint méretkorlátozott halmazokat
 - Osztályok, mint potenciális halmazok (halmazok a megkonstruált osztályok)
@@ -169,3 +193,16 @@ A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz,
 
 - halmazok mélyszerkezete
 - halmazok felszíni szerkezete: elemek közötti relációk
+
+
+https://en.wikipedia.org/wiki/Constructive_set_theory
+
+https://hu.wikipedia.org/wiki/Ackermann-halmazelm%C3%A9let
+
+https://hu.wikipedia.org/wiki/Neumann%E2%80%93Bernays%E2%80%93G%C3%B6del-halmazelm%C3%A9let
+
+https://hu.wikipedia.org/wiki/Axiomatikus_halmazelm%C3%A9let
+
+https://hu.wikipedia.org/wiki/Zsebhalmazelm%C3%A9let
+
+https://en.wikipedia.org/wiki/Von_Neumann_universe
