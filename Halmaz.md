@@ -175,17 +175,30 @@ A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz,
 A posztulátum nem zárja ki, hogy egy végtelen halmazban az üres halmazon kívül más "kezdőelem" is legyen, ezért a posztulált halmaz még a rákövetkezés elvének a rögzítésével sem egyértelmű. Az viszont bizonyos, hogy minden ilyen halmaz közös része csak az üres halmazt és annak rákövetkezőit tartalmazza: ezt a halmazt tekintjük a természetes számok halmazelméleti modelljének, és 𝜔-val jelöljük.
 𝜔 ≝ ⋂ { A | ∅∈A ∧ ∀x∈A ( x⁺∈A ) }
 
-Vegyük észre, hogy a végtelen halmaz posztulátuma az üres halmaz létezését is biztosítja, tehát belőle az üres halmaz axióma levezethető!
+Vegyük észre, hogy a végtelen halmaz posztulátuma az üres halmaz létezését is biztosítja, belőle az üres halmaz létezése levezethető!
 
-A végtelen halmazok mint műveleti elemek révén a halmazok univerzumának végtelen számú, méretű és komplexitású tagjait állíthatjuk elő. Talán minden létező, vagy legalábbis minden elképzelhető halmazt. Vajon hogyan tudunk közöttük különbséget tenni? Nemcsak az elemeik összehasonlítása tűnik lehetetlennek, de az is megkérdőjelezhető, hogy bármely két halmazról eldönthetjük-e, hogy melyik eleme a másiknak!
+A végtelen halmazok mint műveleti elemek révén a halmazok univerzumának végtelen számú, méretű és komplexitású tagjait állíthatjuk elő. Talán minden létező, vagy legalábbis minden elképzelhető halmazt. Vajon hogyan tudunk közöttük különbséget tenni? Nemcsak az elemeik összehasonlítása tűnik lehetetlennek, de az is megkérdőjelezhető, hogy bármely két halmazról eldönthetjük-e, hogy melyik eleme a másiknak! Vagy, ha minden halmaz eleme a halmazok univerzumának, akkor milyen halmazoknak lehet az eleme maga az univerzum? És ha az univerzum is halmaz, akkor vajon önmagának az eleme-e? És mekkora lehet ennek az univerzális halmaznak a mérete?
 
 A tiszta halmazelmélet alapdilemmái tehát új kérdésekkel bővülnek:
 - Melyek az _eleme_ reláció általános jellemzői?
-- Lehet-e egy halmaz önmagának az eleme?
 - Lehet-e két halmaz kölcsönösen eleme egymásnak?
+- Lehet-e egy halmaz önmagának az eleme?
+- Mit tudhatunk az univerzális halmazról, amelynek minden halmaz az eleme?
 
-## Paradoxon és antinómia
+## Formalizmus és antinómia
 
+Egy halmaz és az eleme közötti különbség akkor sem magától értetődő, ha különneműek, vagyis az elem maga nem halmaz. Jól érzékeltethető ez a tény egyelemű halmazokkal: magyarázzuk el, miben különbözik az egyetlen kavicsot tartalmazó halmaz magától a kavicstól!
+
+Színesedik a helyzet, ha az egyelemű halmaz egyetlen eleme maga is egy halmaz. Tekintsük az üres halmazt és a rákövetkezőjét: mi közöttük a különbség? Mondhatjuk persze, hogy az egyiknek van egy eleme, a másiknak nincs. De ez az elem az üres halmaz, vagyis a semmi, tehát az egyik halmaz a semmit tartalmazza, a másik pedig semmit sem... nem ugyanaz?
+
+A fenti helyzetekben jól bevált kiút a formalizmus: az elem ábrázolása önmagában és az elem ábrázolása a halmazban. A két formula közötti különbség alkalmas illusztráció a magyarázathoz: ∅ illetve { ∅ }. A formalizmus eredeti célja a gyakorlati ismeretszerzés eredményeinek rögzítése, a nyelvhasználatban rejlő kétértelműségek kiküszöbölése, az ismeretanyag tömörítése, az információközlés optimalizálása és hasonlók. Ám a gyakorlattól és a valóságtól elszakadó, öncélú formalizmus izgalmas kísérletekre csábít. Miért ne lehetne egy halmaz önmagának az eleme, hiszen formálisan ez könnyen leírható: A = { A } ?
+
+Az elméleti ellenvetés az, hogy a halmazképzés harmadik megkülönböztetését ezzel a konstrukcióval teljesen lehetetlenné tesszük, de a negyedik is kétségessé válik: azonos-e vagy különbözik a fenti halmaz a B = { B } halmaztól? A gyakorlati ellenvetés az, hogy önmagát elemként tartalmazó _halmazra_ nem találunk példát. Természetesen ismerünk a gyakorlatban is számos olyan struktúrát, amelyben lehetséges az önreferencia
+
+
+
+
+Ha létezik a tiszta halmazelmélet univerzális halmaza, akkor abban az '_eleme_' reláció teljesen homogénné válik: immár nem külsőleges viszonya a halmazoknak, hanem az univerzális halmazon értelmezett belső, szerkezeti összefüggés!
 
 
 
