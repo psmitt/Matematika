@@ -122,6 +122,8 @@ Tekintettel arra, hogy egy halmaz részei maguk is halmazok, a részek _összess
 
 Egy A halmaz hatványhalmazát általában így jelöljük: 𝒫(A)
 
+𝒫(A) ≝ { x | x⊆A }
+
 ### Halmazok leképezése
 
 Míg az előző halmazműveletek a már rendelkezésre álló halmazok _saját_ elemeiből vagy részeiből álló új halmazokat állítanak elő, egy halmaz _leképezése_ egy tőle teljesen független másik halmaz megjelenítését célozza. A kiinduló halmaz és az eredmény között mindössze a leképezési reláció teremt kapcsolatot - lehetséges ugyan, de nem követelmény a két halmaz elemei közötti más összefüggés.
@@ -161,30 +163,53 @@ Megszámlálhatóan végtelen halmazok létezésének posztulálásához a term�
 - a kezdőelem az üres halmaz;
 - a rákövetkező halmazok rendre az utolsóként előállított halmaz "felsorolásával" adódnak.
 
-Egy módosítással az egymásra következő halmazok _elemszámát_ is különbözővé tehetjük, ez a rákövetkezés Neumann-féle elve:
+Egy kis módosítással az egymásra következő halmazok _elemszámát_ is különbözővé tehetjük, ez a rákövetkezés Neumann-féle elve:
 - a kezdőelem az üres halmaz;
 - a rákövetkező halmazok rendre az összes addig előállított halmaz felsorolásával adódnak.
 
-Természetesen más rákövetkezési elvek is szabadon konstruálhatók; a halmazelméletben mindenesetre Neumann javaslatát kanonizálták. Jelölje egy x halmaz (valamilyen elv szerinti) rákövetkezőjét: x⁺
+Természetesen más rákövetkezési elvek is konstruálhatók; a halmazelméletben mindenesetre Neumann javaslatát kanonizálták. Jelölje egy x halmaz (valamilyen elv szerinti) rákövetkezőjét: x⁺
 
 A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz, aminek eleme az üres halmaz, és minden elemének a rákövetkezője is eleme a halmaznak_:
 ∃A ( ∅∈A ∧ ∀x∈A ( x⁺∈A ) )  
-A legszűkebb ilyen halmaz nyilván csak az üres halmaz rákövetkezőit tartalmazza: ezzel a halmazzal modellezzük a természetes számokat! A posztulátum által indukált halmazok metszete.
 
+A posztulátum nem zárja ki, hogy egy végtelen halmazban az üres halmazon kívül más "kezdőelem" is legyen, ezért a posztulált halmaz még a rákövetkezés elvének a rögzítésével sem egyértelmű. Az viszont bizonyos, hogy minden ilyen halmaz közös része csak az üres halmazt és annak rákövetkezőit tartalmazza: ezt a halmazt tekintjük a természetes számok halmazelméleti modelljének, és 𝜔-val jelöljük.
+𝜔 ≝ ⋂ { A | ∅∈A ∧ ∀x∈A ( x⁺∈A ) }
+
+Vegyük észre, hogy a végtelen halmaz posztulátuma az üres halmaz létezését is biztosítja, tehát belőle az üres halmaz axióma levezethető!
+
+A végtelen halmazok mint műveleti elemek révén a halmazok univerzumának végtelen számú, méretű és komplexitású tagjait állíthatjuk elő. Talán minden létező, vagy legalábbis minden elképzelhető halmazt. Vajon hogyan tudunk közöttük különbséget tenni? Nemcsak az elemeik összehasonlítása tűnik lehetetlennek, de az is megkérdőjelezhető, hogy bármely két halmazról eldönthetjük-e, hogy melyik eleme a másiknak!
+
+A tiszta halmazelmélet alapdilemmái tehát új kérdésekkel bővülnek:
+- Melyek az _eleme_ reláció általános jellemzői?
+- Lehet-e egy halmaz önmagának az eleme?
+- Lehet-e két halmaz kölcsönösen eleme egymásnak?
 
 ## Paradoxon és antinómia
 
+
+
+
 ## Az univerzum megmentése
 
+https://en.wikipedia.org/wiki/Von_Neumann_universe
+Neumann:
+- V₀ = ∅
+- Vᵦ₊₁ = 𝒫(Vᵦ)
+- Vᵧ = ⋃ᵦ<ᵧ Vᵦ
+- V = ⋃ᵦ<ᵧ 𝒫(Vᵦ)
+
+https://en.wikipedia.org/wiki/Constructible_universe
+Gödel megkonstruálható univerzuma: minden rákövetkező csak a megelőző halmazokat tartalmazó bármilyen formulák által definiált összes halmaz.
+- L₀ = ∅
+- Lᵦ₊₁ = Def(Lᵦ)
+- Lᵧ = ⋃ᵦ<ᵧ Lᵦ
+- L = ⋃ Lᵦ
 
 
 - Megalkotjuk a halmazokat, vagy csak elkülönítünk bennük más halmazokat?
 - Létrejönnek a halmazok, vagy egyszer s mindenkorra adottak?
 
 
-- Melyek az _eleme_ reláció jellemzői?
-- Lehet-e egy halmaz önmagának az eleme?
-- Lehet-e két halmaz kölcsönösen eleme egymásnak?
 
 - Osztályok, mint szuperhalmazok ("más típusú" halmazok)
 - Osztályok, mint méretkorlátozott halmazokat
@@ -205,4 +230,5 @@ https://hu.wikipedia.org/wiki/Axiomatikus_halmazelm%C3%A9let
 
 https://hu.wikipedia.org/wiki/Zsebhalmazelm%C3%A9let
 
-https://en.wikipedia.org/wiki/Von_Neumann_universe
+Tranzitív halmaz: minden eleme a részhalmaza is egyben.
+https://en.wikipedia.org/wiki/Transitive_set
