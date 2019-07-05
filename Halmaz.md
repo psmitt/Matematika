@@ -1,10 +1,26 @@
-# A halmazelmélet megalapozása
+# A halmazelmélet alapjai
 
-Halmazok vagy halmazképzés útján, vagy más halmazokkal végzett műveletek révén "keletkeznek".
+## Tartalom
+
+  - #### A halmazképzéstől a halmaz fogalmáig
+  - #### A tiszta halmazelmélet eszméje és alapproblémája
+  - #### Halmazműveletek
+    - __Elemek felsorolása__
+    - __Elemek egyesítése__
+    - __Halmazrészek, részhalmazok__
+    - __Halmazok leképezése__
+  - #### Halmazok halmozása
+    - __Végtelenek sokasága__
+    - __A formalizmus kísértése__
+    - __Antinómia és paradoxon__
+  - #### Az univerzum megmentése
+    - __A logicista megoldás__
+    - __A formalista megoldás__
+    - __Az ontológiai megoldás__
 
 ## A halmazképzéstől a halmaz fogalmáig
 
-A halmazképzés négy megkülönböztetésből áll:
+Halmazok vagy halmazképzés útján, vagy más halmazokkal végzett műveletek révén "keletkeznek". A halmazképzés négy megkülönböztetésből áll:
 
 1. Néhány dolgot megkülönböztetünk minden mástól.
 
@@ -185,7 +201,7 @@ A tiszta halmazelmélet alapdilemmái tehát új kérdésekkel bővülnek:
 - Lehet-e egy halmaz önmagának az eleme?
 - Mit tudhatunk az univerzális halmazról, amelynek minden halmaz az eleme?
 
-## Formalizmus és antinómia
+## A formalizmus kísértése
 
 Egy halmaz és az eleme közötti különbség akkor sem magától értetődő, ha különneműek, vagyis az elem maga nem halmaz. Jól érzékeltethető ez a tény egyelemű halmazokkal: magyarázzuk el, miben különbözik az egyetlen kavicsot tartalmazó halmaz magától a kavicstól!
 
@@ -197,16 +213,17 @@ Az elméleti ellenvetés az, hogy a halmazképzés harmadik megkülönböztetés
 
 Az önmagukat is tartalmazó halmazok ötlete mindenesetre egy új végtelen-perspektívát is kínál: az üres halmazra mint alapelemre épülő végtelen terjedelmű halmaz konstrukciók mellett az önmagukat tartalmazó halmazok még véges elemszám esetén is kibonthatatlanok: mélységükben, vagy ha úgy tetszik, vertikálisan végtelenek...
 
-
-
-
-
+### Antinómia és paradoxon
 
 Ha létezik a tiszta halmazelmélet univerzális halmaza, akkor abban az '_eleme_' reláció teljesen homogénné válik: immár nem külsőleges viszonya a halmazoknak, hanem az univerzális halmazon értelmezett belső, szerkezeti összefüggés!
 
-
-
 ## Az univerzum megmentése
+
+### A logicista megoldás
+
+### A formalista megoldás
+
+### Az ontológiai megoldás
 
 https://en.wikipedia.org/wiki/Von_Neumann_universe
 Neumann:
