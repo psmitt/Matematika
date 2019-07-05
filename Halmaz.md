@@ -20,7 +20,9 @@
 
 ## A halmazképzéstől a halmaz fogalmáig
 
-Halmazok vagy halmazképzés útján, vagy más halmazokkal végzett műveletek révén "keletkeznek". A halmazképzés négy megkülönböztetésből áll:
+Halmazok vagy halmazképzés útján, vagy más halmazokkal végzett műveletek révén "keletkeznek".
+
+A halmazképzés négy megkülönböztetésből áll:
 
 1. Néhány dolgot megkülönböztetünk minden mástól.
 
@@ -129,7 +131,7 @@ De vajon miért tekinthetjük halmaznak a metszetet egyáltalában? Minek az ala
 Az axiomatikus halmazelmélet ennél általánosabb elvet rögzít, amely szerint nem csak halmazok közös része, hanem egy adott halmaz _bármely_ része halmaz: tehát egy halmaz tetszőlegesen, de egyértelműen megkülönböztetett elemei szintén halmazt alkotnak.
 Ezt az elvet rögzíti az __elkülönítési__ vagy __részhalmaz-axiómaséma__: ∀A ∀𝜗 ∃B ∀x ( x∈B ⇔ ( x∈A ∧ 𝜗(x) ) )
 
-Az axiómaséma által garantált egyedi halmaz definitív leírásához használjuk a megszokott B = { x∈A | 𝜗(x) } jelölést. Ahhoz, hogy a definíció ne legyen rekurzív, nyilván nem engedhetjük meg, hogy a 𝜗 tulajdonság meghatározásában a B halmazra hivatkozzunk!
+Az axiómaséma által garantált egyedi halmaz definitív leírásához használjuk a megszokott B = { x∈A | 𝜗(x) } jelölést. Ahhoz, hogy a definíció ne legyen körbenforgó, nyilván nem engedhetjük meg, hogy a 𝜗 tulajdonság meghatározásában a B halmazra hivatkozzunk!
 
 Olyan (általában osztály alapú) axiómarendszerekben, amelyek külön 'halmaz' predikátummal rendelkeznek, az axiómaséma helyett az egyszerűbb __részhalmaz-axióma__ rögzítése is elegendő: ∀x ∀A ( x⊆A ⇒ x halmaz )
 
@@ -155,7 +157,7 @@ Amennyiben egy reláció nem egyértelmű (tehát nem leképezés), akkor egy ha
 Ha tehát az eredeti halmaz minden elemének van relációs párja, akkor az __összegyűjtési axiómaséma__ szerint létezik olyan másik halmaz, amelyben az eredeti halmaz mindegyik elemének van relációs párja:
 ∀𝜚 ( ∀x ∃y 𝜚(x,y) ⟹ ∀A ∃B ∀x∈A ∃y∈B 𝜚(x,y) )
 
-A rossz rekurzió elkerülése végett, a részhalmaz-axiómasémához hasonló módon, a fenti esetekben sem engedhetjük meg, hogy a 𝜚 reláció meghatározásakor a B eredmény halmazra hivatkozzunk.
+A körbenforgó okoskodás elkerülése végett, a részhalmaz-axiómasémához hasonló módon, a fenti esetekben sem engedhetjük meg, hogy a 𝜚 reláció meghatározásakor a B eredmény halmazra hivatkozzunk.
 
 Az üres halmaz posztulátumát felhasználva a helyettesítési axiómasémából levezethető az elkülönítési axiómaséma!
 Ha ugyanis a 𝜗 tulajdonság egy A halmaz egyik elemére sem igaz, akkor B = { x∈A | 𝜗(x) } = ∅, az üres halmaz. Máskülönben legyen y olyan eleme az A halmaznak, amelyre 𝜗(y) fennáll, és definiáljuk a 𝜚 relációt a következőképpen:
@@ -215,9 +217,21 @@ Az önmagukat is tartalmazó halmazok ötlete mindenesetre egy új végtelen-per
 
 ### Antinómia és paradoxon
 
-Ha létezik a tiszta halmazelmélet univerzális halmaza, akkor abban az '_eleme_' reláció teljesen homogénné válik: immár nem külsőleges viszonya a halmazoknak, hanem az univerzális halmazon értelmezett belső, szerkezeti összefüggés!
+A formalizmus az univerzális halmaz leírását is "testközelbe hozza": legyen U = { x | x = x } minden dolgok halmaza, avagy - a tisza halmazelméletben - a halmazok halmaza. Minthogy U - fogalma szerint - maga is halmaz, ráadásul, mint minden dolog, önmagával azonos, ezért nyilvánvalóan eleme önmagának. Ezt a reflexív viszonyt a formalizmus is megengedi és most már példát is tudunk mondani rá, vezessünk hát be egy külön elnevezést a hasonló tulajdonságú halmazokra.
+
+___Definíció___: Azokat a halmazokat, amelyek önmaguknak nem elemei, nevezzük _reguláris_ halmazoknak; azokat, amelyek önmaguknak az elemei, nevezzük _irreguláris_ halmazoknak.
+
+Az elkülönítési axióma alapján létezik U-nak a reguláris része, amely tehát csak a reguláris halmazokat tartalmazza: R = { x∈U | x∉x }.
+A kérdés az, hogy maga R vajon reguláris vagy irreguláris?
+Ha reguláris, akkor maga is eleme az U reguláris részének, tehát önmagának - ha eleme önmagának, akkor viszont definíció szerint irreguláris! Ha irreguláris, akkor nem tartozhat U reguláris részében, tehát nem eleme önmagának - vagyis definíció szerint reguláris! Fogalmi önellentmondásba, mégpedig a nevezetes _Russell-antinómiába_ ütköztünk.
+
+Az univerzális halmazzal más probléma is van. Cantor tétele szerint egy halmaz hatványhalmazának a mérete (számossága) mindig nagyobb, mint az eredeti halmazé. Az univerzális halmaznak azonban minden más halmaz eleme és része is egyben: mérete nem lehet tehát kisebb, mint hatványhalmazának a mérete. Az univerzális halmaz éppen ettől univerzális: voltaképpen azonos a saját hatványhalmazával! Ez a tételnek is és a szemléletnek is ellentmondó következtetés a _Cantor-paradoxon_.
+
+A fentieken kívül még más logikai buktatók is azt jelzik, hogy _az univerzális halmaz fogalma önmagában ellentmondásos_; létezhetnek ugyan halmazokból álló halmazok, de 'minden halmaz halmaza' logikailag kezelhetetlen konstrukció, tehát halmazelméleti szempontból nem létezik. Ezt az antinómiára és a paradoxonokra hivatkozva szokás tételként is rögzíteni: ∄A ∀x ( x∈A )
 
 ## Az univerzum megmentése
+
+
 
 ### A logicista megoldás
 
