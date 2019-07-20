@@ -1,9 +1,26 @@
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css"
+integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ"
+crossorigin="anonymous">
+<script
+defer
+src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"
+integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij"
+crossorigin="anonymous"></script>
+<script
+defer
+src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js"
+integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+crossorigin="anonymous"
+onload="renderMathInElement(document.body)"></script>
+
 # A halmazelmélet alapjai
 
 ## Tartalom
 
   - #### A halmazképzéstől a halmaz fogalmáig
-  - #### A tiszta halmazelmélet eszméje és alapproblémája
+  - #### A tiszta halmazelmélet eszméje és alapdilemmája
   - #### Halmazműveletek
     - __Elemek felsorolása__
     - __Elemek egyesítése__
@@ -14,6 +31,7 @@
     - __A formalizmus kísértése__
     - __Antinómia és paradoxon__
   - #### Az univerzum megmentése
+    - __A grammatikai alapprobléma__
     - __A logicista megoldás__
     - __A formalista megoldás__
     - __Az ontológiai megoldás__
@@ -67,7 +85,7 @@ Az elemek megkülönböztetésén és azonosságán alapuló általános halmazf
 - a halmazok elemeik általi meghatározottságának elve (extenzionalitási axióma);
 - valamint az üres halmaz egzisztenciája és unicitása.
 
-## A tiszta halmazelmélet eszméje és alapproblémája
+## A tiszta halmazelmélet eszméje és alapdilemmája
 
 Miután a fenti szemlélet megalapozta a halmazok _mint dolgok_ fogalmát, a halmazelmélet teljes formalizálása végett elvonatkoztathatunk _az elem fogalom dologi tartalmától_.
 Ennek első lépése, hogy a halmazok dologiságát halmazelméleti szempontból teljessé tesszük azzal a megállapítással, hogy mivel a halmazok egymástól egyértelműen megkülönböztethetők, ezért maguk is lehetnek elemek: elemei _más_ halmazoknak.
@@ -193,7 +211,7 @@ A __végtelen halmaz posztulátuma__ azt mondja ki, hogy _létezik olyan halmaz,
 A posztulátum nem zárja ki, hogy egy végtelen halmazban az üres halmazon kívül más "kezdőelem" is legyen, ezért a posztulált halmaz még a rákövetkezés elvének a rögzítésével sem egyértelmű. Az viszont bizonyos, hogy minden ilyen halmaz közös része csak az üres halmazt és annak rákövetkezőit tartalmazza: ezt a halmazt tekintjük a természetes számok halmazelméleti modelljének, és 𝜔-val jelöljük.
 𝜔 ≝ ⋂ { A | ∅∈A ∧ ∀x∈A ( x⁺∈A ) }
 
-Vegyük észre, hogy a végtelen halmaz posztulátuma az üres halmaz létezését is biztosítja: belőle az üres halmaz létezése levezethető, nem kell tehát azt axiómának rögzíteni!
+Vegyük észre, hogy a végtelen halmaz posztulátuma az üres halmaz létezését is biztosítja: belőle az üres halmaz létezése levezethető, nem kell tehát azt külön axiómának rögzíteni!
 
 A végtelen halmazok mint műveleti elemek révén a halmazok univerzumának végtelen számú, méretű és komplexitású tagjait állíthatjuk elő. Talán minden létező, vagy legalábbis minden elképzelhető halmazt. Vajon hogyan tudunk közöttük különbséget tenni? Nemcsak az elemeik összehasonlítása tűnik lehetetlennek, de az is megkérdőjelezhető, hogy bármely két halmazról eldönthetjük-e, hogy melyik eleme a másiknak! Vagy, ha minden halmaz eleme a halmazok univerzumának, akkor milyen halmazoknak lehet az eleme maga az univerzum? És ha az univerzum is halmaz, akkor vajon önmagának az eleme-e? És mekkora lehet ennek az univerzális halmaznak a mérete?
 
@@ -223,7 +241,7 @@ ___Definíció___: Azokat a halmazokat, amelyek önmaguknak nem elemei, nevezzü
 
 Az elkülönítési axióma alapján létezik U-nak a reguláris része, amely tehát csak a reguláris halmazokat tartalmazza: R = { x∈U | x∉x }.
 A kérdés az, hogy maga R vajon reguláris vagy irreguláris?
-Ha reguláris, akkor maga is eleme az U reguláris részének, tehát önmagának - ha eleme önmagának, akkor viszont definíció szerint irreguláris! Ha irreguláris, akkor nem tartozhat U reguláris részében, tehát nem eleme önmagának - vagyis definíció szerint reguláris! Fogalmi önellentmondásba, mégpedig a nevezetes _Russell-antinómiába_ ütköztünk.
+Ha reguláris, akkor maga is eleme az U reguláris részének, tehát önmagának - ha eleme önmagának, akkor viszont definíció szerint irreguláris! Ha irreguláris, akkor nem tartozhat U reguláris részébe, tehát nem eleme önmagának - vagyis definíció szerint reguláris! Fogalmi önellentmondásba, mégpedig a nevezetes _Russell-antinómiába_ ütköztünk.
 
 Az univerzális halmazzal más probléma is van. Cantor tétele szerint egy halmaz hatványhalmazának a mérete (számossága) mindig nagyobb, mint az eredeti halmazé. Az univerzális halmaznak azonban minden más halmaz eleme és része is egyben: mérete nem lehet tehát kisebb, mint hatványhalmazának a mérete. Az univerzális halmaz éppen ettől univerzális: voltaképpen azonos a saját hatványhalmazával! Ez a tételnek is és a szemléletnek is ellentmondó következtetés a _Cantor-paradoxon_.
 
@@ -231,10 +249,112 @@ A fentieken kívül még más logikai buktatók is azt jelzik, hogy _az univerz�
 
 ## Az univerzum megmentése
 
+### A grammatikai alapprobléma
 
+A nyelvtan szabályai szerint bármely főnévnek képezhető a határozott vagy határozatlan névelővel ellátott egyes és többes száma. Vannak persze kivételek: bizonyos nyelvekben bizonyos főneveknek az egyes vagy többes számú alakjához nem társítunk jelentést (sok nyelvben tipikusan csak többesszámban használatos pl. a 'szemüveg'; ugyanakkor nincs többesszáma bizonyos anyagneveknek). A 'halmaz' szó nem tartozik a kivételek közé.
+
+A főnevek egyes száma határozott névelővel _magát a fogalmat_ azonosítja, határozatlan névelővel pedig a fogalom alá sorolható _előfordulási esetet_ vagy _egyedi példányt_. (Tekintsünk most el a határozott névelős változat használatának azon módjától, amikor visszautalunk a szövegkörnyezetben már bevezetett egyedi példányra.) A többes számú alak határozatlan névelővel (amit a magyar nyelvben a névelő elhagyásával jelzünk) a fogalom alá sorolható _több_, _sok_, _számos_ stb. esetre utal. A határozott névelős többes szám a fogalom alá sorolható _minden_ esetet, vagyis _az összes_ esetet takarja. A 'halmaz' fogalma esetében tehát a 'halmazok' alak __halmazok sokaságát__, míg az 'a halmazok' __a halmazok összességét__ jelenti.
+
+A grammatikai alapprobléma abból adódik, hogy a halmaz szó általános jelentése maga is: _sokaság_, sok példány együttese. Ennek megfelelően, jelentéstanilag és logikailag egyaránt konzisztens módon, beszélhetünk 'halmazok sokaságáról', 'halmazok halmazáról', azaz halmazokból álló halmazokról, ahogyan eddig is tettük. Az a kérdés, hogy kaphat-e ez a többes számú birtokos szerkezet határozott névelőt! Nyelvtani szempontból nincs akadálya, és a szemantikai szabályok szerint ekkor a kifejezéshez az _összesség_ fogalma társul: 'a halmazok halmaza' nem más, mint a halmazok összessége, és erről minden további nélkül értelmesen beszélhetünk... vagy mégsem?
+
+Ahhoz, hogy a grammatikai alapproblémát jobban megvilágítsuk, vegyük szemügyre ugyanezt a birtokos szerkezetet néhány másik fogalom kapcsán. Egyes számban rögtön pompás példa 'a fogalom fogalma', amelynek a megértése részint az előfeltétele, részint a célja lenne minden alaposabb ismeretelméleti kurzusnak. A többes számú alakok közül viszonylag könnyen értelmezhetők bizonyos társadalmi szerepfogalmakból képzett birtokos szerkezetek: 'tanítók tanítója', 'bírák bírája', 'gyilkosok gyilkosa', 'vezérek vezére' - ezeknek a határozott névelős formája egy olyan hierarchikus közösségi berendezkedést modellez, amelyben egyetlen ember (pl. 'a vezérek vezére') áll ugyanabban a relációban minden más hasonló szerepű emberrel, mint amazok a közösség többi tagjával. A határozatlan névelős forma mármost akkor is érvényes jelölettel bírhat, ha az abszolút hierarchia nem létezik: a pedagógusokat képző főiskolai tanárokat joggal nevezhetjük 'tanítók tanítóinak', ha nem is létezik közöttük olyasvalaki, aki egymaga valamennyiüket oktatta volna, kiérdemelve ezáltal az 'a tanítók tanítója' címet.
+
+Hasonlóképpen tehát: a tiszta halmazelmélet minden többelemű konstrukciója joggal nevezhető 'halmazok halmazának', láttuk azonban, hogy a halmazok összességét logikai ellentmondás nélkül nem tekinthetjük halmaznak, ha ragaszkodunk a  szemléletünknek megfelelő, megszokott halmazfogalomhoz. Pedig a halmazelmélet alaptételeinek egyszerűbb formát és közérthetőbb tartalmat biztosíthatna, ha az elmélet keretein belül hivatkozhatnánk 'a halmazok halmazára', amely minden más halmazt elemként tartalmaz.
+
+Megbékélve azzal, hogy az 'a halmazok halmaza' kifejezésnek nem lehet jelölete, két újabb kérdéssel bővíthetjük vizsgálódásaink körét:
+- Mi okozhatja az univerzális halmaz fogalmából kifejtett önellentmondást?
+- Egy ellentmondásmentes halmazelmélet keretein belül mi a lehető "legnagyobb" elemgyűjtemény; van-e érvényes módja a halmazok összességére való hivatkozásnak?
 
 ### A logicista megoldás
 
+A logicizmus szerint az antinómia gyökere a __hibás nyelvhasználat__: az ellentmondásmentesség biztosításához az 'eleme' relációnak és a halmazok egyenlőségének predikatív előfeltételeit kell tisztázni. Nem elegendő azt megállapítani, hogy egy halmaz eleme-e egy másik halmaznak vagy sem: bizonyos esetekben a reláció állítását és tagadását egyaránt értelmetlennek, nyelvtanilag helytelennek kell nyilvánítani.
+
+Az alapötlet a következő: a halmazokat típusokba soroljuk. Az egyszerűség kedvéért jelöljük a típusokat természetes számokkal. Azokat a halmazokat, amelyek nem tartalmaznak elemként más halmazokat, a 0 típusba soroljuk... azokat a halmazokat, amelyek (legfeljebb) _n_ típusú elemeket tartalmaznak, az _n_+1 típusba soroljuk, és így tovább...
+
+Egymással összehasonlítani mármost csak azonos típusú halmazokat lehet, tehát az egyenlőséget vagy különbözőséget csak azonos típusú halmazokra lehet értelmesen állítani, s éppígy tagadni is. A halmazok közötti 'eleme' relációt pedig, az eredeti ötletnek megfelelően, csak egymástól különböző típusú halmazok között állíthatjuk vagy tagadhatjuk akkor, ha az elem típusa kisebb, mint az őt tartalmazó halmazé.
+
+Russell eredeti, nehézkesen kezelhető és többször módosított típuselméleti koncepcióját Quine a _rétegezhető formula_ fogalmára egyszerűsítette, amelyben a változókat kell indexelni olyan módon, hogy
+- egy adott változó szabad előfordulásai ugyanazt az indexet kapják;
+- egyazon kvantor által kötött változók ugyanazt az indexet kapják;
+- az = szimbólum két oldalán szereplő változók ugyanazt az indexet kapják;
+- és az ∈ szimbólum bal oldalán szereplő változó eggyel kisebb indexet kapjon, mint a jobboldalon szereplő változó.
+
+Ha egy 𝜗(x) formula a fenti módon indexelhető, azaz rétegezhető, akkor létezik olyan halmaz, melynek elemei éppen azok a halmazok, amelyekre 𝜗(x) fennáll. Ez __a rétegezett komprehenzió elve__.
+
+A típuselmélet nyelvtani szabályai lehetetlenné teszik, hogy az 'eleme' reláció reflexivitásáról vagy szimmetriájáról bármit is állíthassunk: nem egyszerűen tagadják azt, hogy egy halmaz önmaga eleme lehessen, vagy hogy két halmaz kölcsönösen eleme lehessen egymásnak, hanem az ilyen kijelentést nyelvtanilag hibásnak, _agrammatikusnak_ deklarálják. A Russell-antinómia a típuselmélet nyelvén _nem fogalmazható meg_, mivel a x∉x formula nem rétegezhető; a Cantor-paradoxon pedig nem bukkanhat fel, mert a Cantor-tétel az eredeti formájában nem bizonyítható.
+
+A rétegezett formulákra leszűkített halmazelméletben _létezik az univerzális halmaz_, hiszen az U = { x | x = x } definícióban megadott x = x formula rétegezhető! Ráadásul x = x magára az univerzális halmazra is igaz, ezért tudhatjuk, hogy az univerzális halmaz önmagának is eleme, noha ezt nem állíthatjuk róla!
+
 ### A formalista megoldás
 
+A formalizmus, a Russell-antinómiából indirekten bizonyítva, tételként tagadja az univerzális halmaz létezését. A tiszta halmazelmélet elveire támaszkodva a feltételes egzisztencia-axiómák által definiált műveletekkel építi fel az üres halmazra mint végső alapelemre az összes többi halmazt.
+
+A formalista megoldás nem zárja ki kategorikusan, hogy egy halmaz önmagát tartalmazza, vagy hogy két halmaz kölcsönösen tartalmazza egymást. A _standard halmazelmélet_ mindazonáltal csak reguláris halmazokat engedélyez építeni. A __megalapozottsági__ (__jólfundáltsági__) vagy __regularitási axióma__ következményeként az 'eleme' reláció irreflexív és aszimmetrikus:
+∀A ( A != ∅ ⇒⇒  ∃x ( x∈A ∧ x∧A = ∅ ) )
+
+A halmazelmélet hatóköre a regularitási axióma elhagyásával kiterjeszthető, sőt vannak olyan nem standard halmazelméletek is, amelyek a regularitás kifejezett tagadását (az __antifundáltsági axiómát__) veszik fel alapelveik közé.
+
+Az univerzális halmaz helyett a formalista halmazelméletben több más "univerzum" született: olyan halmazkonstrukciók, amelyek egyfelől elegendően "nagyok" ahhoz, hogy valamennyi "érdekes" halmazt tartalmazzák, másfelől a konstrukciós mechanizmus egyfajta határesetét képezik, amelynél messzebb a transzfinit indukció sem vezet.
+
+Neumann ötlete az volt, hogy az üres halmazból a hatványhalmaz-művelettel állítsuk elő az összes lehetséges halmazt, majd képezzük ezek transzfinit unióját. Ez egy konkrét előllítási módszer, amelynek eredményét V-vel jelöljük. Ez tehát __Neumann univerzuma__:
+
+https://en.wikipedia.org/wiki/Von_Neumann_universe
+Neumann:
+- V₀ = ∅
+- Vᵦ₊₁ = 𝒫(Vᵦ)
+- Vᵧ = ⋃ᵦ<ᵧ Vᵦ
+- V = ⋃ᵦ<ᵧ 𝒫(Vᵦ)
+
+Gödel általánosabb javaslata szerint egy-egy lépésben a már előállított halmazokból az "összes lehetséges formulával" konstruáljunk új halmazokat, és ezek transzfinit uniója legyen az univerzum. Mivel az "összes lehetséges formula" nem áll a rendelkezésünkre, ezért ez csak elvi-elméleti konstrukció, amelynek eredményét L-lel jelöljük. Ez tehát __Gödel univerzuma__:
+
+https://en.wikipedia.org/wiki/Constructible_universe
+Gödel megkonstruálható univerzuma: minden rákövetkező csak a megelőző halmazokat tartalmazó bármilyen formulák által definiált összes halmaz.
+- L₀ = ∅
+- Lᵦ₊₁ = Def(Lᵦ)
+- Lᵧ = ⋃ᵦ<ᵧ Lᵦ
+- L = ⋃ Lᵦ
+
+Groethendick a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan formula, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő.
+
+Tarski axiómája
+
 ### Az ontológiai megoldás
+
+Egy ellentmondásmentes halmazelméletben az 'a halmazok halmaza' kifejezésnek nincs jelölete, a tiszta halmazelméletben pedig a halmaz fogalma definiálhatatlan. Ez végletes veszteség, hiszen ettől kezdve sem az 'a halmaz' sem az 'a halmazok' kifejezésnek nincs értelme az elmélet keretein belül: nem tudjuk tehát, hogy az elmélet miről szól!
+
+Előnyös volna legalább a halmazelmélet megalapozása végett lehetővé tenni, hogy _a halmaz fogalmáról_ és annak érvényességi köréről, vagyis _a halmazok osztályáról_ ugyanolyan logikai szigorúsággal beszélhessünk, mint magukról a halmazokról. Ha a halmazelmélet tényleges tárgyi-tartalmi részéből ki is zárjuk, nyelvi-logikai alapjainak meghatározásában jó hasznát vennénk az _osztály_ fogalmának.
+
+__A halmazok összessége _osztály, de nem halmaz___. Ez a logikailag pontos megállapítás a gyökere annak az ötletnek, hogy a halmaz fogalmát az osztály fogalmára alapozva axiomatizáljuk a halmazelméletet. Az osztály alapú halmazelméletek azonban rendre __meghamisítják__ a halmaz és az osztály közötti ontológiai relációt a következő alapelv bevezetésével: _minden halmaz osztály, de nem minden osztály halmaz_.
+
+Azokat az osztályokat, amelyek nem halmazok, az osztály alapú halmazelméletek valódi osztályoknak nevezik.
+
+
+
+
+
+- Megalkotjuk a halmazokat, vagy csak elkülönítünk bennük más halmazokat?
+- Létrejönnek a halmazok, vagy egyszer s mindenkorra adottak?
+
+
+
+- Osztályok, mint szuperhalmazok ("más típusú" halmazok)
+- Osztályok, mint méretkorlátozott halmazokat
+- Osztályok, mint potenciális halmazok (halmazok a megkonstruált osztályok)
+- Osztályok, mint fogalmak terjedelmei
+
+- halmazok mélyszerkezete
+- halmazok felszíni szerkezete: elemek közötti relációk
+
+
+https://en.wikipedia.org/wiki/Constructive_set_theory
+
+https://hu.wikipedia.org/wiki/Ackermann-halmazelm%C3%A9let
+
+https://hu.wikipedia.org/wiki/Neumann%E2%80%93Bernays%E2%80%93G%C3%B6del-halmazelm%C3%A9let
+
+https://hu.wikipedia.org/wiki/Axiomatikus_halmazelm%C3%A9let
+
+https://hu.wikipedia.org/wiki/Zsebhalmazelm%C3%A9let
+
+Tranzitív halmaz: minden eleme a részhalmaza is egyben.
+https://en.wikipedia.org/wiki/Transitive_set
