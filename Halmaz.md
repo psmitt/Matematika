@@ -214,7 +214,7 @@ A fenti helyzetekben jól bevált kiút a formalizmus: az elem ábrázolása ön
 
 Az elméleti ellenvetés az, hogy a halmazképzés harmadik megkülönböztetését ezzel a konstrukcióval teljesen lehetetlenné tesszük, de a negyedik is kétségessé válik: azonos-e vagy különbözik a fenti halmaz a B = { B } halmaztól? A gyakorlati ellenvetés az, hogy önmagát elemként tartalmazó _halmazra_ nem találunk példát. Természetesen ismerünk a gyakorlatban is számos olyan struktúrát, amelyben lehetséges az önreferencia, de vajon ez átvihető-e _puszta analógia_ révén a halmazokra csak azért, mert a formalizmus az önreferenciát lehetővé teszi?!
 
-Az önmagukat is tartalmazó halmazok ötlete mindenesetre egy új végtelen-perspektívát is kínál: az üres halmazra mint alapelemre épülő végtelen terjedelmű halmaz konstrukciók mellett az önmagukat tartalmazó halmazok még véges elemszám esetén is kibonthatatlanok: mélységükben, vagy ha úgy tetszik, vertikálisan végtelenek...
+Az önmagukat is tartalmazó halmazok ötlete mindenesetre egy új végtelen-perspektívát is kínál: az üres halmazra mint alapelemre épülő végtelen terjedelmű halmaz konstrukciók mellett az önmagukat tartalmazó halmazok még véges elemszám esetén is kibonthatatlanok. Mélységükben, vagy ha úgy tetszik, vertikálisan végtelenek...
 
 ### Antinómia és paradoxon
 
@@ -273,9 +273,9 @@ A rétegezett formulákra leszűkített halmazelméletben _létezik az univerzá
 A formalizmus, a Russell-antinómiából indirekten bizonyítva, tételként tagadja az univerzális halmaz létezését. A tiszta halmazelmélet elveire támaszkodva a feltételes egzisztencia-axiómák által definiált műveletekkel építi fel az üres halmazra mint végső alapelemre az összes többi halmazt.
 
 A formalista megoldás nem zárja ki kategorikusan, hogy egy halmaz önmagát tartalmazza, vagy hogy két halmaz kölcsönösen tartalmazza egymást. A _standard halmazelmélet_ mindazonáltal csak reguláris halmazokat engedélyez építeni. A __megalapozottsági__ (__jólfundáltsági__) vagy __regularitási axióma__ következményeként az 'eleme' reláció irreflexív és aszimmetrikus:
-∀A ( A != ∅ ⇒⇒  ∃x ( x∈A ∧ x∧A = ∅ ) )
+∀A ( A ≠ ∅ ⟹ ∃x ( x∈A ∧ x∩A = ∅ ) )
 
-A halmazelmélet hatóköre a regularitási axióma elhagyásával kiterjeszthető, sőt vannak olyan nem standard halmazelméletek is, amelyek a regularitás kifejezett tagadását (az __antifundáltsági axiómát__) veszik fel alapelveik közé.
+A halmazelmélet hatóköre a regularitási axióma elhagyásával kiterjeszthető, de vannak olyan nem standard halmazelméletek is, amelyek a regularitás kifejezett tagadását (az __antifundáltsági axiómát__) veszik fel alapelveik közé.
 
 Az univerzális halmaz helyett a formalista halmazelméletben több más "univerzum" született: olyan halmazkonstrukciók, amelyek egyfelől elegendően "nagyok" ahhoz, hogy valamennyi "érdekes" halmazt tartalmazzák, másfelől a konstrukciós mechanizmus egyfajta határesetét képezik, amelynél messzebb a transzfinit indukció sem vezet.
 
