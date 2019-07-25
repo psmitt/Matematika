@@ -277,25 +277,29 @@ A formalista megoldás nem zárja ki kategorikusan, hogy egy halmaz önmagát ta
 
 A halmazelmélet hatóköre a regularitási axióma elhagyásával kiterjeszthető, de vannak olyan nem standard halmazelméletek is, amelyek a regularitás kifejezett tagadását (az __antifundáltsági axiómát__) veszik fel alapelveik közé.
 
-Az univerzális halmaz helyett a formalista halmazelméletben több más "univerzum" született: olyan halmazkonstrukciók, amelyek egyfelől elegendően "nagyok" ahhoz, hogy valamennyi "érdekes" halmazt tartalmazzák, másfelől a konstrukciós mechanizmus egyfajta határesetét képezik, amelynél messzebb a transzfinit indukció sem vezet.
+Az univerzális halmaz helyett a formalista halmazelméletben több más "univerzum" született: olyan konstrukciók, amelyek egyfelől elegendően "nagyok" ahhoz, hogy valamennyi "érdekes" halmazt tartalmazzák, másfelől a konstrukciós mechanizmus egyfajta határesetét képezik, amelynél messzebb a transzfinit rekurzió sem vezet.
 
-Neumann ötlete az volt, hogy az üres halmazból a hatványhalmaz-művelettel állítsuk elő az összes lehetséges halmazt, majd képezzük ezek transzfinit unióját. Ez egy konkrét előllítási módszer, amelynek eredményét V-vel jelöljük. Ez tehát __Neumann univerzuma__:
+Neumann ötlete az volt, hogy az üres halmazból a hatványhalmaz-művelettel rekurzívan állítsuk elő az összes lehetséges halmazt, majd képezzük ezek transzfinit unióját. Ezután ismételjük az eljárást minden rendszámra és limesz rendszámra hasonló módon. Az így előállított halmazrendszert _kumulatív hierarchiának_ nevezzük.
+- A kezdőelem legyen az üres halmaz: V₀ = ∅
+- Bármely ꞵ rendszám indexre a rákövetkező indexű elem legyen az előző hatványhalmaza: Vᵦ₊₁ = 𝒫(Vᵦ)
+- Bármely ɣ limesz rendszám indexű elem legyen a kisebb indexű elemek uniója: Vᵧ = ⋃ᵦ<ᵧ Vᵦ = ⋃ { Vᵦ | ꞵ<ɣ }
 
-https://en.wikipedia.org/wiki/Von_Neumann_universe
-Neumann:
-- V₀ = ∅
-- Vᵦ₊₁ = 𝒫(Vᵦ)
-- Vᵧ = ⋃ᵦ<ᵧ Vᵦ
-- V = ⋃ᵦ<ᵧ 𝒫(Vᵦ)
+A __Neumann-univerzum__ a kumulatív hierarchia tagjainak összes elemét tartalmazza. Ezt az elemgyűjteményt V-vel jelöljük, formálisan tehát:
+V = ⋃ᵧ ⋃ᵦ<ᵧ 𝒫(Vᵦ) = ⋃ᵧ ⋃ { 𝒫(Vᵦ) | ꞵ<ɣ }
 
-Gödel általánosabb javaslata szerint egy-egy lépésben a már előállított halmazokból az "összes lehetséges formulával" konstruáljunk új halmazokat, és ezek transzfinit uniója legyen az univerzum. Mivel az "összes lehetséges formula" nem áll a rendelkezésünkre, ezért ez csak elvi-elméleti konstrukció, amelynek eredményét L-lel jelöljük. Ez tehát __Gödel univerzuma__:
+_A regularitási axióma ekvivalens azzal az állítással, hogy minden halmaz eleme a kumulatív hierarchia valamelyik tagjának, vagyis azzal, hogy a Neumann-univerzum az összes halmazt tartalmazza!_
 
-https://en.wikipedia.org/wiki/Constructible_universe
-Gödel megkonstruálható univerzuma: minden rákövetkező csak a megelőző halmazokat tartalmazó bármilyen formulák által definiált összes halmaz.
-- L₀ = ∅
-- Lᵦ₊₁ = Def(Lᵦ)
-- Lᵧ = ⋃ᵦ<ᵧ Lᵦ
-- L = ⋃ Lᵦ
+Gödel szigorúbb konstrukciós elve szerint a hatványhalmaz-képzés helyett, amely egy adott halmaz _minden lehetséges, de közelebbről meg nem határozott_ részhalmazát tartalmazza, egy rendszámra rákövetkező indexű halmazba az adott rendszám indexű halmaznak csak azokat a részeit vegyük fel elemként, amelyeket a halmazelmélet nyelvén le is tudunk írni, avagy a halmazelmélet formális nyelvén definiált műveleteket használva az adott rendszám indexű halmaz elemeiből fel tudunk építeni. Az A halmaz elemeiből szabályos módon felépíthető halmazrészeket, amely adott esetben lehet az A halmaz összes részhalmaza is, jelölje Def(A), ekkor a konstruálható halmazok hierarchiája így áll elő:
+- A kezdőelem legyen az üres halmaz: L₀ = ∅
+- Bármely ꞵ rendszám indexre a rákövetkező indexű elem legyen az előző elemeiből konstruálható összes halmaz: Lᵦ₊₁ = Def(Lᵦ)
+- Bármely ɣ limesz rendszám indexű elem legyen a kisebb indexű elemek uniója: Lᵧ = ⋃ᵦ<ᵧ Lᵦ = ⋃ { Lᵦ | ꞵ<ɣ }
+
+A __Gödel-univerzum__ a fenti módon konstruálható halmazokat tartalmazza. Ezt az elemgyűjteményt L-lel jelöljük, formálisan tehát:
+L = ⋃ᵧ ⋃ᵦ<ᵧ Def(Lᵦ) = ⋃ᵧ ⋃ { Def(Lᵦ) | ꞵ<ɣ }
+
+Véges indexekre a kumulatív hierarchia tagjai megegyeznek a konstruálható halmazok hierarchiájának azonos indexű tagjaival, azaz Vₙ = Lₙ, következésképpen V𝜔 = L𝜔 is fennáll. A két univerzum lehetséges azonosságát a __megkonstruálhatósági axióma__ állítja, amely szerint minden halmaznak megkonstruálhatónak kell lennie: V = L
+
+Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz.
 
 Groethendick a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan formula, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő.
 
