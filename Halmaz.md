@@ -301,7 +301,7 @@ Véges indexekre a kumulatív hierarchia tagjai megegyeznek a konstruálható ha
 
 Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz.
 
-Grothendieck a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan tranzitív halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan műveleti forma, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő. Egy U __Grothendieck-univerzum__ tehát a következőképpen jellemezhető:
+Grothendieck a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan tranzitív halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan elemi műveleti forma, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő. Egy U __Grothendieck-univerzum__ tehát a következőképpen jellemezhető:
 - U egy tranzitív halmaz, tehát minden eleme egyben a része is U-nak:
   ∀x∈U ( x⊂U )
 - U zárt a párképzésre: ∀x∈U ∀y∈U ( {x,y} ∈ U )
@@ -317,37 +317,19 @@ Egy ellentmondásmentes halmazelméletben az 'a halmazok halmaza' kifejezésnek 
 
 Előnyös volna legalább a halmazelmélet megalapozása végett lehetővé tenni, hogy _a halmaz fogalmáról_ és annak érvényességi köréről, vagyis _a halmazok osztályáról_ ugyanolyan logikai szigorúsággal beszélhessünk, mint magukról a halmazokról. Ha a halmazelmélet tényleges tárgyi-tartalmi részéből ki is zárjuk, nyelvi-logikai alapjainak meghatározásában jó hasznát vennénk az _osztály_ fogalmának.
 
-__A halmazok összessége _osztály, de nem halmaz___. Ez a logikailag pontos megállapítás a gyökere annak az ötletnek, hogy a halmaz fogalmát az osztály fogalmára alapozva axiomatizáljuk a halmazelméletet. Az osztály alapú halmazelméletek azonban rendre __meghamisítják__ a halmaz és az osztály közötti ontológiai relációt a következő alapelv bevezetésével: _minden halmaz osztály, de nem minden osztály halmaz_.
+__A halmazok összessége _osztály, de nem halmaz___. Ez a logikailag pontos megállapítás a gyökere annak az ötletnek, hogy a halmaz fogalmát az osztály fogalmára alapozva axiomatizáljuk a halmazelméletet. Az osztály alapú halmazelméletek azonban rendre meghamisítják a halmaz és az osztály közötti ontológiai relációt a következő alapelv bevezetésével: _minden halmaz osztály, de nem minden osztály halmaz_.
 
-Azokat az osztályokat, amelyek nem halmazok, az osztály alapú halmazelméletek valódi osztályoknak nevezik.
+Azokat az osztályokat, amelyek nem halmazok, az osztály alapú halmazelméletekben _valódi osztályoknak_ nevezzük. Az elemek fogalma is megváltozik: halmazok elemei helyett osztályok elemeiről beszélünk. A halmazképzés megkülönböztetési elveit, így az extenzionalitási axiómát is, az osztályok szintjére emeljük. Minthogy az 'eleme' reláció osztályszintűvé válik, a belőle származtatott 'része' reláció is az osztályok szintjére emelkedik: a részek immár _részosztályokat_ jelölnek.
 
+Ahhoz azonban, hogy a halmazelmélet "ne párologjon el" teljesen, új megkülönböztetési elveket kell rögzíteni: meg kell különböztetnünk a halmazokat a valódi osztályoktól! Az osztály alapú halmazelméletek mindenekelőtt _tagadják a halmazelmélet alapelvét_: a valódi osztályok nem lehetnek más osztályok elemei. Definíció szerint egy osztály pontosan akkor _halmaz_, ha eleme egy másik osztálynak.
 
+_Ha egy osztályt már halmazként azonosítottunk_, akkor annak elemei és részei már természetszerűleg mind halmazok lesznek, az tehát a kérdés, hogy milyen kritériumok alapján állapíthatjuk meg, hogy egy osztály halmaz-e vagy valódi osztály. Az osztály alapú halmazelméletek alapmegközelítése, hogy az univerzum nem más, mint a halmazok osztálya, amely (az antinómiák és paradoxonok miatt) valódi osztály ugyan, de egy minőségi vagy mennyiségi kritérium alapján leszűkített része már halmaznak tekinthető.
 
+A mennyiségi kritérium, nevezetesen a __méretkorlátozási axióma__ szerint a valódi osztályok egyforma (nagy) méretűek, tehát elemeik kölcsönösen egyértelműen megfeleltethetők egymásnak. Mivel egy valódi osztályról (az univerzumról) biztosan tudjuk, hogy az, ezért az axióma alapján nem lehet halmaz az az osztály, amely az univerzummal azonos méretű.
 
+A minőségi kritérium, nevezetesen a __komprehenzivitási axióma__ az elkülönítési axiómasémára hajaz: eszerint bármely 𝜗 tulajdonság esetén létezik olyan _osztály_, amely pontosan azokat a _halmazokat_ tartalmazza, amelyekre a tulajdonság igaz:
+∀𝜗 ∃C ∀x∈V ( x∈C ⇔ 𝜗(x) )
 
-- Megalkotjuk a halmazokat, vagy csak elkülönítünk bennük más halmazokat?
-- Létrejönnek a halmazok, vagy egyszer s mindenkorra adottak?
+A 𝜗 tulajdonságra tett további megkötésekkel azt is biztosíthatjuk, hogy az eredményosztály maga is halmaz legyen. Ilyen megkötések pl., hogy a tulajdonság csak halmazokra legyen igaz, anélkül azonban, hogy a 'halmaz' predikátumot felhasználnánk a leírásában; továbbá, hogy a tulajdonság leírásában használt minden más szabad változó is halmazt jelöljön.
 
-
-
-- Osztályok, mint szuperhalmazok ("más típusú" halmazok)
-- Osztályok, mint méretkorlátozott halmazokat
-- Osztályok, mint potenciális halmazok (halmazok a megkonstruált osztályok)
-- Osztályok, mint fogalmak terjedelmei
-
-- halmazok mélyszerkezete
-- halmazok felszíni szerkezete: elemek közötti relációk
-
-
-https://en.wikipedia.org/wiki/Constructive_set_theory
-
-https://hu.wikipedia.org/wiki/Ackermann-halmazelm%C3%A9let
-
-https://hu.wikipedia.org/wiki/Neumann%E2%80%93Bernays%E2%80%93G%C3%B6del-halmazelm%C3%A9let
-
-https://hu.wikipedia.org/wiki/Axiomatikus_halmazelm%C3%A9let
-
-https://hu.wikipedia.org/wiki/Zsebhalmazelm%C3%A9let
-
-Tranzitív halmaz: minden eleme a részhalmaza is egyben.
-https://en.wikipedia.org/wiki/Transitive_set
+Az osztály alapú megközelítés előnye, hogy a halmazelmélet konzisztens felépítéséhez szükséges axiómák száma jelentősen csökkenthető.
