@@ -325,11 +325,11 @@ Ahhoz azonban, hogy a halmazelmélet "ne párologjon el" teljesen, új megkülö
 
 _Ha egy osztályt már halmazként azonosítottunk_, akkor annak elemei és részei már természetszerűleg mind halmazok lesznek, az tehát a kérdés, hogy milyen kritériumok alapján állapíthatjuk meg, hogy egy osztály halmaz-e vagy valódi osztály. Az osztály alapú halmazelméletek alapmegközelítése, hogy az univerzum nem más, mint a halmazok osztálya, amely (az antinómiák és paradoxonok miatt) valódi osztály ugyan, de egy minőségi vagy mennyiségi kritérium alapján leszűkített része már halmaznak tekinthető.
 
-A mennyiségi kritérium, nevezetesen a __méretkorlátozási axióma__ szerint a valódi osztályok egyforma (nagy) méretűek, tehát elemeik kölcsönösen egyértelműen megfeleltethetők egymásnak. Mivel az egyik valódi osztályról (az univerzumról) biztosan tudjuk, hogy az, ezért az axióma alapján nem lehet halmaz az az osztály, amely az univerzummal azonos méretű.
+A mennyiségi kritérium, nevezetesen a __méretkorlátozási axióma__ szerint a valódi osztályok egyforma (nagy) méretűek, tehát elemeik kölcsönösen egyértelműen megfeleltethetők egymásnak. Mivel az egyik valódi osztályról (az univerzumról) biztosan tudjuk, hogy az, ezért az axióma alapján nem lehet halmaz az az osztály, amelyik az univerzummal azonos méretű.
 
 A minőségi kritérium, nevezetesen a __komprehenzivitási axióma__ az elkülönítési axiómasémára hajaz: eszerint bármely 𝜗 tulajdonság esetén létezik olyan _osztály_, amely pontosan azokat a _halmazokat_ tartalmazza, amelyekre a tulajdonság igaz:
 ∀𝜗 ∃C ∀x∈V ( x∈C ⇔ 𝜗(x) )
 
 A 𝜗 tulajdonságra tett további megkötésekkel azt is biztosíthatjuk, hogy az eredményosztály maga is halmaz legyen. Ilyen megkötések pl., hogy a tulajdonság csak halmazokra legyen igaz, anélkül azonban, hogy a 'halmaz' predikátumot felhasználnánk a leírásában; továbbá, hogy a tulajdonság leírásában használt minden más szabad változó is halmazt jelöljön.
 
-Az osztály alapú megközelítés előnye, hogy a halmazelmélet konzisztens felépítéséhez szükséges axiómák száma jelentősen csökkenthető.
+Az osztály alapú megközelítés előnye, hogy ezzel a halmazelmélet konzisztens felépítéséhez szükséges axiómák száma jelentősen csökkenthető.
