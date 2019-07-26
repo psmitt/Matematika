@@ -301,9 +301,15 @@ Véges indexekre a kumulatív hierarchia tagjai megegyeznek a konstruálható ha
 
 Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz.
 
-Groethendick a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan formula, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő.
+Grothendieck a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan tranzitív halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan műveleti forma, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő. Egy U __Grothendieck-univerzum__ tehát a következőképpen jellemezhető:
+- U egy tranzitív halmaz, tehát minden eleme egyben a része is U-nak:
+  ∀x∈U ( x⊂U )
+- U zárt a párképzésre: ∀x∈U ∀y∈U ( {x,y} ∈ U )
+- U zárt a hatványhalmaz-képzésre: ∀x∈U ( 𝒫(x) ∈ U )
+- U zárt az elemek egyesítésére nézve: ∀I∈U ∀u:I→U ( ⋃ {uᵢ|i∈I} ∈ U )
 
-Tarski axiómája
+Grothendieck univerzuma halmaz ugyan, de nem egyedi: végtelen sok Grothendieck-univerzum létezik. Az __univerzumok axiómája__ szerint azonban minden halmaz eleme valamelyik Grothendieck-univerzumnak:
+∀x ∃U ( x∈U ∧ U Grothendieck-univerzum )
 
 ### Az ontológiai megoldás
 
