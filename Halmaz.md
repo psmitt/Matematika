@@ -18,6 +18,7 @@
     - __A logicista megoldás__
     - __A formalista megoldás__
     - __Az ontológiai megoldás__
+    - __A halmazelméleti megoldás__
 
 ## A halmazképzéstől a halmaz fogalmáig
 
@@ -299,17 +300,7 @@ L = ⋃ᵧ ⋃ᵦ<ᵧ Def(Lᵦ) = ⋃ᵧ ⋃ { Def(Lᵦ) | ꞵ<ɣ }
 
 Véges indexekre a kumulatív hierarchia tagjai megegyeznek a konstruálható halmazok hierarchiájának azonos indexű tagjaival, azaz Vₙ = Lₙ, következésképpen V𝜔 = L𝜔 is fennáll. A két univerzum lehetséges azonosságát a __megkonstruálhatósági axióma__ állítja, amely szerint minden halmaznak megkonstruálhatónak kell lennie: V = L
 
-Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz.
-
-Grothendieck a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan tranzitív halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan elemi műveleti forma, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő. Egy U __Grothendieck-univerzum__ tehát a következőképpen jellemezhető:
-- U egy tranzitív halmaz, tehát minden eleme egyben a része is U-nak:
-  ∀x∈U ( x⊂U )
-- U zárt a párképzésre: ∀x∈U ∀y∈U ( {x,y} ∈ U )
-- U zárt a hatványhalmaz-képzésre: ∀x∈U ( 𝒫(x) ∈ U )
-- U zárt az elemek egyesítésére nézve: ∀I∈U ∀u:I→U ( ⋃ {uᵢ|i∈I} ∈ U )
-
-Grothendieck univerzuma halmaz ugyan, de nem egyedi: végtelen sok Grothendieck-univerzum létezik. Az __univerzumok axiómája__ szerint azonban minden halmaz eleme valamelyik Grothendieck-univerzumnak:
-∀x ∃U ( x∈U ∧ U Grothendieck-univerzum )
+Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz, hiszen a rendszámok összessége, amelyre a kumulatív hierachiák tagjait egyesítjük, maga sem lehet halmaz, ellenkező esetben az Burali-Forti paradoxonba ütközünk. A kumulatív hierarchiák tagjait tartalmazó univerzumokat ontológiai megfontolásokból _osztályoknak_ tartják, tisztázatlan kérdés azonban, hogy a matematikai-logikai osztályok vajon azonosak-e a fogalmak terjedelmét reprezentáló ismeretelméleti osztályokkal.
 
 ### Az ontológiai megoldás
 
@@ -330,6 +321,38 @@ A mennyiségi kritérium, nevezetesen a __méretkorlátozási axióma__ szerint 
 A minőségi kritérium, nevezetesen a __komprehenzivitási axióma__ az elkülönítési axiómasémára hajaz: eszerint bármely 𝜗 tulajdonság esetén létezik olyan _osztály_, amely pontosan azokat a _halmazokat_ tartalmazza, amelyekre a tulajdonság igaz:
 ∀𝜗 ∃C ∀x∈V ( x∈C ⇔ 𝜗(x) )
 
-A 𝜗 tulajdonságra tett további megkötésekkel azt is biztosíthatjuk, hogy az eredményosztály maga is halmaz legyen. Ilyen megkötések pl., hogy a tulajdonság csak halmazokra legyen igaz, anélkül azonban, hogy a 'halmaz' predikátumot felhasználnánk a leírásában; továbbá, hogy a tulajdonság leírásában használt minden más szabad változó is halmazt jelöljön.
+A 𝜗 tulajdonságra tett további megkötésekkel azt is biztosíthatjuk, hogy az eredményosztály maga is halmaz legyen. Ilyen megkötések pl., hogy a tulajdonság csak halmazokra legyen igaz, anélkül azonban, hogy a 'halmaz' predikátumot felhasználnánk a leírásában; továbbá, hogy a tulajdonság leírásában használt minden más szabad változó is halmazt jelöljön. Ez a kritérium végső soron azt jelenti, hogy a tulajdonság definíciójában használt valamennyi változóról megmutatható legyen, hogy nem tiszta osztály, hanem valamilyen más osztálynak az eleme.
 
 Az osztály alapú megközelítés előnye, hogy ezzel a halmazelmélet konzisztens felépítéséhez szükséges axiómák száma jelentősen csökkenthető.
+
+### A halmazelméleti megoldás
+
+Grothendieck a _műveleti zártság_ eszméjére alapozva vezette be saját univerzum-fogalmát: e szerint univerzumnak tekinthető minden olyan tranzitív halmaz, amely zárt a párképzésre, az egyesítésre és a hatványhalmaz műveletre nézve. Ekkor nincs olyan elemi műveleti forma, amely "kivezetne" az univerzumból, azaz elemeiből egy általa nem tartalmazott másik halmazt állítana elő. Egy U __Grothendieck-univerzum__ tehát a következőképpen jellemezhető:
+- U egy tranzitív halmaz, tehát minden eleme egyben a része is U-nak:
+  ∀x∈U ( x⊂U )
+- U zárt a párképzésre: ∀x∈U ∀y∈U ( {x,y} ∈ U )
+- U zárt a hatványhalmaz-képzésre: ∀x∈U ( 𝒫(x) ∈ U )
+- U zárt az elemek egyesítésére nézve: ∀I∈U ∀u:I→U ( ⋃ {uᵢ|i∈I} ∈ U )
+
+Grothendieck univerzuma halmaz ugyan, de nem egyedi: végtelen sok Grothendieck-univerzum létezik. Az __univerzumok axiómája__ szerint azonban minden halmaz eleme valamelyik Grothendieck-univerzumnak:
+∀x ∃U ( x∈U ∧ U Grothendieck-univerzum )
+
+A Grothendieck-univerzum eszméjének zsenialitása abban rejlik, hogy a halmazelméletet megalapozó axiómákat végül egy különös halmaz elemeire érvényesítjük, amelyet az axiómákban definiált műveletekre való zártsága folytán joggal nevezhetünk az elemei univerzumának. Lássuk, hogyan felelnek meg egymásnak a halmazelmélet elvei és a Grothendieck-univerzum kritériumai:
+
+1. Az univerzumok axiómája a halmazelmélet alapelvének egy speciális esete, egyben erősebb állítás annál: nemcsak annyit követel, hogy minden halmaz eleme legyen valamely más halmaznak, hanem hogy kifejezetten egy Grothendieck-univerzumnak legyen az eleme.
+
+2. A Grothendieck-univerzum tranzitivitása a tiszta halmazelmélet elvét érvényesíti: amennyiben az univerzum minden eleme egyben része is az univerzumnak, akkor ezek az elemek kizárólag csak halmazok lehetnek.
+
+3. A párképzésre való zártság a páraxiómának a leszűkítése, amennyiben az univerzum tetszőleges két eleméből álló rendezetlen pár nem akármilyen halmaz, hanem csak az univerzum eleme lehet.
+
+4. Hasonló szigorítása a hatványhalmaz-axiómának az a követelmény, hogy az univerzum bármely elemének hatványhalmaza szintén az univerzum eleme legyen.
+
+5. Az egyesítési axióma analóg kritériuma, hogy az univerzum tetszőlegesen felindexelt elemeinek uniója szintén az univerzum eleme legyen. Fontoljuk meg, egyszerűsíthető lenne-e ezt a kritérium oly módon, hogy az univerzum tetszőleges részhalmazának egyesítése az univerzum eleme lehessen! Esetleg a tetszőlegesség helyett egy jóldefiniált 𝜗 tulajdonság adhat-e kritériumot az univerzum 𝜗 által meghatározott részhalmazának egyesíthetőségére, játékba hozva ezzel az elkülönítési axiómasémát?
+
+6. A legkisebb méretű Grothendieck-univerzum maga az üres halmaz, hiszen elemek híján az elemekre kimondott összes kritérium teljesül. G₀ = ∅ létezése tehát az üres halmaz posztulátumának felel meg.
+
+7. Hasonlóképpen a véges halmazokat tartalmazó G₁ = 𝜔 Grothendieck-univerzum létezése a végtelen halmaz posztulátumának analogonja.
+
+Természetesen adódik a kérdés, hogy van-e és mi az összefüggés a Grothendieck-univerzumok és a Neumann- illetve Gödel-féle kumulatív hierarchia tagjai között. Az azonban tagadhatatlan, hogy a halmazelméleti univerzalitás fogalmát Grothendieck képes volt a halmazelmélet elvek megsértése nélkül teoretizálni és az univerzális halmazokra modellt felállítani.
+
+Az, hogy nem létezik _egyetlen_ olyan halmaz, amely az összes többit vagy csak akár a rendszámokat elemként tartalmazná, nem hiányosság, hanem logikai szükségszerűség, amely azonban nem korlátozza a halmazelmélet modellező erejét, hanem éppen ellenkezőleg: biztosítja halmazokra épülő többi elméleti konstrukció konzisztenciáját, logikai szilárdságát, vagyis végső soron a gyakorlati megbízhatóságát. 
