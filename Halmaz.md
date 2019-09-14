@@ -300,7 +300,7 @@ L = ⋃ᵧ ⋃ᵦ<ᵧ Def(Lᵦ) = ⋃ᵧ ⋃ { Def(Lᵦ) | ꞵ<ɣ }
 
 Véges indexekre a kumulatív hierarchia tagjai megegyeznek a konstruálható halmazok hierarchiájának azonos indexű tagjaival, azaz Vₙ = Lₙ, következésképpen V𝜔 = L𝜔 is fennáll. A két univerzum lehetséges azonosságát a __megkonstruálhatósági axióma__ állítja, amely szerint minden halmaznak megkonstruálhatónak kell lennie: V = L
 
-Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz, hiszen a rendszámok összessége, amelyre a kumulatív hierachiák tagjait egyesítjük, maga sem lehet halmaz, ellenkező esetben az Burali-Forti paradoxonba ütközünk. A kumulatív hierarchiák tagjait tartalmazó univerzumokat ontológiai megfontolásokból _osztályoknak_ tartják, tisztázatlan kérdés azonban, hogy a matematikai-logikai osztályok vajon azonosak-e a fogalmak terjedelmét reprezentáló ismeretelméleti osztályokkal.
+Neumann és Gödel univerzumának "szépséghibája", hogy egyik sem halmaz, hiszen a rendszámok összessége, amelyre a kumulatív hierachiák tagjait egyesítjük, maga sem lehet halmaz, ellenkező esetben a Burali-Forti paradoxonba ütközünk. A kumulatív hierarchiák tagjait tartalmazó univerzumokat ontológiai megfontolásokból _osztályoknak_ tartják, tisztázatlan kérdés azonban, hogy a matematikai-logikai osztályok vajon azonosak-e a fogalmak terjedelmét reprezentáló ismeretelméleti osztályokkal.
 
 ### Az ontológiai megoldás
 
@@ -337,7 +337,7 @@ Grothendieck a _műveleti zártság_ eszméjére alapozva vezette be saját univ
 Grothendieck univerzuma halmaz ugyan, de nem egyedi: végtelen sok Grothendieck-univerzum létezik. Az __univerzumok axiómája__ szerint azonban minden halmaz eleme valamelyik Grothendieck-univerzumnak:
 ∀x ∃U ( x∈U ∧ U Grothendieck-univerzum )
 
-A Grothendieck-univerzum eszméjének zsenialitása abban rejlik, hogy a halmazelméletet megalapozó axiómákat végül egy különös halmaz elemeire érvényesítjük, amelyet az axiómákban definiált műveletekre való zártsága folytán joggal nevezhetünk az elemei univerzumának. Lássuk, hogyan felelnek meg egymásnak a halmazelmélet elvei és a Grothendieck-univerzum kritériumai:
+Grothendieck ötletének zsenialitása abban rejlik, hogy a halmazelméletet megalapozó axiómákat végül egy különös halmaz elemeire érvényesítjük, amelyet az axiómákban definiált műveletekre való zártsága folytán joggal nevezhetünk az elemei univerzumának. Lássuk, hogyan felelnek meg egymásnak a halmazelmélet elvei és a Grothendieck-univerzum kritériumai:
 
 1. Az univerzumok axiómája a halmazelmélet alapelvének egy speciális esete, egyben erősebb állítás annál: nemcsak annyit követel, hogy minden halmaz eleme legyen valamely más halmaznak, hanem hogy kifejezetten egy Grothendieck-univerzumnak legyen az eleme.
 
@@ -349,10 +349,10 @@ A Grothendieck-univerzum eszméjének zsenialitása abban rejlik, hogy a halmaze
 
 5. Az egyesítési axióma analóg kritériuma, hogy az univerzum tetszőlegesen felindexelt elemeinek uniója szintén az univerzum eleme legyen. Fontoljuk meg, egyszerűsíthető lenne-e ezt a kritérium oly módon, hogy az univerzum tetszőleges részhalmazának egyesítése az univerzum eleme lehessen! Esetleg a tetszőlegesség helyett egy jóldefiniált 𝜗 tulajdonság adhat-e kritériumot az univerzum 𝜗 által meghatározott részhalmazának egyesíthetőségére, játékba hozva ezzel az elkülönítési axiómasémát?
 
-6. A legkisebb méretű Grothendieck-univerzum maga az üres halmaz, hiszen elemek híján az elemekre kimondott összes kritérium teljesül. G₀ = ∅ létezése tehát az üres halmaz posztulátumának felel meg.
+6. A legkisebb méretű Grothendieck-univerzum maga az üres halmaz, hiszen erre elemek híján az elemekre kimondott összes kritérium teljesül. G₀ = ∅ létezése tehát az üres halmaz posztulátumának felel meg.
 
 7. Hasonlóképpen a véges halmazokat tartalmazó G₁ = 𝜔 Grothendieck-univerzum létezése a végtelen halmaz posztulátumának analogonja.
 
-Természetesen adódik a kérdés, hogy van-e és mi az összefüggés a Grothendieck-univerzumok és a Neumann- illetve Gödel-féle kumulatív hierarchia tagjai között. Az azonban tagadhatatlan, hogy a halmazelméleti univerzalitás fogalmát Grothendieck képes volt a halmazelmélet elvek megsértése nélkül teoretizálni és az univerzális halmazokra modellt felállítani.
+Természetesen adódik a kérdés, hogy van-e és mi az összefüggés a Grothendieck-univerzumok és a Neumann- illetve Gödel-féle kumulatív hierarchia tagjai között. Az azonban tagadhatatlan, hogy a halmazelméleti univerzalitás fogalmát Grothendieck képes volt a halmazelmélet elveinek megsértése nélkül teoretizálni és az univerzális halmazokra modellt felállítani.
 
-Az, hogy nem létezik _egyetlen_ olyan halmaz, amely az összes többit vagy csak akár a rendszámokat elemként tartalmazná, nem hiányosság, hanem logikai szükségszerűség, amely azonban nem korlátozza a halmazelmélet modellező erejét, hanem éppen ellenkezőleg: biztosítja halmazokra épülő többi elméleti konstrukció konzisztenciáját, logikai szilárdságát, vagyis végső soron a gyakorlati megbízhatóságát. 
+Az, hogy nem létezik _egyetlen_ olyan halmaz, amely az összes többit, vagy csak akár a rendszámokat elemként tartalmazná, nem hiányosság, hanem logikai szükségszerűség, amely azonban nem korlátozza a halmazelmélet modellező erejét, hanem éppen ellenkezőleg: biztosítja a halmazokra épülő többi elméleti konstrukció konzisztenciáját, logikai szilárdságát, vagyis végső soron a gyakorlati megbízhatóságát.
