@@ -351,7 +351,7 @@ Grothendieck ötletének zsenialitása abban rejlik, hogy a halmazelméletet meg
 
 6. A legkisebb méretű Grothendieck-univerzum maga az üres halmaz, hiszen erre elemek híján az elemekre kimondott összes kritérium teljesül. G₀ = ∅ létezése tehát az üres halmaz posztulátumának felel meg.
 
-7. Hasonlóképpen a véges halmazokat tartalmazó G₁ = 𝜔 Grothendieck-univerzum létezése a végtelen halmaz posztulátumának analogonja.
+7. G₁ = G(∅) a legszűkebb olyan Grothendieck-univerzum, amelynek már elemei is vannak. Eleme az összes véges halmaz, tehát az üres halmaz Zermelo-féle és Neumann-féle rákövetkezői is, következésképpen 𝜔 ⊆ G₁. G₁ létezése a végtelen halmaz posztulátumának analogonja.
 
 Természetesen adódik a kérdés, hogy van-e és mi az összefüggés a Grothendieck-univerzumok és a Neumann- illetve Gödel-féle kumulatív hierarchia tagjai között. Az azonban tagadhatatlan, hogy a halmazelméleti univerzalitás fogalmát Grothendieck képes volt a halmazelmélet elveinek megsértése nélkül teoretizálni és az univerzális halmazokra modellt felállítani.
 
