@@ -321,7 +321,7 @@ A mennyiségi kritérium, nevezetesen a __méretkorlátozási axióma__ szerint 
 A minőségi kritérium, nevezetesen a __komprehenzivitási axióma__ az elkülönítési axiómasémára hajaz: eszerint bármely 𝜗 tulajdonság esetén létezik olyan _osztály_, amely pontosan azokat a _halmazokat_ tartalmazza, amelyekre a tulajdonság igaz:
 ∀𝜗 ∃C ∀x∈V ( x∈C ⇔ 𝜗(x) )
 
-A 𝜗 tulajdonságra tett további megkötésekkel azt is biztosíthatjuk, hogy az eredményosztály maga is halmaz legyen. Ilyen megkötések pl., hogy a tulajdonság csak halmazokra legyen igaz, anélkül azonban, hogy a 'halmaz' predikátumot felhasználnánk a leírásában; továbbá, hogy a tulajdonság leírásában használt minden más szabad változó is halmazt jelöljön. Ez a kritérium végső soron azt jelenti, hogy a tulajdonság definíciójában használt valamennyi változóról megmutatható legyen, hogy nem tiszta osztály, hanem valamilyen más osztálynak az eleme.
+A 𝜗 tulajdonságra tett további megkötésekkel azt is biztosíthatjuk, hogy az eredményosztály maga is halmaz legyen. Ilyen megkötések pl., hogy a tulajdonság csak halmazokra legyen igaz, anélkül azonban, hogy a 'halmaz' predikátumot felhasználnánk a leírásában; továbbá, hogy a tulajdonság leírásában használt minden más szabad változó is halmazt jelöljön. Ez a kritérium végső soron azt jelenti, hogy a tulajdonság definíciójában használt valamennyi változóról megmutatható legyen, hogy nem valódi osztály, hanem valamilyen más osztálynak az eleme.
 
 Az osztály alapú megközelítés előnye, hogy ezzel a halmazelmélet konzisztens felépítéséhez szükséges axiómák száma jelentősen csökkenthető.
 
