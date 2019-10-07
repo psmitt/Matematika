@@ -1,4 +1,4 @@
-# A halmazelmélet alapjai
+# A halmazelmélet alapelvei
 
 ## Tartalom
 
